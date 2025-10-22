@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login Admin</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Poppins", sans-serif;
+      background-color: #e8e8e8;
+      display: flex;
+      height: 100vh;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .container {
+      display: flex;
+      width: 850px;
+      background: #fff;
+      box-shadow: 0 0 25px rgba(0, 0, 0, 0.1);
+      border-radius: 15px;
+      overflow: hidden;
+    }
+
+    .left {
+      flex: 1;
+      background: url(img/Banner.png) center/cover no-repeat;
+    }
+
+    .right {
+      flex: 1;
+      padding: 50px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+    }
+
+    h2 {
+      color: #800000;
+      font-weight: 700;
+      margin-bottom: 5px;
+    }
+
+    p.sub {
+      color: #777;
+      font-size: 13px;
+      margin-bottom: 30px;
+    }
+
+    .errorbox {
+      display: none;
+      background: #ffe2e2;
+      border-left: 5px solid #ff4d4d;
+      color: #b10000;
+      padding: 10px 15px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      font-size: 14px;
+    }
+
+    label {
+      font-weight: 600;
+      color: #333;
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px 15px;
+      margin-bottom: 20px;
+      border: 2px solid #ccc;
+      border-radius: 8px;
+      font-size: 15px;
+      transition: 0.2s;
+    }
+
+    input:focus {
+      border-color: #800000;
+      outline: none;
+    }
+
+    button {
+      width: 109.1%;
+      padding: 12px;
+      background: #b00000;
+      border: none;
+      border-radius: 8px;
+      color: #fff;
+      font-weight: 600;
+      font-size: 15px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #900000;
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 15px;
+      font-size: 12px;
+      color: #999;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+        width: 90%;
+      }
+
+      .left {
+        height: 180px;
+      }
+
+      .right {
+        padding: 30px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="left"></div>
+    <div class="right">
+      <h2>Masuk Sebagai Admin</h2>
+      <p class="sub">Untuk mengakses dashboard, silakan isi data di bawah</p>
+
+      <div id="errorBox" class="errorbox">
+        <strong>Error!</strong> Username atau password salah.
+      </div>
+
+      <label for="email">Email</label>
+      <input type="text" id="email" placeholder="Masukkan Email">
+
+      <label for="password">Kata Sandi</label>
+      <input type="password" id="password" placeholder="Masukkan Kata Sandi">
+
+      <button onclick="login()">Masuk</button>
+
+      <div class="footer">© 2025 TaKi Admin Panel</div>
+    </div>
+  </div>
+
+  <script>
+    // Jika sudah login, jangan biarkan buka halaman login lagi
+    if (localStorage.getItem("isAdminLoggedIn") === "true") {
+      window.location.href = "dashboardadmin.html";
+    }
+
+    function login() {
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value.trim();
+      const errorBox = document.getElementById("errorBox");
+
+      // akun admin (sementara)
+      const adminEmail = "AdminTaki";
+      const adminPass = "12345";
+
+      if (email === adminEmail && password === adminPass) {
+        // Simpan status login
+        localStorage.setItem("isAdminLoggedIn", "true");
+        // Arahkan ke dashboard
+        window.location.href = "dashboardadmin.html";
+      } else {
+        // Munculkan pesan error
+        errorBox.style.display = "block";
+      }
+    }
+  </script>
+</body>
+</html>

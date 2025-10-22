@@ -17,7 +17,663 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
     />
-    <link rel="stylesheet" href="style.css" />
+    <style>
+      :root {
+        --redcolor: #bf0f0f;
+        --blacknav: #383838;
+        --greencolor: #89c946;
+        --yellow: #f49a24;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        outline: none;
+        border: none;
+        text-decoration: none;
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: "Poppins", sans-serif;
+        background-color: #ffffff;
+        background-attachment: fixed;
+        background-image: url(img/.png);
+        /* min-height: 5000px; */
+      }
+
+      /* Navbar */
+      .navbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background-color: #ededed;
+        position: fixed;
+        top: 1.4rem;
+        left: 7rem;
+        right: 7rem;
+        z-index: 9999;
+        padding: 0.3rem 2rem;
+        border-radius: 1rem;
+        transition: all 0.3s ease-in-out;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+      }
+
+      .navbar img {
+        width: 55px;
+      }
+
+      .navbar .navsection {
+        display: flex;
+        align-items: center;
+        gap: 3rem;
+      }
+
+      .navbar .navmenu {
+        display: flex;
+        align-items: center;
+        gap: 3rem;
+      }
+
+      .navbar .navmenu a {
+        display: inline-block;
+        transition: all 0.2s ease-in-out;
+      }
+
+      .navbar .navmenu a:hover {
+        color: #e3252f;
+      }
+
+      .navbar .navmenu a::after {
+        content: "";
+        display: block;
+        border-bottom: 0.1rem solid #e3252f;
+        transform: scaleX(0);
+        transition: 0.2s linear;
+      }
+
+      .navbar .navmenu a:hover::after {
+        transform: scaleX(0.5);
+      }
+
+      .navbar .navicon {
+        display: flex;
+        align-items: center;
+        gap: 3rem;
+      }
+
+      .navbar .navicon a {
+        display: inline-block;
+        transition: all 0.2s ease-in-out;
+      }
+
+      .navbar .navicon a:hover {
+        color: #e3252f;
+      }
+
+      /* Home Section */
+      .home {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        background-image: url(img/.png);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        position: relative;
+        justify-content: center;
+      }
+
+      .home::after {
+        content: "";
+        display: block;
+        position: absolute;
+        width: 100%;
+        height: 20%;
+        bottom: 0;
+      }
+
+      .home .content {
+        padding: 1.4rem 7%;
+        max-width: 60rem;
+        text-align: center;
+        /* text-shadow: 10px 10px 30px rgba(1, 1, 3, 1); */
+      }
+
+      .home .content img {
+        border-radius: 1.2rem;
+      }
+
+      /* Filler Section */
+      .promotionsign {
+        width: 90%;
+        margin: 4rem auto;
+      }
+
+      .promotionup {
+        background-color: #ededed;
+        border-radius: 10px;
+        padding: 1.2rem 3%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+        gap: 1rem;
+      }
+
+      .promotionup img {
+        width: 70px;
+        border-radius: 10px;
+      }
+
+      .promotionup p {
+        font-size: 1.1rem;
+        color: #222;
+      }
+
+      .promotionup a {
+        background-color: #d72b2b;
+        color: #fff;
+        padding: 0.8rem 1.6rem;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: bold;
+        transition: 0.3s;
+      }
+
+      .promotionup a:hover {
+        background-color: #b62222;
+      }
+
+      /* Promo Section */
+      .promo {
+        padding: 4rem 7%;
+        background-color: #fff;
+      }
+
+      .promotext {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 2rem;
+      }
+
+      .promotext h1 {
+        font-size: 2rem;
+        color: #222;
+        font-weight: 700;
+      }
+
+      .promotext h3 {
+        color: #d32f2f;
+        font-weight: 600;
+        text-decoration: none;
+        transition: color 0.2s ease;
+      }
+
+      .promotext h3:hover {
+        color: #b71c1c;
+      }
+
+      .promocontainer {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 4rem;
+        justify-content: center;
+      }
+
+      .promoimg {
+        border-radius: 1rem;
+        overflow: hidden;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        cursor: pointer;
+      }
+
+      .promoimg:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+      }
+
+      .promoimg img {
+        width: 621px;
+        height: auto;
+        display: block;
+        object-fit: cover;
+        border-radius: 1rem;
+      }
+
+      /* Menu Section */
+      .menu-favorit {
+        padding: 4rem 7%;
+        text-align: center;
+        background-color: #fff;
+      }
+
+      .menu-header h2 {
+        font-size: 2rem;
+        font-weight: 700;
+        margin-bottom: 2.5rem;
+        color: #1a1a1a;
+      }
+
+      .menu-container {
+        display: flex;
+        justify-content: center;
+        gap: 2.5rem;
+        flex-wrap: wrap;
+      }
+
+      .menu-card {
+        background: #fff;
+        border-radius: 1rem;
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+        overflow: hidden;
+        width: 270px;
+        transition: all 0.3s ease;
+      }
+
+      .menu-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+      }
+
+      .menu-card img {
+        width: 100%;
+        height: 190px;
+        object-fit: cover;
+        border-bottom: 1px solid #f0f0f0;
+      }
+
+      .menu-card h3 {
+        margin: 1rem 0 0.4rem;
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: #222;
+      }
+
+      .menu-card p {
+        font-size: 1rem;
+        color: #555;
+        margin-bottom: 1rem;
+      }
+
+      .menu-card button {
+        background-color: transparent;
+        border: 2px solid #d32f2f;
+        color: #d32f2f;
+        padding: 0.5rem 1.5rem;
+        border-radius: 30px;
+        cursor: pointer;
+        font-weight: 600;
+        transition: 0.3s;
+        margin-bottom: 1rem;
+      }
+
+      .menu-card button:hover {
+        background-color: #d32f2f;
+        color: #fff;
+      }
+
+      .lihat-lainnya {
+        margin-top: 3rem;
+      }
+
+      .lihat-lainnya a {
+        background-color: #ffb300;
+        color: white;
+        padding: 0.7rem 1.8rem;
+        border-radius: 30px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: 0.3s;
+      }
+
+      .lihat-lainnya a:hover {
+        background-color: #e09a00;
+      }
+
+      /* Menu Gerak Section */
+      .menugerak {
+        padding-top: 7rem;
+      }
+      .menugerak .movedtext {
+        position: relative;
+        overflow: hidden;
+        border-bottom: 2px dashed #e9e9e9;
+        user-select: none;
+        display: flex;
+        white-space: nowrap;
+      }
+
+      .menugerak .track {
+        display: flex;
+        animation: scroll 60s linear infinite;
+      }
+
+      .menugerak .right .track {
+        animation: scrollReverse 60s linear infinite;
+      }
+
+      .menugerak .movedtext:hover .track {
+        animation-play-state: paused;
+      }
+
+      .menugerak .text {
+        flex: 0 0 auto;
+        font-size: 79px;
+        font-weight: bold;
+        color: #e9e9e9;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        padding-right: 80px;
+      }
+
+      .menugerak .text:hover {
+        color: var(--redcolor);
+      }
+
+      /* Kiri */
+      @keyframes scroll {
+        0% {
+          transform: translateX(0);
+        }
+        100% {
+          transform: translateX(-50%);
+        }
+      }
+
+      /* Kanan */
+      @keyframes scrollReverse {
+        0% {
+          transform: translateX(-50%);
+        }
+        100% {
+          transform: translateX(0);
+        }
+      }
+
+      /* Footer */
+      .footer {
+        margin-top: 8vh;
+        padding: 60px 7% 30px;
+        background-color: #ffffff;
+        color: #000;
+        font-family: "Poppins", sans-serif;
+      }
+
+      .footercontainer {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 40px;
+        max-width: 1300px;
+        margin: 0 auto;
+      }
+
+      /* Kiri */
+      .footerleft {
+        flex: 1 1 250px;
+        max-width: 400px;
+      }
+
+      .footerleft .logo {
+        background: linear-gradient(90deg, var(--redcolor), var(--yellow));
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .footerleft .logo img {
+        width: 60px;
+      }
+
+      .footerleft p {
+        margin: 15px 0;
+        color: #333;
+        line-height: 1.5;
+      }
+
+      .socialicons {
+        display: flex;
+        gap: 18px;
+        margin-top: 10px;
+      }
+
+      .socialicons a {
+        color: #000;
+        font-size: 1.3rem;
+        transition: color 0.3s ease;
+      }
+
+      .socialicons a:hover {
+        color: var(--redcolor);
+      }
+
+      /* Kolom kanan */
+      .footercolumn {
+        flex: 1 1 200px;
+        min-width: 160px;
+      }
+
+      .footercolumn h3 {
+        font-size: 1rem;
+        font-weight: 700;
+        margin-bottom: 15px;
+        text-transform: uppercase;
+        color: #111;
+      }
+
+      .footercolumn ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .footercolumn ul li {
+        margin-bottom: 10px;
+      }
+
+      .footercolumn ul li a {
+        text-decoration: none;
+        color: #444;
+        transition: color 0.3s;
+      }
+
+      .footercolumn ul li a:hover {
+        color: var(--redcolor);
+      }
+
+      .footerbottom {
+        text-align: center;
+        font-size: 0.9rem;
+        color: #666;
+        margin-top: 40px;
+        padding-top: 20px;
+      }
+
+      .bottomnav {
+        display: none;
+      }
+
+      /* ============================= */
+      /* 📱 Handphone (max 768px) */
+      /* ============================= */
+      @media (max-width: 768px) {
+        body {
+          background: #fff;
+        }
+
+        /* Navbar berubah jadi top kecil */
+        .navbar {
+          position: fixed;
+          top: 0;
+          left: 0;
+          right: 0;
+          border-radius: 0;
+          padding: 0.8rem 1rem;
+          justify-content: center;
+          box-shadow: none;
+        }
+
+        .navbar .navmenu {
+          display: none; /* Sembunyikan menu atas di HP */
+        }
+
+        .navbar .navicon {
+          display: none; /* Sembunyikan menu atas di HP */
+        }
+
+        .navbar img {
+          width: 45px;
+        }
+
+        /* Section Home */
+        .home {
+          background-size: cover;
+          background-position: center;
+          text-align: center;
+          padding-top: 6rem;
+        }
+
+        .home .content h1 {
+          font-size: 1.2rem;
+          max-width: 10rem;
+        }
+
+        .home .content p {
+          font-size: 0.9rem;
+        }
+
+        /* Promo */
+        .promotionup {
+          flex-direction: column;
+          text-align: center;
+        }
+
+        .promotionup img {
+          width: 60px;
+        }
+
+        .promocontainer {
+          flex-direction: column;
+          gap: 1.5rem;
+        }
+
+        .promoimg img {
+          width: 100%;
+          height: auto;
+        }
+
+        /* Menu Favorit */
+        .menu-container {
+          flex-direction: column;
+          gap: 1.5rem;
+          align-items: center;
+        }
+
+        .menu-card {
+          width: 90%;
+        }
+
+        /* Footer */
+        .footercontainer {
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+        }
+
+        /* Bottom Navigation (seperti aplikasi Pizza Hut) */
+        /* ============================= */
+        /* 📱 Bottom Navigation (Handphone) */
+        /* ============================= */
+        .bottomnav {
+          display: flex;
+          justify-content: space-around;
+          align-items: center;
+          position: fixed;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          height: 70px;
+          background-color: #fff;
+          border-top: 1px solid #ddd;
+          box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.08);
+          z-index: 9999;
+          padding-bottom: env(
+            safe-area-inset-bottom
+          ); /* iPhone notch safe area */
+        }
+
+        .bottomnav a {
+          flex: 1;
+          text-align: center;
+          color: #777;
+          font-size: 0.8rem;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          text-decoration: none;
+          line-height: 1.2;
+        }
+
+        .bottomnav a i {
+          font-size: 1.4rem;
+          margin-bottom: 4px;
+          display: block;
+        }
+
+        .bottomnav a.active {
+          color: var(--redcolor);
+          font-weight: 600;
+        }
+
+        .bottomnav a span {
+          margin-top: 2px;
+          font-size: 0.75rem;
+        }
+
+        /* Pastikan ikon font-awesome atau remixicon tidak terpotong */
+        .bottomnav i,
+        .bottomnav svg {
+          vertical-align: middle;
+        }
+      }
+
+      /* ============================= */
+      /* 💻 Tablet (769px – 1024px) */
+      /* ============================= */
+      @media (min-width: 769px) and (max-width: 1024px) {
+        .navbar {
+          left: 2rem;
+          right: 2rem;
+          padding: 0.5rem 1.5rem;
+        }
+
+        .navbar .navmenu {
+          gap: 2rem;
+        }
+
+        .promoimg img {
+          width: 100%;
+        }
+
+        .menu-container {
+          gap: 1.5rem;
+        }
+
+        .menu-card {
+          width: 45%;
+        }
+
+        .footercontainer {
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+      }
+    </style>
 
     <!-- Feather Icon -->
     <script src="https://unpkg.com/feather-icons"></script>
@@ -26,14 +682,18 @@
     <!-- Navbar -->
     <nav class="navbar">
       <div class="navlogo">
-        <img src="LogoTaki.png" alt="" />
+        <img src="img/LogoTaki.png" alt="" />
       </div>
-      <div class="navmenu">
-        <a href="">Home</a>
-        <a href="">Menu</a>
-        <a href="">Brand Story</a>
-        <a href=""><i data-feather="shopping-bag"></i></a>
-        <a href=""><i data-feather="map-pin"></i></a>
+      <div class="navsection">
+        <div class="navmenu">
+          <a href="">Home</a>
+          <a href="">Menu</a>
+          <a href="">Brand Story</a>
+        </div>
+        <div class="navicon">
+          <a href="shoppingbag.html"><i data-feather="shopping-bag"></i></a>
+          <a href=""><i data-feather="user"></i></a>
+        </div>
       </div>
     </nav>
     <!-- Navbar End -->
@@ -41,14 +701,7 @@
     <!-- Home Section Start -->
     <section class="home" id="home">
       <main class="content">
-        <p>
-          "The Beatles didn't just make music, they made magic that still echoes
-          through every guitar string and heartbeat today, four lads from
-          Liverpool who taught the world that love is all you need and turned
-          teenage screams into timeless symphonies that made everyone sing
-          along.
-        </p>
-        <h1>Pesan Sekarang</h1>
+        <a href="menu.html"><img src="img/HomeBanner.png" alt="" /></a>
       </main>
     </section>
     <!-- Home Section End -->
@@ -56,7 +709,7 @@
     <!-- Filler Section Start -->
     <section class="promotionsign">
       <div class="promotionup">
-        <img src="LogoTaki.png" alt="Pizza Promo" />
+        <img src="img/LogoTaki.png" alt="Pizza Promo" />
         <p>
           Sign up agar kamu dapat memesan langsung melalui
           <strong>Website!</strong>
@@ -70,7 +723,7 @@
     <section id="promo" class="promo">
       <div class="promotext">
         <h1>Dapatkan Promo Kami</h1>
-        <a href="#"><h3>Selengkapnya</h3></a>
+        <a href="promo.html"><h3>Selengkapnya</h3></a>
       </div>
 
       <div class="promocontainer">
@@ -111,6 +764,13 @@
           <p>Rp. 15.000</p>
           <button>+ Tambah</button>
         </div>
+
+        <div class="menu-card">
+          <img src="img/MenuTaki/BasoAci.jpeg" alt="" />
+          <h3>Baso Aci</h3>
+          <p>Rp. 15.000</p>
+          <button>+ Tambah</button>
+        </div>
       </div>
 
       <div class="lihat-lainnya">
@@ -121,61 +781,49 @@
 
     <!-- MenuGerak Start -->
     <section class="menugerak">
-      <div class="marquee left">
+      <div class="movedtext left">
         <div class="track">
           <span class="text"
             >SEBLAK TAKI & PRASMANAN • SEBLAK TAKI & PRASMANAN • SEBLAK TAKI &
-            PRASMANAN •
-          </span>
-          <span class="text"
-            >SEBLAK TAKI & PRASMANAN • SEBLAK TAKI & PRASMANAN • SEBLAK TAKI &
-            PRASMANAN •
+            PRASMANAN • SEBLAK TAKI & PRASMANAN • SEBLAK TAKI & PRASMANAN •
+            SEBLAK TAKI & PRASMANAN •
           </span>
         </div>
       </div>
 
-      <div class="marquee right">
+      <div class="movedtext right">
         <div class="track">
           <span class="text"
-            >MENU NASI GILA • MENU NASI GILA • MENU NASI GILA •
-          </span>
-          <span class="text"
-            >MENU NASI GILA • MENU NASI GILA • MENU NASI GILA •
+            >MENU NASI GILA • MENU NASI GILA • MENU NASI GILA • MENU NASI GILA •
+            MENU NASI GILA • MENU NASI GILA •
           </span>
         </div>
       </div>
 
-      <div class="marquee left">
+      <div class="movedtext left">
         <div class="track">
           <span class="text"
             >SATE LOK-LOK BAKAR/GORENG • SATE LOK-LOK BAKAR/GORENG • SATE
-            LOK-LOK BAKAR/GORENG •
-          </span>
-          <span class="text"
-            >SATE LOK-LOK BAKAR/GORENG • SATE LOK-LOK BAKAR/GORENG • SATE
-            LOK-LOK BAKAR/GORENG •
+            LOK-LOK BAKAR/GORENG • SATE LOK-LOK BAKAR/GORENG • SATE LOK-LOK
+            BAKAR/GORENG • SATE LOK-LOK BAKAR/GORENG •
           </span>
         </div>
       </div>
 
-      <div class="marquee right">
+      <div class="movedtext right">
         <div class="track">
           <span class="text"
             >CEMILAN SNACK TAKI • CEMILAN SNACK TAKI • CEMILAN SNACK TAKI •
-          </span>
-          <span class="text"
-            >CEMILAN SNACK TAKI • CEMILAN SNACK TAKI • CEMILAN SNACK TAKI •
+            CEMILAN SNACK TAKI • CEMILAN SNACK TAKI • CEMILAN SNACK TAKI •
           </span>
         </div>
       </div>
 
-      <div class="marquee left">
+      <div class="movedtext left">
         <div class="track">
           <span class="text"
-            >ANEKA MINUMAN • ANEKA MINUMAN • ANEKA MINUMAN •
-          </span>
-          <span class="text"
-            >ANEKA MINUMAN • ANEKA MINUMAN • ANEKA MINUMAN •
+            >ANEKA MINUMAN SEGAR • ANEKA MINUMAN SEGAR • ANEKA MINUMAN SEGAR •
+            ANEKA MINUMAN SEGAR • ANEKA MINUMAN SEGAR • ANEKA MINUMAN SEGAR •
           </span>
         </div>
       </div>
@@ -185,52 +833,60 @@
     <!-- Footer Start -->
     <footer class="footer">
       <div class="footercontainer">
-        <div class="footer-left">
-          <a href="" class="logo"><img src="LogoTaki.png" alt="" /></a>
-          <div class="social-icons">
+        <!-- Kolom 1 -->
+        <div class="footerleft">
+          <a href="#" class="logo"
+            ><img src="img/LogoTaki.png" alt="Kedai TaKi ID"
+          /></a>
+          <p>
+            <strong>Jam Operasional :</strong><br />
+            Setiap hari<br />
+            14:00 - 22:00
+          </p>
+          <div class="socialicons">
             <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
+            <a href="#"><i class="fa-brands fa-facebook"></i></a>
             <a href="#"><i class="fa-brands fa-instagram"></i></a>
-            <a href="#"><i class="fa-brands fa-tiktok"></i></a>
-            <a href="#"><i class="fa-brands fa-youtube"></i></a>
           </div>
         </div>
 
-        <div class="footer-column">
-          <h3>GENERAL</h3>
+        <!-- Kolom 2 -->
+        <div class="footercolumn">
+          <h3>Navigasi</h3>
           <ul>
-            <li><a href="#">FAQ</a></li>
-            <li><a href="#">Live Chat</a></li>
-            <li><a href="#">Contact Us</a></li>
+            <li><a href="#">Beranda</a></li>
+            <li><a href="#">Menu</a></li>
+            <li><a href="#">Tentang Kami</a></li>
           </ul>
         </div>
 
-        <div class="footer-column">
-          <h3>ABOUT US</h3>
-          <ul>
-            <li><a href="#">Brand Story</a></li>
-            <li><a href="#">Taki_ID Story</a></li>
-            <li><a href="#">Halal Certificate</a></li>
-            <li><a href="#">CSR</a></li>
-            <li><a href="#">Party by Taki_ID</a></li>
-            <li><a href="#">Newsroom</a></li>
-            <li><a href="#">Outlet Location</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-column">
-          <h3>POLICY</h3>
-          <ul>
-            <li><a href="#">Terms & Conditions</a></li>
-            <li><a href="#">Privacy Policy</a></li>
-          </ul>
+        <!-- Kolom 3 -->
+        <div class="footercolumn">
+          <h3>Lokasi Outlet</h3>
+          <img
+            src="lokasi.jpg"
+            alt="Peta Lokasi Kedai TaKi ID"
+            style="width: 100%; border-radius: 8px; margin-bottom: 10px"
+          />
+          <p style="color: #333; font-size: 0.9rem; line-height: 1.5">
+            Kejawan Gebang III No.22,<br />
+            RT.002/RW.04, Gebang Putih, Kec. Sukolilo,<br />
+            Surabaya, Jawa Timur 60117
+          </p>
         </div>
       </div>
 
-      <div class="footer-bottom">
-        © Taki_ID Indonesia 2025. All Rights Reserved.
-      </div>
+      <div class="footerbottom">© Copyright 2025, All Right Reserved</div>
     </footer>
     <!-- Footer End -->
+
+    <!-- Bottom Navigation -->
+    <div class="bottomnav">
+      <a href="#" class="active"><i data-feather="home"></i>Home</a>
+      <a href="promo.html"><i data-feather="gift"></i>Promo</a>
+      <a href="shoppingbag.html"><i data-feather="shopping-bag"></i>Pesanan</a>
+      <a href="#"><i data-feather="user"></i>Profil</a>
+    </div>
 
     <!-- Feather Icons -->
     <script>

@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Taki ID - Promo Kami</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://unpkg.com/feather-icons"></script>
+
+    <style>
+      :root {
+        --red: #bf0f0f;
+        --yellow: #f49a24;
+        --black: #2e2e2e;
+        --bg: #ffffff;
+      }
+
+      body {
+        font-family: "Poppins", sans-serif;
+        background-color: var(--bg);
+        color: var(--black);
+        margin: 0;
+        padding: 0;
+      }
+
+      /* Navbar */
+      .navbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background-color: #ededed;
+        position: fixed;
+        top: 1.2rem;
+        left: 6rem;
+        right: 6rem;
+        z-index: 100;
+        padding: 0.4rem 2rem;
+        border-radius: 1rem;
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+      }
+
+      .navbar img {
+        width: 55px;
+      }
+
+      .navmenu {
+        display: flex;
+        gap: 2.5rem;
+        align-items: center;
+      }
+
+      .navmenu a {
+        color: var(--black);
+        font-weight: 500;
+        text-decoration: none;
+        transition: color 0.2s;
+      }
+
+      .navmenu a:hover {
+        color: var(--red);
+      }
+
+      /* Promo Section */
+      .promo-section {
+        padding: 9rem 8rem 4rem 8rem;
+      }
+
+      .promo-section h1 {
+        font-size: 2rem;
+        font-weight: 700;
+        color: var(--red);
+        margin-bottom: 2rem;
+      }
+
+      .promo-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 2rem;
+      }
+
+      .promo-card {
+        background: white;
+        border-radius: 1rem;
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        transition: transform 0.3s, box-shadow 0.3s;
+      }
+
+      .promo-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+      }
+
+      .promo-card img {
+        width: 100%;
+        height: 180px;
+        object-fit: cover;
+      }
+
+      .promo-card-content {
+        padding: 1.2rem 1.4rem;
+      }
+
+      .promo-card-content h3 {
+        font-size: 1.1rem;
+        color: var(--black);
+        margin-bottom: 0.5rem;
+      }
+
+      .promo-card-content p {
+        font-size: 0.9rem;
+        color: #555;
+      }
+
+      /* Footer */
+      .footer {
+        margin-top: 8vh;
+        padding: 60px 7% 30px;
+        background-color: #ffffff;
+        color: #000;
+        font-family: "Poppins", sans-serif;
+      }
+
+      .footercontainer {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 40px;
+        max-width: 1300px;
+        margin: 0 auto;
+      }
+
+      /* Kiri */
+      .footerleft {
+        flex: 1 1 250px;
+        max-width: 400px;
+      }
+
+      .footerleft .logo {
+        background: linear-gradient(90deg, var(--redcolor), var(--yellow));
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .footerleft .logo img {
+        width: 60px;
+      }
+
+      .footerleft p {
+        margin: 15px 0;
+        color: #333;
+        line-height: 1.5;
+      }
+
+      .socialicons {
+        display: flex;
+        gap: 18px;
+        margin-top: 10px;
+      }
+
+      .socialicons a {
+        color: #000;
+        font-size: 1.3rem;
+        transition: color 0.3s ease;
+      }
+
+      .socialicons a:hover {
+        color: var(--yellow);
+      }
+
+      /* Kolom kanan */
+      .footercolumn {
+        flex: 1 1 200px;
+        min-width: 160px;
+      }
+
+      .footercolumn h3 {
+        font-size: 1rem;
+        font-weight: 700;
+        margin-bottom: 15px;
+        text-transform: uppercase;
+        color: #111;
+      }
+
+      .footercolumn ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .footercolumn ul li {
+        margin-bottom: 10px;
+      }
+
+      .footercolumn ul li a {
+        text-decoration: none;
+        color: #444;
+        transition: color 0.3s;
+      }
+
+      .footercolumn ul li a:hover {
+        color: var(--redcolor);
+      }
+
+      .footer-bottom {
+        text-align: center;
+        font-size: 0.9rem;
+        color: #666;
+        margin-top: 40px;
+        padding-top: 20px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar">
+      <img src="LogoTaki.png" alt="Taki ID" />
+      <div class="navmenu">
+        <a href="#">Beranda</a>
+        <a href="#">Menu</a>
+        <a href="#">Promo</a>
+        <a href="#">Tentang Kami</a>
+        <a href="#"><i data-feather="shopping-bag"></i></a>
+        <a href="#"><i data-feather="map-pin"></i></a>
+      </div>
+    </nav>
+
+    <!-- Promo Section -->
+    <section class="promo-section">
+      <h1>Promo Kami</h1>
+      <div class="promo-grid">
+        <div class="promo-card">
+          <img src="img/promo1.jpg" alt="Promo 1" />
+          <div class="promo-card-content">
+            <h3>Promo Satay Dumpling Keju</h3>
+            <p>Dapatkan dumpling isi keju hanya Rp8.000!</p>
+          </div>
+        </div>
+
+        <div class="promo-card">
+          <img src="img/promo2.jpg" alt="Promo 2" />
+          <div class="promo-card-content">
+            <h3>Promo Serba Murah</h3>
+            <p>Nasi Gulai & Nasi Gila Original hanya Rp19.000.</p>
+          </div>
+        </div>
+
+        <div class="promo-card">
+          <img src="img/promo3.jpg" alt="Promo 3" />
+          <div class="promo-card-content">
+            <h3>Promo Cireng Kuah Keju Creamy</h3>
+            <p>Hanya Rp15.000! Rasakan sensasi keju meleleh.</p>
+          </div>
+        </div>
+
+        <div class="promo-card">
+          <img src="img/promo4.jpg" alt="Promo 4" />
+          <div class="promo-card-content">
+            <h3>Promo Spesial Duo Maut Taki</h3>
+            <p>Beli 1 paket nasi jumbo, gratis minuman segar!</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer Start -->
+    <footer class="footer">
+      <div class="footercontainer">
+        <!-- Kolom 1 -->
+        <div class="footerleft">
+          <a href="#" class="logo"
+            ><img src="img/LogoTaki.png" alt="Kedai TaKi ID"
+          /></a>
+          <p>
+            <strong>Jam Operasional :</strong><br />
+            Setiap hari<br />
+            14:00 - 22:00
+          </p>
+          <div class="socialicons">
+            <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
+            <a href="#"><i class="fa-brands fa-facebook"></i></a>
+            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+          </div>
+        </div>
+
+        <!-- Kolom 2 -->
+        <div class="footercolumn">
+          <h3>Navigasi</h3>
+          <ul>
+            <li><a href="#">Beranda</a></li>
+            <li><a href="#">Menu</a></li>
+            <li><a href="#">Tentang Kami</a></li>
+          </ul>
+        </div>
+
+        <!-- Kolom 3 -->
+        <div class="footercolumn">
+          <h3>Lokasi Outlet</h3>
+          <img
+            src="lokasi.jpg"
+            alt="Peta Lokasi Kedai TaKi ID"
+            style="width: 100%; border-radius: 8px; margin-bottom: 10px"
+          />
+          <p style="color: #333; font-size: 0.9rem; line-height: 1.5">
+            Kejawan Gebang III No.22,<br />
+            RT.002/RW.04, Gebang Putih, Kec. Sukolilo,<br />
+            Surabaya, Jawa Timur 60117
+          </p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">© Copyright 2025, All Right Reserved</div>
+    </footer>
+    <!-- Footer End -->
+
+    <script>
+      feather.replace();
+    </script>
+  </body>
+</html>
