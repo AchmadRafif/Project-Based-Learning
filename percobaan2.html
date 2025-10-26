@@ -1,804 +1,302 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Taki ID - Brand Story</title>
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <title>Profil Anda - Taki ID</title>
     <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
-    />
+    <script src="https://unpkg.com/feather-icons"></script>
     <style>
       :root {
-        --redcolor: #bf0f0f;
-        --blacknav: #383838;
-        --greencolor: #89c946;
-        --yellow: #f49a24;
-        --bgstory: #fff0dd;
-      }
-
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        outline: none;
-        border: none;
-        text-decoration: none;
-        scroll-behavior: smooth;
+        --primary: #c8102e;
+        --gray-bg: #f3f3f3;
       }
 
       body {
         font-family: "Poppins", sans-serif;
-        background-color: var(--bgstory);
-        background-attachment: fixed;
-        background-image: url(img/.png);
-        /* min-height: 5000px; */
-      }
-
-      /* Navbar */
-      .navbar {
+        background-color: #fff;
+        color: #222;
+        margin: 0;
+        padding: 0;
         display: flex;
+        justify-content: center;
         align-items: center;
-        justify-content: space-between;
-        background-color: #ededed;
-        position: fixed;
-        top: 1.4rem;
-        left: 7rem;
-        right: 7rem;
-        z-index: 9999;
-        padding: 0.3rem 2rem;
-        border-radius: 1rem;
-        transition: all 0.3s ease-in-out;
-        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-      }
-
-      .navbar img {
-        width: 55px;
-      }
-
-      .navbar .navsection {
-        display: flex;
-        align-items: center;
-        gap: 3rem;
-      }
-
-      .navbar .navmenu {
-        display: flex;
-        align-items: center;
-        gap: 3rem;
-      }
-
-      .navbar .navmenu a {
-        display: inline-block;
-        transition: all 0.2s ease-in-out;
-      }
-
-      .navbar .navmenu a:hover {
-        color: #e3252f;
-      }
-
-      .navbar .navmenu a::after {
-        content: "";
-        display: block;
-        border-bottom: 0.1rem solid #e3252f;
-        transform: scaleX(0);
-        transition: 0.2s linear;
-      }
-
-      .navbar .navmenu a:hover::after {
-        transform: scaleX(0.5);
-      }
-
-      .navbar .navicon {
-        display: flex;
-        align-items: center;
-        gap: 3rem;
-      }
-
-      .navbar .navicon a {
-        display: inline-block;
-        transition: all 0.2s ease-in-out;
-      }
-
-      .navbar .navicon a:hover {
-        color: #e3252f;
-      }
-
-      /* Home Section */
-      .home {
         min-height: 100vh;
-        display: flex;
-        align-items: center;
-        background-image: url(img/StoryBanner2.png);
-        background-repeat: no-repeat;
-        background-size: cover;
-        background-position: center;
-        position: relative;
-        justify-content: left;
       }
 
-      .home .content {
-        padding: 2rem 7%;
-        max-width: 60rem;
-        color: #000;
+      .profile-container {
+        width: 90%;
+        max-width: 550px;
+        background: #fff;
+        padding: 40px;
+        border-radius: 18px;
+        box-shadow: 0 6px 25px rgba(0, 0, 0, 0.1);
       }
 
-      .home .textbox {
-        text-align: left;
-        max-width: 420px;
-        margin-top: -50px;
-      }
-
-      .home .textbox h1 {
-        font-size: 3.6rem;
-        font-weight: 800;
-        color: #000;
-        margin-bottom: 0.2rem;
-      }
-
-      .home .textbox h1 span {
-        color: var(--redcolor);
-      }
-
-      .home .textbox h2 {
-        font-size: 1.8rem;
-        font-weight: 700;
-        color: #000;
-        margin-bottom: 2rem;
-      }
-
-      .home .textbox h2 span {
-        color: var(--redcolor);
-        padding: 0 0.3rem;
-        border-radius: 4px;
-      }
-
-      .home .textbox p {
-        font-size: 1rem;
-        font-weight: 400;
-        color: #000;
-        margin-bottom: 1.5rem;
-        line-height: 1.5;
-      }
-
-      .home .btn {
-        background-color: var(--redcolor);
-        color: #fff;
-        padding: 0.7rem 1.5rem;
-        border-radius: 8px;
-        font-weight: 600;
-        text-decoration: none;
-        transition: 0.3s;
-      }
-
-      .home .btn:hover {
-        background-color: #9d1919;
-      }
-
-      .home .content img {
-        border-radius: 1.2rem;
-      }
-
-      /* About Section */
-      .about {
-        background-color: var(--bgstory);
-        padding: 80px 7%;
-      }
-
-      .aboutcontainer {
-        max-width: 60rem;
-        padding: 2rem;
-        background-color: var(--redcolor);
-        border-radius: 20px;
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        gap: 40px;
-      }
-
-      .aboutimg img {
-        width: 320px;
-        border-radius: 15px;
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-      }
-
-      .abouttext {
-        flex: 1;
-        min-width: 280px;
-      }
-
-      .abouttext h2 {
-        /* text-align: center; */
-        color: #fff;
-        font-size: 2.2rem;
-        font-weight: 500;
-        margin-bottom: 20px;
-      }
-
-      .abouttext p {
-        color: #fff;
-        line-height: 1.6;
-        font-weight: 300;
-        margin-bottom: 15px;
-        font-size: 1rem;
-      }
-
-       /* Timeline */
-      .perjalanan {
-        background-color: var(--bgstory);
-        padding: 80px 7%;
+      .profile-header {
         text-align: center;
-        position: relative;
+        margin-bottom: 30px;
       }
 
-      .judultimeline {
-        color: #bf0f0f;
-        font-size: 2rem;
-        font-weight: bold;
-        margin-bottom: 60px;
-      }
-
-      /* Timeline garis tengah */
-      .timeline {
-        position: relative;
-        max-width: 900px;
-        margin: 0 auto;
-      }
-
-      .timeline::after {
-        content: "";
-        position: absolute;
-        width: 4px;
-        background-color: #bf0f0f;
-        top: 0;
-        bottom: 0;
-        left: 50%;
-        margin-left: -2px;
-      }
-
-      /* Item Timeline */
-      .timelineitem {
-        padding: 20px 40px;
-        position: relative;
-        width: 50%;
-      }
-
-      .timelineitem::after {
-        content: "";
-        position: absolute;
-        width: 20px;
-        height: 20px;
-        right: -10px;
-        background-color: #bf0f0f;
+      .profile-header img {
+        width: 100px;
+        height: 100px;
         border-radius: 50%;
-        top: 30px;
-        z-index: 1;
+        object-fit: cover;
+        border: 3px solid var(--primary);
       }
 
-      .timelineitem.right::after {
-        left: -10px;
-        right: auto;
+      .profile-header h2 {
+        margin-top: 12px;
+        font-size: 1.4rem;
+        font-weight: 600;
       }
 
-      .timelineitem.left {
-        left: 0;
+      .profile-header p {
+        color: #666;
+        font-size: 0.9rem;
+        margin-top: 4px;
       }
 
-      .timelineitem.right {
-        left: 50%;
-      }
-
-      .timelinecontent {
-        background-color: white;
-        padding: 25px;
-        border-radius: 15px;
-        position: relative;
-        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
-        text-align: left;
-      }
-
-      .timelinecontent h3 {
-        color: #bf0f0f;
-        margin-bottom: 10px;
-        font-size: 1.3rem;
-      }
-
-      .timelinecontent p {
-        color: #333;
-        line-height: 1.5;
-        font-size: 0.95rem;
-      }
-
-      .timelinecontent img {
-        width: 100%;
-        border-radius: 10px;
+      .profile-section {
         margin-top: 15px;
       }
 
-      .slogan {
-        text-align: center;
-        margin-top: 70px;
-      }
-
-      .slogan h2 {
-        color: #bf0f0f;
-        font-size: 2rem;
-        margin-bottom: 20px;
-        font-weight: bold;
-      }
-
-      .btnpesan {
-        display: inline-block;
-        background-color: var(--redcolor);
-        color: white;
-        padding: 12px 28px;
-        border-radius: 8px;
-        text-decoration: none;
-        font-weight: 600;
-        transition: 0.3s;
-      }
-
-      .btnpesan:hover {
-        background-color: #9d1919;
-      }
-
-      /* Mobile */
-      @media (max-width: 768px) {
-        .aboutcontainer {
-          flex-direction: column;
-          text-align: center;
-        }
-
-        .timeline::after {
-          left: 20px;
-        }
-
-        .timelineitem {
-          width: 100%;
-          padding-left: 50px;
-          margin-bottom: 40px;
-        }
-
-        .timelineitem.right {
-          padding-left: 31px;
-        }
-
-        .timelineitem::after {
-          left: 10px;
-        }
-
-        .timelineitem.right {
-          left: 20px;
-        }
-      }
-
-      /* Footer */
-      .footer {
-        margin-top: 8vh;
-        padding: 60px 7% 30px;
-        background-color: var(--bgstory);
-        color: #000;
-        font-family: "Poppins", sans-serif;
-      }
-
-      .footercontainer {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        align-items: flex-start;
-        gap: 40px;
-        max-width: 1300px;
-        margin: 0 auto;
-      }
-
-      /* Kiri */
-      .footerleft {
-        flex: 1 1 250px;
-        max-width: 400px;
-      }
-
-      .footerleft .logo {
-        background: linear-gradient(90deg, var(--redcolor), var(--yellow));
-        background-clip: text;
-        -webkit-text-fill-color: transparent;
-      }
-
-      .footerleft .logo img {
-        width: 60px;
-      }
-
-      .footerleft p {
-        margin: 15px 0;
-        color: #333;
-        line-height: 1.5;
-      }
-
-      .socialicons {
-        display: flex;
-        gap: 18px;
-        margin-top: 10px;
-      }
-
-      .socialicons a {
-        color: #000;
-        font-size: 1.3rem;
-        transition: color 0.3s ease;
-      }
-
-      .socialicons a:hover {
-        color: var(--redcolor);
-      }
-
-      /* Kolom kanan */
-      .footercolumn {
-        flex: 1 1 200px;
-        min-width: 160px;
-      }
-
-      .footercolumn h3 {
-        font-size: 1rem;
-        font-weight: 700;
-        margin-bottom: 15px;
-        text-transform: uppercase;
-        color: #111;
-      }
-
-      .footercolumn ul {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-      }
-
-      .footercolumn ul li {
-        margin-bottom: 10px;
-      }
-
-      .footercolumn ul li a {
-        text-decoration: none;
-        color: #444;
-        transition: color 0.3s;
-      }
-
-      .footercolumn ul li a:hover {
-        color: var(--redcolor);
-      }
-
-      .footerbottom {
-        text-align: center;
+      label {
+        display: block;
         font-size: 0.9rem;
-        color: #666;
-        margin-top: 40px;
-        padding-top: 20px;
+        font-weight: 500;
+        margin-bottom: 6px;
       }
 
-      .bottomnav {
-        display: none;
-      }
-
-      /* Mobile 768px */
-      @media (max-width: 768px) {
-        body {
-          background: var(--bgstory);
-        }
-
-        /* Navbar berubah jadi top kecil */
-        .navbar {
-          position: fixed;
-          top: 0;
-          left: 0;
-          right: 0;
-          border-radius: 0;
-          padding: 0.8rem 1rem;
-          justify-content: center;
-          box-shadow: none;
-        }
-
-        .navbar .navmenu {
-          display: none; /* Sembunyikan menu atas di HP */
-        }
-
-        .navbar .navicon {
-          display: none; /* Sembunyikan menu atas di HP */
-        }
-
-        .navbar img {
-          width: 45px;
-        }
-
-        /* Section Home */
-        .home {
-          background-size: cover;
-          background-position: center;
-          text-align: center;
-          padding-top: 6rem;
-        }
-
-        .home .content h1 {
-          font-size: 1.2rem;
-          max-width: 10rem;
-        }
-
-        .home .content p {
-          font-size: 0.9rem;
-        }
-
-        /* Footer */
-        .footercontainer {
-          flex-direction: column;
-          align-items: center;
-          text-align: center;
-        }
-
-        /* Bottomnav Mobile */
-        .bottomnav {
-          display: flex;
-          justify-content: space-around;
-          align-items: center;
-          position: fixed;
-          bottom: 0;
-          left: 0;
-          right: 0;
-          height: 70px;
-          background-color: #fff;
-          border-top: 1px solid #ddd;
-          box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.08);
-          z-index: 9999;
-          padding-bottom: env(
-            safe-area-inset-bottom
-          ); /* iPhone notch safe area */
-        }
-
-        .bottomnav a {
-          flex: 1;
-          text-align: center;
-          color: #777;
-          font-size: 0.8rem;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-          text-decoration: none;
-          line-height: 1.2;
-        }
-
-        .bottomnav a i {
-          font-size: 1.4rem;
-          margin-bottom: 4px;
-          display: block;
-        }
-
-        .bottomnav a.active {
-          color: var(--redcolor);
-          font-weight: 600;
-        }
-
-        .bottomnav a span {
-          margin-top: 2px;
-          font-size: 0.75rem;
-        }
-
-        /* Pastikan ikon font-awesome atau remixicon tidak terpotong */
-        .bottomnav i,
-        .bottomnav svg {
-          vertical-align: middle;
-        }
-
-        .timeline .left img {
-          margin: 0 auto;
-        }
-      }
-
-      /* Tablet 768 - 1024px */
-      @media (min-width: 769px) and (max-width: 1024px) {
-        .navbar {
-          left: 2rem;
-          right: 2rem;
-          padding: 0.5rem 1.5rem;
-        }
-
-        .navbar .navmenu {
-          gap: 2rem;
-        }
-
-        .footercontainer {
-          flex-wrap: wrap;
-          justify-content: center;
-        }
-      }
-
-      .timeline .left img{
+      .input-group {
         position: relative;
-        left: 28rem;
-        bottom: 12rem;
+        margin-bottom: 22px;
+      }
 
+      input {
+        width: 90%;
+        padding: 12px 42px 12px 14px;
+        border-radius: 10px;
+        border: 1px solid #ddd;
+        background: var(--gray-bg);
+        font-size: 0.95rem;
+        transition: 0.2s;
+      }
 
+      input:focus {
+        outline: none;
+        border-color: var(--primary);
+        background: #fff;
+      }
+
+      .edit-icon {
+        position: absolute;
+        right: 12px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: var(--primary);
+        cursor: pointer;
+      }
+
+      .logout-btn {
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 30px;
+      }
+
+      .logout-btn button {
+        border: 1.5px solid var(--primary);
+        color: var(--primary);
+        background: none;
+        padding: 10px 25px;
+        border-radius: 10px;
+        cursor: pointer;
+        font-weight: 500;
+        transition: 0.25s;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+
+      .logout-btn button:hover {
+        background: var(--primary);
+        color: #fff;
+      }
+
+      /* Popup overlay */
+      .popupoverlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(30, 30, 30, 0.55);
+        backdrop-filter: blur(4px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        visibility: hidden;
+        opacity: 0;
+        transition: 0.3s ease;
+        z-index: 999;
+      }
+
+      .popupoverlay.active {
+        visibility: visible;
+        opacity: 1;
+      }
+
+      .popupbox {
+        background: #fff;
+        border-radius: 14px;
+        padding: 30px 40px;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+        text-align: center;
+        animation: scaleIn 0.25s ease;
+      }
+
+      @keyframes scaleIn {
+        from {
+          transform: scale(0.9);
+          opacity: 0;
+        }
+        to {
+          transform: scale(1);
+          opacity: 1;
+        }
+      }
+
+      .popupbox h3 {
+        font-size: 1.05rem;
+        font-weight: 600;
+        color: #222;
+        margin-bottom: 20px;
+      }
+
+      .popup-buttons {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+      }
+
+      .popup-buttons button {
+        padding: 10px 25px;
+        border-radius: 8px;
+        border: none;
+        font-size: 0.95rem;
+        cursor: pointer;
+        font-weight: 500;
+        transition: 0.2s;
+      }
+
+      .btn-yes {
+        background: var(--primary);
+        color: #fff;
+      }
+
+      .btn-yes:hover {
+        background: #a50e25;
+      }
+
+      .btn-no {
+        background: #e6e6e6;
+        color: #333;
+      }
+
+      .btn-no:hover {
+        background: #ccc;
       }
     </style>
-
-    <!-- Feather Icon -->
-    <script src="https://unpkg.com/feather-icons"></script>
   </head>
   <body>
-    <!-- Navbar -->
-    <nav class="navbar">
-      <div class="navlogo">
-        <img src="img/LogoTaki.png" alt="" />
+    <div class="profile-container">
+      <div class="profile-header">
+        <img src="img/LogoTaki.png" alt="Foto Profil" />
+        <h2 id="profileName"></h2>
+        <p id="profileEmail"></p>
       </div>
-      <div class="navsection">
-        <div class="navmenu">
-          <a href="index.html">Home</a>
-          <a href="menu.html">Menu</a>
-          <a href="#">Brand Story</a>
-        </div>
-        <div class="navicon">
-          <a href="shoppingbag.html"><i data-feather="shopping-bag"></i></a>
-          <a href=""><i data-feather="user"></i></a>
-        </div>
-      </div>
-    </nav>
-    <!-- Navbar End -->
 
-    <!-- Home Section Start -->
-    <section class="home" id="home">
-      <main class="content">
-        <div class="textbox">
-          <h1>BRAND <span>STORY</span></h1>
-          <h2><span>SATAY</span> & SUKI <span>STEAMBOAT</span></h2>
-          <p>
-            Perjalanan Brand Taki Satay & Suki Steamboat sedari awal merintis
-            hingga sekarang.
-          </p>
-          <a href="#about" class="btn">Lihat Sekarang</a>
-        </div>
-      </main>
-    </section>
-    <!-- Home Section End -->
-
-    <!-- About Section -->
-    <section class="about" id="about">
-      <div class="aboutcontainer">
-        <div class="aboutimg">
-          <img src="img/AboutTaki.jpg" alt="Awal Mula Taki" />
-        </div>
-        <div class="abouttext">
-          <h2>Awal Mula Taki</h2>
-          <p>
-            TaKi merupakan singkatan dari <b>Satay & Suki</b>, sebuah UMKM
-            kuliner yang berdiri pada Mei 2019. Awalnya, TaKi hanya menjual sate
-            dan pilihan loklok seperti odeng dan sosis. Nama
-            <b>"Satay"</b> diambil dari menu utama tersebut, sementara
-            <b>"Suki"</b>
-            ditambahkan agar lebih menarik dan mudah diingat.
-          </p>
-          <p>
-            Usaha ini lahir dari ide spontan sang pemilik saat mengikuti bazar
-            di gedung serbaguna. Tempat itu menjadi cikal bakal perjalanan TaKi
-            hingga kini. Dukungan keluarga kemudian mendorong untuk membuka
-            kedai tetap di sekitar lokasi tersebut.
-          </p>
-        </div>
-      </div>
-    </section>
-    <!-- Aboout Section -->
-
-    <!-- Timeline Section -->
-    <section class="perjalanan">
-      <h2 class="judultimeline">Perjalanan Kami</h2>
-
-      <div class="timeline">
-        <div class="timelineitem right">
-          <div class="timelinecontent">
-            <h3>Awal Berdiri (2019)</h3>
-            <p>
-              Dimulai dari sebuah bazar sederhana di gedung serbaguna. Menu
-              pertama kami adalah sate loklok dan odeng — awal lahirnya nama
-              <b>Satay & Suki</b>.
-            </p>
-            <!-- <img src="img/awalberdiri.jpg" alt="Awal Berdiri" /> -->
-          </div>
+      <div class="profile-section">
+        <label>Alamat</label>
+        <div class="input-group">
+          <i data-feather="edit-3" class="edit-icon"></i>
+          <input type="text" id="nameField" readonly />
         </div>
 
-        <div class="timelineitem left">
-          <div div class="timelinecontent">
-            <h3>Tumbuh Bersama Pelanggan (2020 - 2022)</h3>
-            <p>
-              Mulai menambah menu suki dan seblak, membuat nama
-              <b>Satay & Suki Steamboat</b>
-              semakin dikenal oleh pelanggan sekitar.
-            </p>
-          </div>
-        <img src="img/Home.jpg" alt="Tumbuh Bersama" />
+        <label>Email</label>
+        <div class="input-group">
+          <input type="text" id="emailField" readonly />
         </div>
 
-        <div class="timelineitem right">
-          <div class="timelinecontent">
-            <h3>Go Online, Go Viral (2023 - 2025)</h3>
-            <p>
-              Masuk ke <b>ShopeeFood</b> dan memperluas jangkauan pelanggan.
-              Menu seperti <b>Seblak Prasmanan</b> dan <b>Cireng Keju</b> jadi
-              favorit banyak orang.
-            </p>
-            <!-- <img src="img/goonline.jpg" alt="Go Online Go Viral" /> -->
-          </div>
+        <label>Nomor Telepon</label>
+        <div class="input-group">
+          <input type="text" id="phoneField" readonly />
         </div>
       </div>
 
-      <div class="slogan">
-        <h2>Gak Wareg Gak Mandeg</h2>
-        <a href="menu.html" class="btnpesan">Pesan Sekarang</a>
+      <div class="logout-btn">
+        <button id="logoutBtn">Keluar <i data-feather="log-out"></i></button>
       </div>
-    </section>
-
-    <!-- Footer Start -->
-    <footer class="footer">
-      <div class="footercontainer">
-        <!-- Kolom 1 -->
-        <div class="footerleft">
-          <a href="#" class="logo"
-            ><img src="img/LogoTaki.png" alt="Kedai TaKi ID"
-          /></a>
-          <p>
-            <strong>Jam Operasional :</strong><br />
-            Setiap hari<br />
-            14:00 - 22:00
-          </p>
-          <div class="socialicons">
-            <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
-            <a href="#"><i class="fa-brands fa-facebook"></i></a>
-            <a href="#"><i class="fa-brands fa-instagram"></i></a>
-          </div>
-        </div>
-
-        <!-- Kolom 2 -->
-        <div class="footercolumn">
-          <h3>Navigasi</h3>
-          <ul>
-            <li><a href="#">Beranda</a></li>
-            <li><a href="menu.html">Menu</a></li>
-            <li><a href="story.html">Tentang Kami</a></li>
-          </ul>
-        </div>
-
-        <!-- Kolom 3 -->
-        <div class="footercolumn">
-          <h3>Lokasi Outlet</h3>
-          <img
-            src="lokasi.jpg"
-            alt="Peta Lokasi Kedai TaKi ID"
-            style="width: 100%; border-radius: 8px; margin-bottom: 10px"
-          />
-          <p style="color: #333; font-size: 0.9rem; line-height: 1.5">
-            Kejawan Gebang III No.22,<br />
-            RT.002/RW.04, Gebang Putih, Kec. Sukolilo,<br />
-            Surabaya, Jawa Timur 60117
-          </p>
-        </div>
-      </div>
-
-      <div class="footerbottom">© Copyright 2025, All Right Reserved</div>
-    </footer>
-    <!-- Footer End -->
-
-    <!-- Bottom Navigation -->
-    <div class="bottomnav">
-      <a href="index.html"><i data-feather="home"></i>Home</a>
-      <a href="menu.html"><i data-feather="book-open"></i>Menu</a>
-      <a href="shoppingbag.html"><i data-feather="shopping-bag"></i>Pesanan</a>
-      <a href="#"><i data-feather="user"></i>Profil</a>
     </div>
 
-    <!-- Feather Icons -->
+    <!-- Popup Logout -->
+    <div id="logoutPopup" class="popupoverlay">
+      <div class="popupbox">
+        <h3>Apakah kamu yakin ingin keluar?</h3>
+        <div class="popup-buttons">
+          <button id="confirmLogout" class="btn-yes">Ya</button>
+          <button id="cancelLogout" class="btn-no">Tidak</button>
+        </div>
+      </div>
+    </div>
+
     <script>
       feather.replace();
+
+      // Ambil data user dari localStorage
+      const userData = JSON.parse(localStorage.getItem("userData"));
+      const isLoggedIn = localStorage.getItem("isLoggedIn");
+
+      if (!isLoggedIn || !userData) {
+        window.location.href = "register.html";
+      } else {
+        // Tampilkan data user di header profil
+        document.getElementById("profileName").textContent = userData.name;
+        document.getElementById("profileEmail").textContent = userData.address;
+
+        // Isi input dengan data dari localStorage
+        document.getElementById("nameField").value = userData.name;
+        document.getElementById("emailField").value = userData.address;
+        document.getElementById("phoneField").value = userData.phone;
+      }
+
+      // Popup Logout
+      const logoutBtn = document.getElementById("logoutBtn");
+      const popup = document.getElementById("logoutPopup");
+      const confirmBtn = document.getElementById("confirmLogout");
+      const cancelBtn = document.getElementById("cancelLogout");
+
+      logoutBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        popup.classList.add("active");
+      });
+
+      cancelBtn.addEventListener("click", () => {
+        popup.classList.remove("active");
+      });
+
+      confirmBtn.addEventListener("click", () => {
+        localStorage.removeItem("isLoggedIn");
+        localStorage.removeItem("userData");
+        popup.classList.remove("active");
+        setTimeout(() => {
+          window.location.href = "index.html";
+        }, 300);
+      });
     </script>
   </body>
 </html>

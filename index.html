@@ -945,7 +945,7 @@
           <a href="story.html">Brand Story</a>
         </div>
         <div class="navicon">
-          <a href="shoppingbag.html"><i data-feather="shopping-cart"></i></a>
+          <a href="shoppingcart.html"><i data-feather="shopping-cart"></i></a>
           <a href="" class="usericon"><i data-feather="user"></i></a>
         </div>
       </div>
@@ -1205,9 +1205,30 @@
     <div class="bottomnav">
       <a href="#" class="active"><i data-feather="home"></i>Home</a>
       <a href="menu.html"><i data-feather="book-open"></i>Menu</a>
-      <a href="shoppingbag.html"><i data-feather="shopping-bag"></i>Pesanan</a>
-      <a href="profile.html" class="usericon"><i data-feather="user"></i>Profil</a>
+      <a href="shoppingcart.html"
+        ><i data-feather="shopping-cart"></i>Pesanan</a
+      >
+      <a href="#" id="profileLink"
+        ><i data-feather="user"></i>Profil</a
+      >
     </div>
+    <script>
+      // Cek status login dari localStorage
+      const profileLink = document.getElementById("profileLink");
+      const isLoggedIn = localStorage.getItem("isLoggedIn");
+
+      profileLink.addEventListener("click", (e) => {
+        e.preventDefault();
+
+        if (isLoggedIn) {
+          // Jika sudah login, arahkan ke halaman profil
+          window.location.href = "mobileprofile.html";
+        } else {
+          // Jika belum login, arahkan ke halaman register
+          window.location.href = "mobileregister.html";
+        }
+      });
+    </script>
 
     <!-- Pop up Login -->
     <script>
