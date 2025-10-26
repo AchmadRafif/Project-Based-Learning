@@ -82,13 +82,13 @@
       }
 
       .navbar .navmenu a:hover {
-        color: #e3252f;
+        color: var(--yellow);
       }
 
       .navbar .navmenu a::after {
         content: "";
         display: block;
-        border-bottom: 0.1rem solid #e3252f;
+        border-bottom: 0.1rem solid var(--yellow);
         transform: scaleX(0);
         transition: 0.2s linear;
       }
@@ -109,7 +109,226 @@
       }
 
       .navbar .navicon a:hover {
-        color: #e3252f;
+        color: var(--yellow);
+      }
+
+      /* Popup Login */
+      .popuplogin {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.55);
+        backdrop-filter: blur(3px);
+        z-index: 1000;
+        animation: fadeInBg 0.3s ease;
+      }
+
+      .popuplogin .logcontent {
+        background: #fff;
+        width: 380px;
+        max-width: 90%;
+        margin: 8% auto;
+        padding: 35px 30px 45px;
+        border-radius: 14px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        position: relative;
+        text-align: left;
+        animation: slideIn 0.35s ease;
+      }
+
+      .popuplogin .close {
+        position: absolute;
+        right: 18px;
+        top: 12px;
+        font-size: 24px;
+        color: #888;
+        cursor: pointer;
+        transition: color 0.25s ease;
+      }
+
+      .popuplogin .close:hover {
+        color: #d32f2f;
+      }
+
+      .popuplogin .logcontent h2 {
+        font-size: 22px;
+        font-weight: 600;
+        color: #111;
+        text-align: center;
+        margin-bottom: 6px;
+      }
+
+      .popuplogin .logcontent p {
+        font-size: 14px;
+        color: #666;
+        text-align: center;
+        margin-bottom: 25px;
+      }
+
+      /* Form Login */
+      .popuplogin form {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .popuplogin label {
+        font-weight: 500;
+        font-size: 14px;
+        color: #222;
+      }
+
+      .popuplogin .req {
+        color: #d32f2f;
+      }
+
+      .popuplogin input {
+        width: 100%;
+        padding: 11px 12px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        font-size: 14px;
+        transition: border-color 0.25s;
+      }
+
+      .popuplogin input:focus {
+        border-color: #d32f2f;
+        outline: none;
+      }
+
+      /* Password wrapper */
+      .popuplogin .passwrapper {
+        position: relative;
+      }
+
+      .popuplogin .passwrapper .toggle {
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        cursor: pointer;
+        opacity: 0.6;
+        transition: opacity 0.25s;
+      }
+
+      .popuplogin .passwrapper .toggle:hover {
+        opacity: 1;
+      }
+
+      .popuplogin .forgot {
+        text-align: right;
+        font-size: 13px;
+        color: #d32f2f;
+        text-decoration: none;
+        margin-top: 2px;
+        margin-bottom: 10px;
+      }
+
+      .popuplogin .forgot:hover {
+        text-decoration: underline;
+      }
+
+      /* Buttons */
+      .popuplogin .submitbtn {
+        width: 100%;
+        background: #d32f2f;
+        color: white;
+        border: none;
+        padding: 12px;
+        border-radius: 8px;
+        font-size: 15px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: ease-in-out 0.3s;
+      }
+
+      .popuplogin .submitbtn:hover {
+        background: #b71c1c;
+      }
+
+      /* Divider */
+      .popuplogin .divider {
+        text-align: center;
+        margin: 22px 0 18px;
+        position: relative;
+      }
+
+      .popuplogin .divider span {
+        background: #fff;
+        padding: 0 10px;
+        color: #777;
+        font-size: 13px;
+      }
+
+      .popuplogin .divider::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 0;
+        height: 1px;
+        width: 100%;
+        background: #ddd;
+        transform: translateY(-50%);
+        z-index: -1;
+      }
+
+      /* Google Button */
+      .popuplogin .googlelogin {
+        width: 100%;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 10px 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        background: white;
+        cursor: pointer;
+        transition: all 0.25s;
+      }
+
+      .popuplogin .googlelogin:hover {
+        background: #fafafa;
+      }
+
+      .popuplogin .googlelogin img {
+        width: 20px;
+      }
+
+      .popuplogin .register {
+        text-align: center;
+        font-size: 14px;
+        margin-top: 18px;
+      }
+
+      .popuplogin .register a {
+        color: #2e7d32;
+        font-weight: 500;
+        text-decoration: none;
+      }
+
+      .popuplogin .register a:hover {
+        text-decoration: underline;
+      }
+
+      @keyframes slideIn {
+        from {
+          opacity: 0;
+          transform: translateY(-10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes fadeInBg {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
       }
 
       /* Home Section */
@@ -134,7 +353,7 @@
       .home .textbox {
         text-align: left;
         max-width: 420px;
-        margin-top: -50px; 
+        margin-top: -50px;
       }
 
       .home .textbox h1 {
@@ -440,7 +659,7 @@
       .footer {
         margin-top: 8vh;
         padding: 60px 7% 30px;
-        background-color: #ffffff;
+        background-color: #fff;
         color: #000;
         font-family: "Poppins", sans-serif;
       }
@@ -539,9 +758,7 @@
         display: none;
       }
 
-      /* ============================= */
-      /* 📱 Handphone (max 768px) */
-      /* ============================= */
+      /* Mobile 768px */
       @media (max-width: 768px) {
         body {
           background: #fff;
@@ -626,10 +843,7 @@
           text-align: center;
         }
 
-        /* Bottom Navigation (seperti aplikasi Pizza Hut) */
-        /* ============================= */
-        /* 📱 Bottom Navigation (Handphone) */
-        /* ============================= */
+        /* Bottomnav Mobile */
         .bottomnav {
           display: flex;
           justify-content: space-around;
@@ -684,9 +898,7 @@
         }
       }
 
-      /* ============================= */
-      /* 💻 Tablet (769px – 1024px) */
-      /* ============================= */
+      /* Tablet 768 - 1024px */
       @media (min-width: 769px) and (max-width: 1024px) {
         .navbar {
           left: 2rem;
@@ -733,12 +945,61 @@
           <a href="story.html">Brand Story</a>
         </div>
         <div class="navicon">
-          <a href="shoppingbag.html"><i data-feather="shopping-bag"></i></a>
-          <a href=""><i data-feather="user"></i></a>
+          <a href="shoppingbag.html"><i data-feather="shopping-cart"></i></a>
+          <a href="" class="usericon"><i data-feather="user"></i></a>
         </div>
       </div>
     </nav>
     <!-- Navbar End -->
+
+    <!-- Popup Login Start -->
+    <div class="popuplogin" id="popuplogin">
+      <div class="logcontent">
+        <span class="close" onclick="closePopup()">&times;</span>
+        <h2>Masuk ke Taki ID</h2>
+        <p>Login untuk menikmati fitur lengkap Taki!</p>
+
+        <form id="loginform">
+          <label>Email<span class="req">*</span></label>
+          <input
+            type="email"
+            id="email"
+            placeholder="Masukkan email anda"
+            required
+          />
+
+          <label>Password<span class="req">*</span></label>
+          <div class="passwrapper">
+            <input
+              type="password"
+              id="password"
+              placeholder="Masukkan password anda"
+            />
+            <span class="toggle" onclick="togglePassword()">
+              <i data-feather="eye"></i>
+            </span>
+          </div>
+
+          <a href="#" class="forgot">Lupa password?</a>
+          <button type="submit" class="submitbtn">Masuk</button>
+        </form>
+
+        <div class="divider"><span>atau</span></div>
+
+        <button class="googlelogin">
+          <img
+            src="https://www.svgrepo.com/show/355037/google.svg"
+            alt="Google"
+          />
+          Masuk dengan Google
+        </button>
+
+        <p class="register">
+          Belum punya akun? <a href="register.html">Buat akun sekarang</a>
+        </p>
+      </div>
+    </div>
+    <!-- Popup Login End -->
 
     <!-- Home Section Start -->
     <section class="home" id="home">
@@ -764,7 +1025,7 @@
           Sign up agar kamu dapat memesan langsung melalui
           <strong>Website!</strong>
         </p>
-        <a href="#">Sign Up</a>
+        <a href="#" class="usericon">Sign Up</a>
       </div>
     </section>
     <!-- Filler Section End -->
@@ -831,56 +1092,61 @@
 
     <!-- MenuGerak Start -->
     <section class="menugerak">
-      <a href="menu.html#seblak"><div class="movedtext left">
-        <div class="track">
-          <span class="text"
-            >SEBLAK TAKI & PRASMANAN • SEBLAK TAKI & PRASMANAN • SEBLAK TAKI &
-            PRASMANAN • SEBLAK TAKI & PRASMANAN • SEBLAK TAKI & PRASMANAN •
-            SEBLAK TAKI & PRASMANAN •
-          </span>
+      <a href="menu.html#seblak"
+        ><div class="movedtext left">
+          <div class="track">
+            <span class="text"
+              >SEBLAK TAKI & PRASMANAN • SEBLAK TAKI & PRASMANAN • SEBLAK TAKI &
+              PRASMANAN • SEBLAK TAKI & PRASMANAN • SEBLAK TAKI & PRASMANAN •
+              SEBLAK TAKI & PRASMANAN •
+            </span>
+          </div>
         </div>
-      </div>
       </a>
 
-      <a href="menu.html#menunasi"><div class="movedtext right">
-        <div class="track">
-          <span class="text"
-            >MENU NASI GILA • MENU NASI GILA • MENU NASI GILA • MENU NASI GILA •
-            MENU NASI GILA • MENU NASI GILA •
-          </span>
+      <a href="menu.html#menunasi"
+        ><div class="movedtext right">
+          <div class="track">
+            <span class="text"
+              >MENU NASI GILA • MENU NASI GILA • MENU NASI GILA • MENU NASI GILA
+              • MENU NASI GILA • MENU NASI GILA •
+            </span>
+          </div>
         </div>
-      </div>
       </a>
 
-      <a href="menu.html#sateloklok"><div class="movedtext left">
-        <div class="track">
-          <span class="text"
-            >SATE LOK-LOK BAKAR/GORENG • SATE LOK-LOK BAKAR/GORENG • SATE
-            LOK-LOK BAKAR/GORENG • SATE LOK-LOK BAKAR/GORENG • SATE LOK-LOK
-            BAKAR/GORENG • SATE LOK-LOK BAKAR/GORENG •
-          </span>
+      <a href="menu.html#sateloklok"
+        ><div class="movedtext left">
+          <div class="track">
+            <span class="text"
+              >SATE LOK-LOK BAKAR/GORENG • SATE LOK-LOK BAKAR/GORENG • SATE
+              LOK-LOK BAKAR/GORENG • SATE LOK-LOK BAKAR/GORENG • SATE LOK-LOK
+              BAKAR/GORENG • SATE LOK-LOK BAKAR/GORENG •
+            </span>
+          </div>
         </div>
-      </div>
       </a>
 
-      <a href="menu.html#snack"><div class="movedtext right">
-        <div class="track">
-          <span class="text"
-            >CEMILAN SNACK TAKI • CEMILAN SNACK TAKI • CEMILAN SNACK TAKI •
-            CEMILAN SNACK TAKI • CEMILAN SNACK TAKI • CEMILAN SNACK TAKI •
-          </span>
+      <a href="menu.html#snack"
+        ><div class="movedtext right">
+          <div class="track">
+            <span class="text"
+              >CEMILAN SNACK TAKI • CEMILAN SNACK TAKI • CEMILAN SNACK TAKI •
+              CEMILAN SNACK TAKI • CEMILAN SNACK TAKI • CEMILAN SNACK TAKI •
+            </span>
+          </div>
         </div>
-      </div>
       </a>
 
-      <a href="menu.html#minuman"><div class="movedtext left">
-        <div class="track">
-          <span class="text"
-            >ANEKA MINUMAN SEGAR • ANEKA MINUMAN SEGAR • ANEKA MINUMAN SEGAR •
-            ANEKA MINUMAN SEGAR • ANEKA MINUMAN SEGAR • ANEKA MINUMAN SEGAR •
-          </span>
+      <a href="menu.html#minuman"
+        ><div class="movedtext left">
+          <div class="track">
+            <span class="text"
+              >ANEKA MINUMAN SEGAR • ANEKA MINUMAN SEGAR • ANEKA MINUMAN SEGAR •
+              ANEKA MINUMAN SEGAR • ANEKA MINUMAN SEGAR • ANEKA MINUMAN SEGAR •
+            </span>
+          </div>
         </div>
-      </div>
       </a>
     </section>
     <!-- MenuGerak End -->
@@ -900,8 +1166,8 @@
           </p>
           <div class="socialicons">
             <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
-            <a href="#"><i class="fa-brands fa-facebook"></i></a>
             <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#"><i class="fa-brands fa-tiktok"></i></a>
           </div>
         </div>
 
@@ -940,8 +1206,49 @@
       <a href="#" class="active"><i data-feather="home"></i>Home</a>
       <a href="menu.html"><i data-feather="book-open"></i>Menu</a>
       <a href="shoppingbag.html"><i data-feather="shopping-bag"></i>Pesanan</a>
-      <a href="#"><i data-feather="user"></i>Profil</a>
+      <a href="profile.html" class="usericon"><i data-feather="user"></i>Profil</a>
     </div>
+
+    <!-- Pop up Login -->
+    <script>
+      const popup = document.getElementById("popuplogin");
+      const usericons = document.querySelectorAll(".usericon"); // ambil SEMUA tombol usericon
+
+      // buka popup atau redirect jika sudah login
+      usericons.forEach((icon) => {
+        icon.addEventListener("click", (e) => {
+          e.preventDefault();
+          const isLoggedIn = localStorage.getItem("isLoggedIn");
+
+          if (isLoggedIn === "true") {
+            // kalau sudah login, redirect ke profile.html
+            window.location.href = "profile.html";
+          } else {
+            // tampilkan popup login
+            popup.style.display = "block";
+          }
+        });
+      });
+
+      function closePopup() {
+        popup.style.display = "none";
+      }
+
+      function togglePassword() {
+        const pass = document.getElementById("password");
+        pass.type = pass.type === "password" ? "text" : "password";
+      }
+
+      // Simulasi login sederhana
+      document.getElementById("loginform").addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        // Simulasi login sukses
+        localStorage.setItem("isLoggedIn", "true");
+        // alert("Login berhasil! Sekarang ikon user akan menuju ke profil.");
+        closePopup();
+      });
+    </script>
 
     <!-- Feather Icons -->
     <script>

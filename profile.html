@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Profile - Taki ID</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --redcolor: #bf0f0f;
+        --blacknav: #383838;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+      }
+
+      body {
+        background-color: #ffffff;
+      }
+
+      .container {
+        width: 90%;
+        max-width: 1200px;
+        margin: 40px auto;
+        position: relative;
+      }
+
+      /* Tombol kembali */
+      .backbtn {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        background: none;
+        border: none;
+        color: var(--redcolor);
+        font-weight: 500;
+        font-size: 0.95rem;
+        cursor: pointer;
+        position: absolute;
+        top: 0;
+        left: 0;
+        transition: 0.2s;
+      }
+
+      .backbtn:hover {
+        color: #a50e0e;
+        transform: translateX(-3px);
+      }
+
+      .page-title {
+        font-size: 1.6rem;
+        font-weight: 600;
+        text-align: center;
+      }
+
+      .profile-banner {
+        background-color: #c8102e;
+        color: white;
+        padding: 30px;
+        border-radius: 16px;
+        margin: 60px 0 20px;
+        text-align: center;
+      }
+
+      .profile-name {
+        font-size: 2rem;
+        font-weight: 700;
+        letter-spacing: 1px;
+      }
+
+      .profile-content {
+        display: flex;
+        gap: 30px;
+      }
+
+      .sidebar {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        width: 250px;
+      }
+
+      .sidebar-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        border: none;
+        background: #eee;
+        padding: 14px;
+        border-radius: 10px;
+        font-size: 15px;
+        cursor: pointer;
+        transition: 0.2s;
+      }
+
+      .sidebar-item.active {
+        background: #111;
+        color: #fff;
+      }
+
+      .sidebar-item:hover {
+        background: #ddd;
+      }
+
+      .main-profile {
+        flex: 1;
+      }
+
+      .header-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .header-row h2 {
+        font-size: 1.2rem;
+      }
+
+      .icons .icon-btn {
+        cursor: pointer;
+        margin-left: 10px;
+        color: #333;
+      }
+
+      .icon-btn.delete {
+        color: #c8102e;
+      }
+
+      .profile-form {
+        margin-top: 20px;
+      }
+
+      .form-group {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 20px;
+      }
+
+      .form-group label {
+        font-size: 0.9rem;
+        margin-bottom: 6px;
+      }
+
+      .form-group span {
+        color: #c8102e;
+      }
+
+      input[type="text"],
+      input[type="email"] {
+        padding: 12px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        background: #e6e6e6;
+        font-size: 0.95rem;
+      }
+
+      .phone-input {
+        display: flex;
+        align-items: center;
+        background: #e6e6e6;
+        border-radius: 8px;
+        padding: 0 10px;
+      }
+
+      .flag {
+        margin-right: 10px;
+        font-size: 0.9rem;
+        color: #555;
+      }
+
+      /* Popup Overlay */
+      .popupoverlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(30, 30, 30, 0.6);
+        backdrop-filter: blur(5px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 999;
+        visibility: hidden;
+        opacity: 0;
+        transition: 0.3s ease;
+      }
+
+      .popupoverlay.active {
+        visibility: visible;
+        opacity: 1;
+      }
+
+      .popupbox {
+        background: #fff;
+        border-radius: 14px;
+        padding: 30px 40px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+        text-align: center;
+        animation: fadeIn 0.25s ease;
+      }
+
+      .popupbox h3 {
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: #222;
+        margin-bottom: 20px;
+      }
+
+      .popup-buttons {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+      }
+
+      .popup-buttons .btn-yes,
+      .popup-buttons .btn-no {
+        padding: 10px 25px;
+        border: none;
+        border-radius: 8px;
+        font-size: 0.95rem;
+        cursor: pointer;
+        font-weight: 500;
+        transition: 0.2s;
+      }
+
+      .btn-yes {
+        min-width: 95px;
+        background: #c8102e;
+        color: #fff;
+      }
+
+      .btn-yes:hover {
+        background: #a90e25;
+      }
+
+      .btn-no {
+        min-width: 95px;
+        background: #ddd;
+        color: #333;
+      }
+
+      .btn-no:hover {
+        background: #bbb;
+      }
+
+      .bottomnav {
+        display: none;
+      }
+
+      @keyframes fadeIn {
+        from {
+          transform: scale(0.95);
+          opacity: 0;
+        }
+        to {
+          transform: scale(1);
+          opacity: 1;
+        }
+      }
+
+      /* Mobile 768px */
+      @media (max-width: 768px) {
+        body {
+          background: #fff;
+        }
+
+        .backbtn {
+            display: none;
+        }
+
+        /* Navbar berubah jadi top kecil */
+        .navbar {
+          position: fixed;
+          top: 0;
+          left: 0;
+          right: 0;
+          border-radius: 0;
+          padding: 0.8rem 1rem;
+          justify-content: center;
+          box-shadow: none;
+        }
+
+        .navbar .navmenu {
+          display: none; /* Sembunyikan menu atas di HP */
+        }
+
+        .navbar .navicon {
+          display: none; /* Sembunyikan menu atas di HP */
+        }
+
+        .navbar img {
+          width: 45px;
+        }
+
+        /* Bottomnav Mobile */
+        .bottomnav {
+          display: flex;
+          justify-content: space-around;
+          align-items: center;
+          position: fixed;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          height: 70px;
+          background-color: #fff;
+          border-top: 1px solid #ddd;
+          box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.08);
+          z-index: 9999;
+          padding-bottom: env(
+            safe-area-inset-bottom
+          ); /* iPhone notch safe area */
+        }
+
+        .bottomnav a {
+          flex: 1;
+          text-align: center;
+          color: #777;
+          font-size: 0.8rem;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          text-decoration: none;
+          line-height: 1.2;
+        }
+
+        .bottomnav a i {
+          font-size: 1.4rem;
+          margin-bottom: 4px;
+          display: block;
+        }
+
+        .bottomnav a.active {
+          color: var(--redcolor);
+          font-weight: 600;
+        }
+
+        .bottomnav a span {
+          margin-top: 2px;
+          font-size: 0.75rem;
+        }
+
+        /* Pastikan ikon font-awesome atau remixicon tidak terpotong */
+        .bottomnav i,
+        .bottomnav svg {
+          vertical-align: middle;
+        }
+      }
+
+      /* Tablet 768 - 1024px */
+      @media (min-width: 769px) and (max-width: 1024px) {
+        .navbar {
+          left: 2rem;
+          right: 2rem;
+          padding: 0.5rem 1.5rem;
+        }
+
+        .navbar .navmenu {
+          gap: 2rem;
+        }
+      }
+    </style>
+    <script src="https://unpkg.com/feather-icons"></script>
+  </head>
+  <body>
+    <div class="container">
+      <button class="backbtn" onclick="window.location.href='index.html'">
+        <i data-feather="arrow-left"></i> Kembali
+      </button>
+
+      <h1 class="page-title">Profile</h1>
+
+      <div class="profile-header">
+        <div class="profile-banner">
+          <div id="profileName" class="profile-name">Nama Pengguna</div>
+        </div>
+      </div>
+
+      <div class="profile-content">
+        <div class="sidebar">
+          <button class="sidebar-item active">
+            <i data-feather="user"></i> Profile Information
+          </button>
+          <button class="sidebar-item">
+            <i data-feather="home"></i> Saved Address
+          </button>
+          <button id="logoutBtn" class="sidebar-item">
+            <i data-feather="log-out"></i> Log Out
+          </button>
+        </div>
+
+        <div class="main-profile">
+          <div class="header-row">
+            <h2>My Profile</h2>
+            <div class="icons">
+              <i data-feather="edit-2" class="icon-btn"></i>
+              <i data-feather="trash-2" class="icon-btn delete"></i>
+            </div>
+          </div>
+
+          <form class="profile-form">
+            <div class="form-group">
+              <label>Nama Lengkap <span>*</span></label>
+              <input type="text" id="nameField" readonly />
+            </div>
+
+            <div class="form-group">
+              <label>Email <span>*</span></label>
+              <input type="email" id="emailField" readonly />
+            </div>
+
+            <div class="form-group">
+              <label>Nomor Telepon <span>*</span></label>
+              <div class="phone-input">
+                <span class="flag">🇮🇩 +62</span>
+                <input type="text" id="phoneField" readonly />
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Popup Logout -->
+    <div id="logoutPopup" class="popupoverlay">
+      <div class="popupbox">
+        <h3>Apakah kamu yakin ingin keluar?</h3>
+        <div class="popup-buttons">
+          <button id="confirmLogout" class="btn-yes">Ya</button>
+          <button id="cancelLogout" class="btn-no">Tidak</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Navigation -->
+    <div class="bottomnav">
+      <a href="index.html"><i data-feather="home"></i>Home</a>
+      <a href="menu.html"><i data-feather="book-open"></i>Menu</a>
+      <a href="shoppingbag.html"><i data-feather="shopping-bag"></i>Pesanan</a>
+      <a href="#" class="active" class="usericon"><i data-feather="user"></i>Profil</a>
+    </div>
+
+    <script>
+      feather.replace();
+
+      // Ambil data user dari localStorage
+      const userData = JSON.parse(localStorage.getItem("userData"));
+      const isLoggedIn = localStorage.getItem("isLoggedIn");
+
+      if (!isLoggedIn || !userData) {
+        window.location.href = "register.html";
+      } else {
+        document.getElementById("profileName").textContent = userData.name;
+        document.getElementById("nameField").value = userData.name;
+        document.getElementById("emailField").value = userData.address;
+        document.getElementById("phoneField").value = userData.phone;
+      }
+
+      // Popup Logout
+      const logoutBtn = document.getElementById("logoutBtn");
+      const popup = document.getElementById("logoutPopup");
+      const confirmBtn = document.getElementById("confirmLogout");
+      const cancelBtn = document.getElementById("cancelLogout");
+
+      logoutBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        popup.classList.add("active");
+      });
+
+      cancelBtn.addEventListener("click", () => {
+        popup.classList.remove("active");
+      });
+
+      confirmBtn.addEventListener("click", () => {
+        localStorage.removeItem("isLoggedIn");
+        localStorage.removeItem("userData");
+        popup.classList.remove("active");
+        setTimeout(() => {
+          window.location.href = "index.html";
+        }, 300);
+      });
+    </script>
+  </body>
+</html>

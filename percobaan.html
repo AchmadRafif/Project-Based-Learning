@@ -1,834 +1,260 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Taki ID - Brand Story</title>
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <title>Daftar Akun - Taki ID</title>
     <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap"
       rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
     />
     <style>
-      :root {
-        --redcolor: #bf0f0f;
-        --blacknav: #383838;
-        --greencolor: #89c946;
-        --yellow: #f49a24;
-        --bgstory: #fff0dd;
-      }
-
       * {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
-        outline: none;
-        border: none;
-        text-decoration: none;
-        scroll-behavior: smooth;
+        font-family: "Poppins", sans-serif;
       }
 
       body {
-        font-family: "Poppins", sans-serif;
-        background-color: var(--bgstory);
-        background-attachment: fixed;
-        background-image: url(img/.png);
-        /* min-height: 5000px; */
-      }
-
-      /* Navbar */
-      .navbar {
+        background: #f8f8f8;
         display: flex;
         align-items: center;
-        justify-content: space-between;
-        background-color: #ededed;
-        position: fixed;
-        top: 1.4rem;
-        left: 7rem;
-        right: 7rem;
-        z-index: 9999;
-        padding: 0.3rem 2rem;
-        border-radius: 1rem;
-        transition: all 0.3s ease-in-out;
-        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-      }
-
-      .navbar img {
-        width: 55px;
-      }
-
-      .navbar .navsection {
-        display: flex;
-        align-items: center;
-        gap: 3rem;
-      }
-
-      .navbar .navmenu {
-        display: flex;
-        align-items: center;
-        gap: 3rem;
-      }
-
-      .navbar .navmenu a {
-        display: inline-block;
-        transition: all 0.2s ease-in-out;
-      }
-
-      .navbar .navmenu a:hover {
-        color: #e3252f;
-      }
-
-      .navbar .navmenu a::after {
-        content: "";
-        display: block;
-        border-bottom: 0.1rem solid #e3252f;
-        transform: scaleX(0);
-        transition: 0.2s linear;
-      }
-
-      .navbar .navmenu a:hover::after {
-        transform: scaleX(0.5);
-      }
-
-      .navbar .navicon {
-        display: flex;
-        align-items: center;
-        gap: 3rem;
-      }
-
-      .navbar .navicon a {
-        display: inline-block;
-        transition: all 0.2s ease-in-out;
-      }
-
-      .navbar .navicon a:hover {
-        color: #e3252f;
-      }
-
-      /* Home Section */
-      .home {
+        justify-content: center;
         min-height: 100vh;
+      }
+
+      .backbtn {
         display: flex;
         align-items: center;
-        background-image: url(img/StoryBanner2.png);
-        background-repeat: no-repeat;
-        background-size: cover;
-        background-position: center;
-        position: relative;
-        justify-content: left;
-      }
-
-      .home .content {
-        padding: 2rem 7%;
-        max-width: 60rem;
-        color: #000;
-      }
-
-      .home .textbox {
-        text-align: left;
-        max-width: 420px;
-        margin-top: -50px;
-      }
-
-      .home .textbox h1 {
-        font-size: 3.6rem;
-        font-weight: 800;
-        color: #000;
-        margin-bottom: 0.2rem;
-      }
-
-      .home .textbox h1 span {
+        gap: 6px;
+        background: none;
+        border: none;
         color: var(--redcolor);
-      }
-
-      .home .textbox h2 {
-        font-size: 1.8rem;
-        font-weight: 700;
-        color: #000;
-        margin-bottom: 2rem;
-      }
-
-      .home .textbox h2 span {
-        color: var(--redcolor);
-        padding: 0 0.3rem;
-        border-radius: 4px;
-      }
-
-      .home .textbox p {
-        font-size: 1rem;
-        font-weight: 400;
-        color: #000;
-        margin-bottom: 1.5rem;
-        line-height: 1.5;
-      }
-
-      .home .btn {
-        background-color: var(--redcolor);
-        color: #fff;
-        padding: 0.7rem 1.5rem;
-        border-radius: 8px;
-        font-weight: 600;
-        text-decoration: none;
-        transition: 0.3s;
-      }
-
-      .home .btn:hover {
-        background-color: #b71515;
-      }
-
-      .home .content img {
-        border-radius: 1.2rem;
-      }
-
-      /* About Section */
-      .about {
-        background-color: var(--bgstory);
-        padding: 80px 7%;
-      }
-
-      .aboutcontainer {
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        gap: 40px;
-      }
-
-      .aboutimg img {
-        width: 320px;
-        border-radius: 15px;
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-      }
-
-      .abouttext {
-        flex: 1;
-        min-width: 280px;
-      }
-
-      .abouttext h2 {
-        color: #bf0f0f;
-        font-size: 2.2rem;
-        margin-bottom: 20px;
-      }
-
-      .abouttext p {
-        color: #333;
-        line-height: 1.6;
-        margin-bottom: 15px;
-        font-size: 1rem;
-      }
-
-      /* Timeline */
-      .perjalanan {
-        background-color: var(--bgstory);
-        padding: 80px 7%;
-        text-align: center;
-        position: relative;
-      }
-
-      .judultimeline {
-        color: #bf0f0f;
-        font-size: 2rem;
-        font-weight: bold;
-        margin-bottom: 60px;
-      }
-
-      /* Timeline garis tengah */
-      .timeline {
-        position: relative;
-        max-width: 900px;
-        margin: 0 auto;
-      }
-
-      .timeline::after {
-        content: "";
+        font-weight: 500;
+        font-size: 0.95rem;
+        cursor: pointer;
         position: absolute;
-        width: 4px;
-        background-color: #bf0f0f;
         top: 0;
-        bottom: 0;
-        left: 50%;
-        margin-left: -2px;
+        left: 0;
+        transition: 0.2s;
       }
 
-      /* Timeline */
-      .timeline {
-        position: relative;
-        max-width: 900px;
-        margin: 80px auto;
+      .backbtn:hover {
+        color: #a50e0e;
+        transform: translateX(-3px);
       }
 
-      .timeline::after {
-        content: "";
-        position: absolute;
-        width: 4px;
-        background-color: #f24c3d;
-        top: 0;
-        bottom: 0;
-        left: 50%;
-        margin-left: -2px;
-      }
-      
-      /* Timeline Item */
-      .timeline-item {
-        position: relative;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        margin: 60px 0;
-        width: 100%;
-      }
-
-      /* Item kiri */
-      .timeline-item.left {
-        flex-direction: row-reverse;
-        text-align: right;
-      }
-
-      /* Item kanan */
-      .timeline-item.right {
-        flex-direction: row;
-        text-align: left;
-      }
-
-      /* Garis tengah tetap di tengah */
-      .timeline::after {
-        content: "";
-        position: absolute;
-        width: 4px;
-        background-color: #f24c3d;
-        top: 0;
-        bottom: 0;
-        left: 50%;
-        transform: translateX(-50%);
-      }
-
-      /* Kotak teks */
-      .timeline-content {
+      .registercontainer {
         background: #fff;
-        padding: 20px;
-        border-radius: 10px;
-        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-        width: 40%;
-        z-index: 1;
-      }
-
-      /* Gambar */
-      .timeline-image {
-        width: 180px;
-        height: 180px;
-        flex-shrink: 0;
-      }
-
-      .timeline-image img {
-        width: 100%;
-        height: 100%;
-        border-radius: 10px;
-        object-fit: cover;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-      }
-
-      /* Responsif */
-      @media screen and (max-width: 768px) {
-        .timeline::after {
-          left: 20px;
-        }
-
-        .timeline-item {
-          width: 100%;
-          flex-direction: row;
-          padding-left: 50px;
-          text-align: left;
-        }
-
-        .timeline-item.left,
-        .timeline-item.right {
-          left: 0;
-        }
-
-        .timeline-image {
-          width: 120px;
-          margin-right: 20px;
-        }
-      }
-
-      .slogan {
+        padding: 2.5rem 3rem;
+        border-radius: 18px;
+        box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+        width: 480px;
         text-align: center;
-        margin-top: 70px;
       }
 
-      .slogan h2 {
-        color: #bf0f0f;
-        font-size: 2rem;
-        margin-bottom: 20px;
-        font-weight: bold;
-      }
-
-      .btn-pesan {
-        display: inline-block;
-        background-color: #ff7b00;
-        color: white;
-        padding: 12px 28px;
-        border-radius: 8px;
-        text-decoration: none;
+      .registercontainer h2 {
+        font-size: 1.6rem;
         font-weight: 600;
-        transition: 0.3s;
-      }
-
-      .btn-pesan:hover {
-        background-color: #e06600;
-      }
-
-      /* Mobile */
-      @media (max-width: 768px) {
-        .aboutcontainer {
-          flex-direction: column;
-          text-align: center;
-        }
-
-        /* .timeline::after {
-          left: 20px;
-        }
-
-        .timelineitem {
-          width: 100%;
-          padding-left: 50px;
-          margin-bottom: 40px;
-        }
-
-        .timelineitem::after {
-          left: 10px;
-        }
-
-        .timelineitem.right {
-          left: 0;
-        } */
-      }
-
-      /* Footer */
-      .footer {
-        margin-top: 8vh;
-        padding: 60px 7% 30px;
-        background-color: var(--bgstory);
-        color: #000;
-        font-family: "Poppins", sans-serif;
-      }
-
-      .footercontainer {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        align-items: flex-start;
-        gap: 40px;
-        max-width: 1300px;
-        margin: 0 auto;
-      }
-
-      /* Kiri */
-      .footerleft {
-        flex: 1 1 250px;
-        max-width: 400px;
-      }
-
-      .footerleft .logo {
-        background: linear-gradient(90deg, var(--redcolor), var(--yellow));
-        background-clip: text;
-        -webkit-text-fill-color: transparent;
-      }
-
-      .footerleft .logo img {
-        width: 60px;
-      }
-
-      .footerleft p {
-        margin: 15px 0;
-        color: #333;
-        line-height: 1.5;
-      }
-
-      .socialicons {
-        display: flex;
-        gap: 18px;
-        margin-top: 10px;
-      }
-
-      .socialicons a {
-        color: #000;
-        font-size: 1.3rem;
-        transition: color 0.3s ease;
-      }
-
-      .socialicons a:hover {
-        color: var(--redcolor);
-      }
-
-      /* Kolom kanan */
-      .footercolumn {
-        flex: 1 1 200px;
-        min-width: 160px;
-      }
-
-      .footercolumn h3 {
-        font-size: 1rem;
-        font-weight: 700;
-        margin-bottom: 15px;
-        text-transform: uppercase;
+        margin-bottom: 0.8rem;
         color: #111;
       }
 
-      .footercolumn ul {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-      }
-
-      .footercolumn ul li {
-        margin-bottom: 10px;
-      }
-
-      .footercolumn ul li a {
-        text-decoration: none;
-        color: #444;
-        transition: color 0.3s;
-      }
-
-      .footercolumn ul li a:hover {
-        color: var(--redcolor);
-      }
-
-      .footerbottom {
-        text-align: center;
+      p.subtext {
         font-size: 0.9rem;
         color: #666;
-        margin-top: 40px;
-        padding-top: 20px;
+        margin-bottom: 1.8rem;
       }
 
-      .bottomnav {
-        display: none;
+      form {
+        display: flex;
+        flex-direction: column;
+        gap: 1.2rem;
       }
 
-      /* ============================= */
-      /* 📱 Handphone (max 768px) */
-      /* ============================= */
-      @media (max-width: 768px) {
-        body {
-          background: #fff;
-        }
-
-        /* Navbar berubah jadi top kecil */
-        .navbar {
-          position: fixed;
-          top: 0;
-          left: 0;
-          right: 0;
-          border-radius: 0;
-          padding: 0.8rem 1rem;
-          justify-content: center;
-          box-shadow: none;
-        }
-
-        .navbar .navmenu {
-          display: none; /* Sembunyikan menu atas di HP */
-        }
-
-        .navbar .navicon {
-          display: none; /* Sembunyikan menu atas di HP */
-        }
-
-        .navbar img {
-          width: 45px;
-        }
-
-        /* Section Home */
-        .home {
-          background-size: cover;
-          background-position: center;
-          text-align: center;
-          padding-top: 6rem;
-        }
-
-        .home .content h1 {
-          font-size: 1.2rem;
-          max-width: 10rem;
-        }
-
-        .home .content p {
-          font-size: 0.9rem;
-        }
-
-        /* Footer */
-        .footercontainer {
-          flex-direction: column;
-          align-items: center;
-          text-align: center;
-        }
-
-        /* Bottom Navigation (seperti aplikasi Pizza Hut) */
-        /* ============================= */
-        /* 📱 Bottom Navigation (Handphone) */
-        /* ============================= */
-        .bottomnav {
-          display: flex;
-          justify-content: space-around;
-          align-items: center;
-          position: fixed;
-          bottom: 0;
-          left: 0;
-          right: 0;
-          height: 70px;
-          background-color: #fff;
-          border-top: 1px solid #ddd;
-          box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.08);
-          z-index: 9999;
-          padding-bottom: env(
-            safe-area-inset-bottom
-          ); /* iPhone notch safe area */
-        }
-
-        .bottomnav a {
-          flex: 1;
-          text-align: center;
-          color: #777;
-          font-size: 0.8rem;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-          text-decoration: none;
-          line-height: 1.2;
-        }
-
-        .bottomnav a i {
-          font-size: 1.4rem;
-          margin-bottom: 4px;
-          display: block;
-        }
-
-        .bottomnav a.active {
-          color: var(--redcolor);
-          font-weight: 600;
-        }
-
-        .bottomnav a span {
-          margin-top: 2px;
-          font-size: 0.75rem;
-        }
-
-        /* Pastikan ikon font-awesome atau remixicon tidak terpotong */
-        .bottomnav i,
-        .bottomnav svg {
-          vertical-align: middle;
-        }
+      .form-group {
+        text-align: left;
+        display: flex;
+        flex-direction: column;
+        gap: 0.4rem;
       }
 
-      /* ============================= */
-      /* 💻 Tablet (769px – 1024px) */
-      /* ============================= */
-      @media (min-width: 769px) and (max-width: 1024px) {
-        .navbar {
-          left: 2rem;
-          right: 2rem;
-          padding: 0.5rem 1.5rem;
-        }
+      label {
+        font-weight: 500;
+        font-size: 0.95rem;
+        color: #222;
+      }
 
-        .navbar .navmenu {
-          gap: 2rem;
-        }
+      input {
+        padding: 0.75rem;
+        border: 1.6px solid #ddd;
+        border-radius: 8px;
+        font-size: 0.95rem;
+        outline: none;
+        transition: all 0.2s ease;
+      }
 
-        .footercontainer {
-          flex-wrap: wrap;
-          justify-content: center;
-        }
+      input:focus {
+        border-color: #c9132c;
+        box-shadow: 0 0 0 3px rgba(201, 19, 44, 0.1);
+      }
+
+      .submit-btn {
+        background: #c9132c;
+        border: none;
+        color: #fff;
+        padding: 0.9rem;
+        border-radius: 8px;
+        font-weight: 500;
+        font-size: 1rem;
+        cursor: pointer;
+        margin-top: 0.8rem;
+        transition: background 0.3s;
+      }
+
+      .submit-btn:hover {
+        background: #a40f24;
+      }
+
+      .back-link {
+        display: block;
+        text-align: center;
+        margin-top: 1.2rem;
+        font-size: 0.9rem;
+        color: #c9132c;
+        text-decoration: none;
+        font-weight: 500;
+      }
+
+      .back-link:hover {
+        text-decoration: underline;
+      }
+
+      /* === Toast Popup === */
+      .toast {
+        position: fixed;
+        top: 30px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: #fff;
+        color: #333;
+        border-radius: 12px;
+        padding: 1rem 1.5rem;
+        box-shadow: 0 6px 24px rgba(0, 0, 0, 0.1);
+        font-size: 0.95rem;
+        font-weight: 500;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.4s ease;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .toast.show {
+        opacity: 1;
+        visibility: visible;
+        top: 60px;
+      }
+
+      .toast.success {
+        border-left: 5px solid #2ecc71;
+      }
+
+      .toast.error {
+        border-left: 5px solid #e74c3c;
       }
     </style>
-
-    <!-- Feather Icon -->
-    <script src="https://unpkg.com/feather-icons"></script>
   </head>
   <body>
-    <!-- Navbar -->
-    <nav class="navbar">
-      <div class="navlogo">
-        <img src="img/LogoTaki.png" alt="" />
-      </div>
-      <div class="navsection">
-        <div class="navmenu">
-          <a href="index.html">Home</a>
-          <a href="menu.html">Menu</a>
-          <a href="#">Brand Story</a>
-        </div>
-        <div class="navicon">
-          <a href="shoppingbag.html"><i data-feather="shopping-bag"></i></a>
-          <a href=""><i data-feather="user"></i></a>
-        </div>
-      </div>
-    </nav>
-    <!-- Navbar End -->
+    <div class="registercontainer">
+      <button class="backbtn" onclick="window.location.href='index.html'">
+        <i data-feather="arrow-left"></i> Kembali
+      </button>
 
-    <!-- Home Section Start -->
-    <section class="home" id="home">
-      <main class="content">
-        <div class="textbox">
-          <h1>BRAND <span>STORY</span></h1>
-          <h2><span>SATAY</span> & SUKI <span>STEAMBOAT</span></h2>
-          <p>
-            Perjalanan Brand Taki Satay & Suki Steamboat sedari awal merintis
-            hingga sekarang.
-          </p>
-          <a href="menu.html" class="btn">Lihat Sekarang</a>
-        </div>
-      </main>
-    </section>
-    <!-- Home Section End -->
+      <h2>Profil Anda</h2>
+      <p class="subtext">Lengkapi informasi Anda untuk membuat akun.</p>
 
-    <!-- About Section -->
-    <section class="about">
-      <div class="aboutcontainer">
-        <div class="aboutimg">
-          <img src="img/AwalMulaTaki.jpg" alt="Awal Mula Taki" />
-        </div>
-        <div class="abouttext">
-          <h2>Awal Mula Taki</h2>
-          <p>
-            TaKi merupakan singkatan dari <b>Satay & Suki</b>, sebuah UMKM
-            kuliner yang berdiri pada Mei 2019. Awalnya, TaKi hanya menjual sate
-            dan pilihan loklok seperti odeng dan sosis. Nama
-            <b>"Satay"</b> diambil dari menu utama tersebut, sementara
-            <b>"Suki"</b>
-            ditambahkan agar lebih menarik dan mudah diingat.
-          </p>
-          <p>
-            Usaha ini lahir dari ide spontan sang pemilik saat mengikuti bazar
-            di gedung serbaguna. Tempat itu menjadi cikal bakal perjalanan TaKi
-            hingga kini. Dukungan keluarga kemudian mendorong untuk membuka
-            kedai tetap di sekitar lokasi tersebut.
-          </p>
-        </div>
-      </div>
-    </section>
-    <!-- Aboout Section -->
-
-    <!-- Timeline Section -->
-    <section class="perjalanan">
-      <h2 class="judultimeline">Perjalanan Kami</h2>
-
-      <section class="timeline">
-        <div class="timeline-item left">
-          <div class="timeline-image">
-            <img src="img/awalberdiri.jpg" alt="Awal Berdiri" />
-          </div>
-          <div class="timeline-content">
-            <h3>Awal Berdiri (2019)</h3>
-            <p>
-              Dimulai dari sebuah bazar sederhana di gedung serbaguna. Menu
-              pertama kami adalah sate loklok dan odeng — awal lahirnya nama
-              <b>Satay & Suki</b>.
-            </p>
-          </div>
-        </div>
-
-        <div class="timeline-item right">
-          <div class="timeline-image">
-            <img src="img/Home.jpg" alt="Tumbuh Bersama" />
-          </div>
-          <div class="timeline-content">
-            <h3>Tumbuh Bersama (2021)</h3>
-            <p>
-              Kami mulai membuka beberapa cabang dan mengembangkan konsep
-              dine-in dengan pengalaman khas Suki & Steamboat.
-            </p>
-          </div>
-        </div>
-
-        <div class="timeline-item left">
-          <div class="timeline-image">
-            <img src="img/Home.jpg" alt="Go Online Go Viral" />
-          </div>
-          <div class="timeline-content">
-            <h3>Go Online Go Viral (2023)</h3>
-            <p>
-              Dengan dukungan pelanggan setia, kami hadir di berbagai platform
-              online delivery dan semakin dikenal banyak orang!
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <div class="slogan">
-        <h2>Gak Wareg Gak Mandeg</h2>
-        <a href="menu.html" class="btn-pesan">Pesan Sekarang</a>
-      </div>
-    </section>
-
-    <!-- Footer Start -->
-    <footer class="footer">
-      <div class="footercontainer">
-        <!-- Kolom 1 -->
-        <div class="footerleft">
-          <a href="#" class="logo"
-            ><img src="img/LogoTaki.png" alt="Kedai TaKi ID"
-          /></a>
-          <p>
-            <strong>Jam Operasional :</strong><br />
-            Setiap hari<br />
-            14:00 - 22:00
-          </p>
-          <div class="socialicons">
-            <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
-            <a href="#"><i class="fa-brands fa-facebook"></i></a>
-            <a href="#"><i class="fa-brands fa-instagram"></i></a>
-          </div>
-        </div>
-
-        <!-- Kolom 2 -->
-        <div class="footercolumn">
-          <h3>Navigasi</h3>
-          <ul>
-            <li><a href="#">Beranda</a></li>
-            <li><a href="#">Menu</a></li>
-            <li><a href="#">Tentang Kami</a></li>
-          </ul>
-        </div>
-
-        <!-- Kolom 3 -->
-        <div class="footercolumn">
-          <h3>Lokasi Outlet</h3>
-          <img
-            src="lokasi.jpg"
-            alt="Peta Lokasi Kedai TaKi ID"
-            style="width: 100%; border-radius: 8px; margin-bottom: 10px"
+      <form id="registerForm">
+        <div class="form-group">
+          <label for="name">Nama <span style="color: red">*</span></label>
+          <input
+            type="text"
+            id="name"
+            placeholder="Masukkan nama anda"
+            required
           />
-          <p style="color: #333; font-size: 0.9rem; line-height: 1.5">
-            Kejawan Gebang III No.22,<br />
-            RT.002/RW.04, Gebang Putih, Kec. Sukolilo,<br />
-            Surabaya, Jawa Timur 60117
-          </p>
         </div>
-      </div>
 
-      <div class="footerbottom">© Copyright 2025, All Right Reserved</div>
-    </footer>
-    <!-- Footer End -->
+        <div class="form-group">
+          <label for="address">Alamat <span style="color: red">*</span></label>
+          <input
+            type="text"
+            id="address"
+            placeholder="Masukkan alamat anda"
+            required
+          />
+        </div>
 
-    <!-- Bottom Navigation -->
-    <div class="bottomnav">
-      <a href="index.html"><i data-feather="home"></i>Home</a>
-      <a href="menu.html"><i data-feather="book-open"></i>Menu</a>
-      <a href="shoppingbag.html"><i data-feather="shopping-bag"></i>Pesanan</a>
-      <a href="#"><i data-feather="user"></i>Profil</a>
+        <div class="form-group">
+          <label for="phone"
+            >Nomor Telepon <span style="color: red">*</span></label
+          >
+          <input
+            type="tel"
+            id="phone"
+            placeholder="Masukkan nomor telepon anda"
+            required
+          />
+        </div>
+
+        <button type="submit" class="submit-btn">Selesai</button>
+      </form>
+
+      <a href="index.html" class="back-link">Kembali ke Beranda</a>
     </div>
 
-    <!-- Feather Icons -->
+    <!-- Toast Popup -->
+    <div id="toast" class="toast"></div>
+
     <script>
-      feather.replace();
+      const form = document.getElementById("registerForm");
+      const toast = document.getElementById("toast");
+
+      function showToast(message, type = "success") {
+        toast.textContent = message;
+        toast.className = `toast show ${type}`;
+        setTimeout(() => {
+          toast.classList.remove("show");
+        }, 2500);
+      }
+
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        const name = document.getElementById("name").value.trim();
+        const address = document.getElementById("address").value.trim();
+        const phone = document.getElementById("phone").value.trim();
+
+        if (!name || !address || !phone) {
+          showToast("Harap isi semua data dengan benar!", "error");
+          return;
+        }
+
+        const user = { name, address, phone };
+        localStorage.setItem("userData", JSON.stringify(user));
+        localStorage.setItem("isLoggedIn", "true");
+
+        showToast(
+          "Akun berhasil dibuat! Selamat datang, " + name + ".",
+          "success"
+        );
+
+        setTimeout(() => {
+          window.location.href = "index.html";
+        }, 2200);
+      });
     </script>
   </body>
 </html>
