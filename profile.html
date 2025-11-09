@@ -265,108 +265,6 @@
           opacity: 1;
         }
       }
-
-      /* Mobile 768px */
-      @media (max-width: 768px) {
-        body {
-          background: #fff;
-        }
-
-        .backbtn {
-            display: none;
-        }
-
-        /* Navbar berubah jadi top kecil */
-        .navbar {
-          position: fixed;
-          top: 0;
-          left: 0;
-          right: 0;
-          border-radius: 0;
-          padding: 0.8rem 1rem;
-          justify-content: center;
-          box-shadow: none;
-        }
-
-        .navbar .navmenu {
-          display: none; /* Sembunyikan menu atas di HP */
-        }
-
-        .navbar .navicon {
-          display: none; /* Sembunyikan menu atas di HP */
-        }
-
-        .navbar img {
-          width: 45px;
-        }
-
-        /* Bottomnav Mobile */
-        .bottomnav {
-          display: flex;
-          justify-content: space-around;
-          align-items: center;
-          position: fixed;
-          bottom: 0;
-          left: 0;
-          right: 0;
-          height: 70px;
-          background-color: #fff;
-          border-top: 1px solid #ddd;
-          box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.08);
-          z-index: 9999;
-          padding-bottom: env(
-            safe-area-inset-bottom
-          ); /* iPhone notch safe area */
-        }
-
-        .bottomnav a {
-          flex: 1;
-          text-align: center;
-          color: #777;
-          font-size: 0.8rem;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-          text-decoration: none;
-          line-height: 1.2;
-        }
-
-        .bottomnav a i {
-          font-size: 1.4rem;
-          margin-bottom: 4px;
-          display: block;
-        }
-
-        .bottomnav a.active {
-          color: var(--redcolor);
-          font-weight: 600;
-        }
-
-        .bottomnav a span {
-          margin-top: 2px;
-          font-size: 0.75rem;
-        }
-
-        /* Pastikan ikon font-awesome atau remixicon tidak terpotong */
-        .bottomnav i,
-        .bottomnav svg {
-          vertical-align: middle;
-        }
-      }
-
-      /* Tablet 768 - 1024px */
-      @media (min-width: 769px) and (max-width: 1024px) {
-        .navbar {
-          left: 2rem;
-          right: 2rem;
-          padding: 0.5rem 1.5rem;
-        }
-
-        .navbar .navmenu {
-          gap: 2rem;
-        }
-      }
     </style>
     <script src="https://unpkg.com/feather-icons"></script>
   </head>
@@ -444,8 +342,12 @@
     <div class="bottomnav">
       <a href="index.html"><i data-feather="home"></i>Home</a>
       <a href="menu.html"><i data-feather="book-open"></i>Menu</a>
-      <a href="shoppingcart.html"><i data-feather="shopping-cart"></i>Pesanan</a>
-      <a href="#" class="active" class="usericon"><i data-feather="user"></i>Profil</a>
+      <a href="shoppingcart.html"
+        ><i data-feather="shopping-cart"></i>Pesanan</a
+      >
+      <a href="#" class="active" class="usericon"
+        ><i data-feather="user"></i>Profil</a
+      >
     </div>
 
     <script>

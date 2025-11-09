@@ -302,6 +302,152 @@
         }
       }
 
+      body {
+        font-family: "Poppins", sans-serif;
+        background: #fafafa;
+        color: #333;
+        margin: 0;
+        padding: 40px 0;
+      }
+
+      /* === Box Umum === */
+      .tambah-menu-container,
+      .menu-table-section {
+        max-width: 900px;
+        margin: 0 auto 40px auto;
+        background: #fff;
+        border-radius: 16px;
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+        padding: 2rem;
+        transition: 0.3s ease;
+      }
+
+      /* Jarak antar box biar terpisah jelas */
+      .menu-table-section {
+        margin-top: 40px;
+      }
+
+      /* === Header === */
+      .tambah-menu-header {
+        text-align: center;
+        margin-bottom: 1.5rem;
+      }
+
+      .tambah-menu-header h1 {
+        font-size: 1.6rem;
+        color: #b91c1c;
+        font-weight: 600;
+      }
+
+      /* === Form === */
+      .tambah-menu-form {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .tambah-menu-form label {
+        font-weight: 500;
+      }
+
+      .tambah-menu-form input,
+      .tambah-menu-form select {
+        padding: 10px 12px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        width: 100%;
+        font-size: 0.95rem;
+      }
+
+      .upload-wrapper {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        border: 1px dashed #ccc;
+        border-radius: 8px;
+        padding: 10px;
+        background-color: #fafafa;
+      }
+
+      .upload-icon {
+        background: #c62828;
+        color: #fff;
+        padding: 10px;
+        border-radius: 8px;
+      }
+
+      .tambah-menu-form button {
+        background: #c62828;
+        color: #fff;
+        border: none;
+        border-radius: 8px;
+        padding: 10px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+
+      .tambah-menu-form button:hover {
+        background: #a31d1d;
+      }
+
+      /* === Tabel === */
+      .menu-table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+
+      .menu-table th,
+      .menu-table td {
+        padding: 12px 15px;
+        border-bottom: 1px solid #eee;
+        text-align: left;
+        vertical-align: middle; /* Semua konten sejajar tengah vertikal */
+      }
+
+      .menu-table th {
+        background: #f7f7f7;
+        color: #444;
+        font-weight: 600;
+      }
+
+      .menu-table img {
+        width: 50px;
+        height: 50px;
+        border-radius: 8px;
+        object-fit: cover;
+        display: block;
+      }
+
+      /* === Kolom Aksi === */
+      .menu-table td.aksi {
+        text-align: left;
+      }
+
+      .menu-table .aksi-content {
+        display: inline-flex;
+        align-items: center; /* Tengah vertikal */
+        gap: 10px;
+      }
+
+      .menu-table .aksi-content i {
+        cursor: pointer;
+        transition: 0.3s;
+        font-size: 1.1rem;
+      }
+
+      .menu-table .aksi-content .edit {
+        color: #c62828;
+      }
+
+      .menu-table .aksi-content .delete {
+        color: #777;
+      }
+
+      .menu-table .aksi-content i:hover {
+        transform: scale(1.1);
+      }
+
       /* Analys Bar */
       .analisissearch {
         display: flex;
@@ -512,26 +658,70 @@
     <p>Kelola menu makanan dan minuman restoran.</p>
   </header>
 
-  <div class="formcontainer">
-    <div class="formadd">
-      <label>Nama Menu</label>
-      <input type="text" placeholder="Masukkan Nama Menu" />
-      <label>Kategori</label>
-      <select>
-        <option>Seblak</option>
-        <option>Nasi</option>
-        <option>Berkuah</option>
-        <option>Snack</option>
-        <option>Sate Lok-Lok</option>
-        <option>Minuman</option>
-      </select>
-      <label>Harga</label>
-      <input type="number" placeholder="Masukkan Harga" />
-      <label>Deskripsi</label>
-      <textarea placeholder="Masukkan Deskripsi Menu"></textarea>
-      <button>Tambah Menu</button>
+  <section class="tambah-menu-container">
+
+  <form class="tambah-menu-form">
+    <label>Nama Menu</label>
+    <input type="text" placeholder="Seblak Ceker">
+
+    <label>Kategori</label>
+    <select>
+      <option value="">Pilih Kategori</option>
+      <option>Seblak</option>
+      <option>Nasi</option>
+      <option>Berkuah</option>
+      <option>Snack</option>
+      <option>Sate</option>
+      <option>Minuman</option>
+    </select>
+
+    <label>Harga Menu</label>
+    <input type="number" placeholder="15000">
+
+    <label>Foto Menu</label>
+    <div class="upload-wrapper">
+      <i class="fa-solid fa-plus upload-icon"></i>
+      <input type="file" accept="image/*">
     </div>
-  </div>
+
+    <button type="button">Tambahkan</button>
+  </form>
+</section>
+
+<section class="menu-table-section">
+  <header class="tambah-menu-header">
+    <h1>Daftar Menu</h1>
+  </header>
+
+  <table class="menu-table">
+    <thead>
+      <tr>
+        <th>Gambar</th>
+        <th>Nama Menu</th>
+        <th>Kategori</th>
+        <th>Harga</th>
+        <th>Aksi</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><img src="img/seblak.jpg" alt=""></td>
+        <td>Seblak Ceker</td>
+        <td>Seblak</td>
+        <td>Rp 15.000</td>
+        <td class="aksi">
+          <div class="aksi-content">
+            <i class="fa-solid fa-pen-to-square edit"></i>
+            <i class="fa-solid fa-trash delete"></i>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+
+
           `,
           analisa: `
   <header>

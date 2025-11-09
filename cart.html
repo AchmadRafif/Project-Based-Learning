@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Taki ID</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+    />
+    <style>
+      :root {
+        --redcolor: #bf0f0f;
+        --blacknav: #383838;
+        --greencolor: #89c946;
+        --yellow: #f49a24;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        outline: none;
+        border: none;
+        text-decoration: none;
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: "Poppins", sans-serif;
+        background-color: #ffffff;
+        background-attachment: fixed;
+        background-image: url(img/.png);
+        /* min-height: 5000px; */
+        background-image: none ;
+      }
+
+      .bottomnav {
+        display: none;
+      }
+
+      /* ============================= */
+      /* 📱 Handphone (max 768px) */
+      /* ============================= */
+      @media (max-width: 768px) {
+        body {
+          background: #fff;
+        }
+
+        /* Footer */
+        .footercontainer {
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+        }
+
+        /* Bottom Navigation (seperti aplikasi Pizza Hut) */
+        /* ============================= */
+        /* 📱 Bottom Navigation (Handphone) */
+        /* ============================= */
+        .bottomnav {
+          display: flex;
+          justify-content: space-around;
+          align-items: center;
+          position: fixed;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          height: 70px;
+          background-color: #fff;
+          border-top: 1px solid #ddd;
+          box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.08);
+          z-index: 9999;
+          padding-bottom: env(
+            safe-area-inset-bottom
+          ); /* iPhone notch safe area */
+        }
+
+        .bottomnav a {
+          flex: 1;
+          text-align: center;
+          color: #777;
+          font-size: 0.8rem;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          text-decoration: none;
+          line-height: 1.2;
+        }
+
+        .bottomnav a i {
+          font-size: 1.4rem;
+          margin-bottom: 4px;
+          display: block;
+        }
+
+        .bottomnav a.active {
+          color: var(--redcolor);
+          font-weight: 600;
+        }
+
+        .bottomnav a span {
+          margin-top: 2px;
+          font-size: 0.75rem;
+        }
+
+        /* Pastikan ikon font-awesome atau remixicon tidak terpotong */
+        .bottomnav i,
+        .bottomnav svg {
+          vertical-align: middle;
+        }
+      }
+
+      /* ============================= */
+      /* 💻 Tablet (769px – 1024px) */
+      /* ============================= */
+      @media (min-width: 769px) and (max-width: 1024px) {
+        .navbar {
+          left: 2rem;
+          right: 2rem;
+          padding: 0.5rem 1.5rem;
+        }
+
+        .navbar .navmenu {
+          gap: 2rem;
+        }
+
+        .promoimg img {
+          width: 100%;
+        }
+
+        .menu-container {
+          gap: 1.5rem;
+        }
+
+        .menu-card {
+          width: 45%;
+        }
+
+        .footercontainer {
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+      }
+
+      .cart-section {
+        width: 100%;
+        padding: 2rem 3rem;
+      }
+
+      /* Tombol Ke Beranda */
+      .backbtn {
+        position: fixed;
+        top: 1.5rem;
+        left: 2rem;
+        background-color: var(--redcolor);
+        color: #fff;
+        text-decoration: none;
+        padding: 0.6rem 1.4rem;
+        border-radius: 30px;
+        font-weight: 600;
+        font-size: 0.9rem;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        transition: all 0.25s ease;
+        z-index: 1000;
+      }
+
+      .backbtn:hover {
+        background-color: #c30000;
+        transform: translateY(-2px);
+      }
+      /* Judul Halaman */
+      .cart-title {
+        font-size: 2rem;
+        margin: 3rem 0 2rem 0;
+        font-weight: 700;
+        margin-top: 5rem;
+      }
+
+      /* Header Tabel */
+      .cart-header {
+        width: 90%;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1fr 0.5fr 0.5fr 0.5fr;
+        font-weight: 600;
+        border-bottom: 2px solid #000;
+        padding-bottom: 0.8rem;
+      }
+
+      /* State Keranjang Kosong */
+      .cart-empty {
+        margin-top: 5rem;
+      }
+
+      .cart-empty h2 {
+        font-size: 1.5rem;
+        font-weight: 600;
+      }
+
+      .cart-empty p {
+        margin-top: 0.3rem;
+        color: #555;
+      }
+
+      /* Tombol Lihat Menu */
+      .btn-lihat-menu {
+        display: inline-block;
+        margin-top: 2rem;
+        background: var(--yellow);
+        padding: 0.8rem 2rem;
+        border-radius: 1rem;
+        color: #fff;
+        font-weight: 600;
+        box-shadow: 0 5px 0 #d48a20;
+      }
+
+      /* Tombol bawah */
+      .cart-bottom-btn {
+        width: 90%;
+        margin: 8rem auto 3rem auto;
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .btn-cancel {
+        min-width: 17rem;
+        max-width: 17rem;
+        background: var(--redcolor);
+        padding: 0.7rem 1.5rem;
+        border-radius: 1rem;
+        color: white;
+        font-weight: 600;
+      }
+
+      .btn-next {
+        min-width: 17rem;
+        max-width: 17rem;
+        background: var(--yellow);
+        padding: 0.7rem 1.5rem;
+        border-radius: 1rem;
+        color: white;
+        font-weight: 600;
+      }
+
+      /* Baris atas cart (tombol + logo kecil) */
+      .cart-top-bar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1.5rem 3rem;
+        margin-top: 1rem;
+      }
+
+      /* Baris posisi tombol kiri dan logo kanan */
+      .cart-top-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 3rem;
+        margin-top: 1rem;
+      }
+
+      .cart-small-logo {
+        width: 55px;
+        height: auto;
+      }
+    </style>
+
+    <!-- Feather Icon -->
+    <script src="https://unpkg.com/feather-icons"></script>
+  </head>
+  <body>
+    <!-- Cart Section -->
+    <section class="cart-section" style="text-align: center">
+      <!-- Tombol Kembali -->
+      <a href="index.html" class="backbtn">⟵ Kembali</a>
+
+      <!-- Judul -->
+      <h1 class="cart-title">Keranjang Belanja Anda</h1>
+
+      <!-- Header Tabel -->
+      <div class="cart-header">
+        <span>Produk</span>
+        <span>Harga</span>
+        <span>Jumlah</span>
+        <span>Total</span>
+      </div>
+
+      <!-- State Kosong -->
+      <div class="cart-empty">
+        <h2>Keranjang Anda Masih Kosong</h2>
+        <p>Berbagai menu kami siap untuk anda pesan</p>
+        <a href="menu.html" class="btn-lihat-menu">Lihat Menu</a>
+      </div>
+
+      <!-- Tombol Bawah Kiri / Kanan -->
+      <div class="cart-bottom-btn">
+        <a href="" class="btn-cancel">Batalkan Semua Pesanan</a>
+        <a href="buyform.html" class="btn-next">Pesan Sekarang</a>
+      </div>
+    </section>
+    <!-- Cart Section End -->
+
+    <!-- Bottom Navigation -->
+    <div class="bottomnav">
+      <a href="index"><i data-feather="home"></i>Home</a>
+      <a href="menu.html"><i data-feather="book-open"></i>Menu</a>
+      <a href="#" class="active"><i data-feather="shopping-cart"></i>Pesanan</a>
+      <a href="#" id="profileLink"><i data-feather="user"></i>Profil</a>
+    </div>
+    <script>
+      // Cek status login dari localStorage
+      const profileLink = document.getElementById("profileLink");
+      const isLoggedIn = localStorage.getItem("isLoggedIn");
+
+      profileLink.addEventListener("click", (e) => {
+        e.preventDefault();
+
+        if (isLoggedIn) {
+          // Jika sudah login, arahkan ke halaman profil
+          window.location.href = "mobileprofile.html";
+        } else {
+          // Jika belum login, arahkan ke halaman register
+          window.location.href = "mobileregister.html";
+        }
+      });
+    </script>
+
+    <!-- Feather Icons -->
+    <script>
+      feather.replace();
+    </script>
+  </body>
+</html>
