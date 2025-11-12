@@ -655,6 +655,87 @@
         }
       }
 
+      /* Testimoni Section */
+      .testimoni {
+        padding: 6rem 7%;
+        background: #fff;
+        text-align: center;
+        font-family: "Poppins", sans-serif;
+      }
+
+      .testimoni-title {
+        font-size: 2rem;
+        font-weight: 700;
+        color: #222;
+        margin-bottom: 3rem;
+      }
+
+      .testimoni-container {
+        display: flex;
+        justify-content: center;
+        align-items: stretch;
+        gap: 2.5rem;
+        flex-wrap: wrap;
+      }
+
+      .testimoni-card {
+        background: #bf0f0f;
+        color: #fff;
+        border-radius: 1.2rem;
+        padding: 1.5rem 1.5rem;
+        width: 300px;
+        box-shadow: 0 10px 25px rgba(191, 15, 15, 0.25);
+        transition: all 0.3s ease;
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* <— ini yang bikin isi kartu sejajar tengah */
+        text-align: center;
+      }
+
+      .testimoni-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 14px 28px rgba(191, 15, 15, 0.35);
+      }
+
+      .testi-img {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 4px solid #fff;
+        margin-bottom: 2rem;
+      }
+
+      .testimoni-card h3 {
+        font-size: 1.1rem;
+        font-weight: 600;
+        margin-bottom: 0.6rem;
+      }
+
+      .testimoni-card p {
+        font-size: 0.95rem;
+        line-height: 1.5;
+        margin-bottom: 1.2rem;
+        color: #f9f9f9;
+      }
+
+      .stars {
+        color: #ffcc00;
+        font-size: 1.1rem;
+      }
+
+      /* Responsif */
+      @media (max-width: 768px) {
+        .testimoni-container {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .testimoni-card {
+          width: 90%;
+        }
+      }
+
       /* Footer */
       .footer {
         margin-top: 20vh;
@@ -1045,10 +1126,14 @@
 
       <div class="promocontainer">
         <div class="promoimg">
-          <a href="promodisplay1.html"><img src="img/Promo/promo1.png" alt="" /></a>
+          <a href="promodisplay1.html"
+            ><img src="img/Promo/promo1.png" alt=""
+          /></a>
         </div>
         <div class="promoimg">
-          <a href="promodisplay2.html"><img src="img/Promo/promo2.png" alt="" /></a>
+          <a href="promodisplay2.html"
+            ><img src="img/Promo/promo2.png" alt=""
+          /></a>
         </div>
       </div>
     </section>
@@ -1157,6 +1242,64 @@
     </section>
     <!-- MenuGerak End -->
 
+    <!-- Testimoni Section Start -->
+    <section class="testimoni">
+      <h2 class="testimoni-title">Apa Kata Mereka?</h2>
+      <div class="testimoni-container">
+        <div class="testimoni-card">
+          <img
+            src="img/Tester/DindaRobiatulChusanah.png"
+            alt=""
+            class="testi-img"
+          />
+          <h3>Dinda Robiatul Chasanah</h3>
+          <p>
+            “Rekomended buat pecinta seblak kayak akuuu..😍. Bumbunya gapernah
+            berubah selaluu enakk banget. Harganya juga ramah banget buat dompet
+            akuu. Dia juga banyak varian pilihanya. Mulai harga 2 rebu bisa
+            njajan disini”
+          </p>
+          <div class="stars">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i
+            ><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i
+            ><i class="fa-solid fa-star"></i>
+          </div>
+        </div>
+
+        <div class="testimoni-card">
+          <img src="img/Tester/AstiRahayu.png" alt="" class="testi-img" />
+          <h3>Asti Rahayu</h3>
+          <p>
+            “High recommended ya, bumbu seblaknya pas banget, ngga kurang ngga
+            lebih, isiannya jg bervariasi. Ini salah satu seblak yg ngangeni
+            siiih 🥰”
+          </p>
+          <div class="stars">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i
+            ><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i
+            ><i class="fa-solid fa-star"></i>
+          </div>
+        </div>
+
+        <div class="testimoni-card">
+          <img src="img/Tester/Nusaibah.png" alt="" class="testi-img" />
+          <h3>Nusaibah</h3>
+          <p>
+            “Suki nya comfort food banget, biasanya beli lewat aplikasi online,
+            kali ini nyoba dateng langsung, menunya macem² mulai dari suki sampe
+            berbagai macem seblak ada. Tempatnya nyaman, bersih. Harganya juga
+            murah murah banget. Pembayaran bisa pake QRIS.”
+          </p>
+          <div class="stars">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i
+            ><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i
+            ><i class="fa-solid fa-star"></i>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Testimoni Section End -->
+
     <!-- Footer Start -->
     <footer class="footer">
       <div class="footercontainer">
@@ -1190,11 +1333,12 @@
         <!-- Kolom 3 -->
         <div class="footercolumn">
           <h3>Lokasi Outlet</h3>
-          <a href="https://maps.app.goo.gl/LTvoLGByuV2yoX4r5"><img
-            src="img/footermap.png"
-            alt="Peta Lokasi Kedai TaKi ID"
-            style="width: 200px; border-radius: 8px; margin-bottom: 10px"
-            class="footermaps"
+          <a href="https://maps.app.goo.gl/LTvoLGByuV2yoX4r5"
+            ><img
+              src="img/footermap.png"
+              alt="Peta Lokasi Kedai TaKi ID"
+              style="width: 200px; border-radius: 8px; margin-bottom: 10px"
+              class="footermaps"
           /></a>
           <p style="color: #ededed; font-size: 0.9rem; line-height: 1.5">
             Kejawan Gebang III No.22,<br />
@@ -1212,12 +1356,8 @@
     <div class="bottomnav">
       <a href="#" class="active"><i data-feather="home"></i>Home</a>
       <a href="menu.html"><i data-feather="book-open"></i>Menu</a>
-      <a href="shoppingcart.html"
-        ><i data-feather="shopping-cart"></i>Pesanan</a
-      >
-      <a href="#" id="profileLink"
-        ><i data-feather="user"></i>Profil</a
-      >
+      <a href="cart.html"><i data-feather="shopping-cart"></i>Pesanan</a>
+      <a href="#" id="profileLink"><i data-feather="user"></i>Profil</a>
     </div>
     <script>
       // Cek status login dari localStorage
