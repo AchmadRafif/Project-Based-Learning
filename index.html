@@ -20,7 +20,7 @@
     <style>
       :root {
         --redcolor: #bf0f0f;
-        --blacknav: #383838;
+        --blacknav: #272727;
         --greencolor: #89c946;
         --yellow: #f49a24;
       }
@@ -657,10 +657,10 @@
 
       /* Footer */
       .footer {
-        margin-top: 8vh;
-        padding: 60px 7% 30px;
-        background-color: #fff;
-        color: #000;
+        margin-top: 20vh;
+        padding: 8rem 7% 30px;
+        background-color: var(--blacknav);
+        color: #fff;
         font-family: "Poppins", sans-serif;
       }
 
@@ -692,7 +692,7 @@
 
       .footerleft p {
         margin: 15px 0;
-        color: #333;
+        color: #d4d4d4;
         line-height: 1.5;
       }
 
@@ -703,7 +703,7 @@
       }
 
       .socialicons a {
-        color: #000;
+        color: #ededed;
         font-size: 1.3rem;
         transition: color 0.3s ease;
       }
@@ -723,7 +723,7 @@
         font-weight: 700;
         margin-bottom: 15px;
         text-transform: uppercase;
-        color: #111;
+        color: #d4d4d4;
       }
 
       .footercolumn ul {
@@ -738,7 +738,7 @@
 
       .footercolumn ul li a {
         text-decoration: none;
-        color: #444;
+        color: #ededed;
         transition: color 0.3s;
       }
 
@@ -749,7 +749,7 @@
       .footerbottom {
         text-align: center;
         font-size: 0.9rem;
-        color: #666;
+        color: #ededed;
         margin-top: 40px;
         padding-top: 20px;
       }
@@ -840,6 +840,12 @@
         .footercontainer {
           flex-direction: column;
           align-items: center;
+          text-align: center;
+        }
+
+        .footer img {
+          /* justify-content: center; */
+          /* align-items: center; */
           text-align: center;
         }
 
@@ -1039,17 +1045,17 @@
 
       <div class="promocontainer">
         <div class="promoimg">
-          <img src="img/Home.jpg" alt="" />
+          <a href="promodisplay1.html"><img src="img/Promo/promo1.png" alt="" /></a>
         </div>
         <div class="promoimg">
-          <img src="img/Home.jpg" alt="" />
+          <a href="promodisplay2.html"><img src="img/Promo/promo2.png" alt="" /></a>
         </div>
       </div>
     </section>
     <!-- Promo Section end -->
 
     <!-- Menu Section Start -->
-    <section class="menu-favorit">
+    <section class="menu-favorit" id="menufav">
       <div class="menu-header">
         <h2>Menu Favorit</h2>
       </div>
@@ -1184,12 +1190,13 @@
         <!-- Kolom 3 -->
         <div class="footercolumn">
           <h3>Lokasi Outlet</h3>
-          <img
-            src="lokasi.jpg"
+          <a href="https://maps.app.goo.gl/LTvoLGByuV2yoX4r5"><img
+            src="img/footermap.png"
             alt="Peta Lokasi Kedai TaKi ID"
-            style="width: 100%; border-radius: 8px; margin-bottom: 10px"
-          />
-          <p style="color: #333; font-size: 0.9rem; line-height: 1.5">
+            style="width: 200px; border-radius: 8px; margin-bottom: 10px"
+            class="footermaps"
+          /></a>
+          <p style="color: #ededed; font-size: 0.9rem; line-height: 1.5">
             Kejawan Gebang III No.22,<br />
             RT.002/RW.04, Gebang Putih, Kec. Sukolilo,<br />
             Surabaya, Jawa Timur 60117

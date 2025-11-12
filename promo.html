@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Promo Kami - TaKi</title>
+    <style>
+      /* === GLOBAL STYLE === */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+      }
+
+      body {
+        background-color: #f6f6f6;
+        color: #222;
+        padding-top: 90px; /* agar tidak tertutup navbar */
+        padding-bottom: 100px;
+      }
+
+      /* ===== Tombol Ke Beranda ===== */
+      .backbtn {
+        position: fixed;
+        top: 1.5rem;
+        left: 2rem;
+        background-color: #bf0f0f;
+        color: #fff;
+        text-decoration: none;
+        padding: 0.6rem 1.4rem;
+        border-radius: 30px;
+        font-weight: 600;
+        font-size: 0.9rem;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        transition: all 0.25s ease;
+        z-index: 1000;
+      }
+
+      .backbtn:hover {
+        background-color: #c30000;
+        transform: translateY(-2px);
+      }
+
+      header {
+        text-align: center;
+        padding: 4rem 0 2rem;
+      }
+
+      header h1 {
+        font-size: 2rem;
+        font-weight: 700;
+        color: #222;
+        margin: 0;
+      }
+
+      header p {
+        color: #777;
+      }
+
+      /* === SECTION PROMO === */
+      .promo-section {
+        width: 90%;
+        max-width: 1200px;
+        margin: auto;
+        margin-top: 30px;
+      }
+
+      .promo-section h2 {
+        font-size: 2rem;
+        margin-bottom: 25px;
+        font-weight: 700;
+      }
+
+      .promo-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 25px;
+        align-items: stretch;
+      }
+
+      .promo-link {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      .promo-card {
+        background: #f6f6f6;
+        border-radius: 16px;
+        /* box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08); */
+        overflow: hidden;
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+        cursor: pointer;
+        height: 100%;
+      }
+
+      .promo-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+      }
+
+      .promo-card img {
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+      }
+
+      .promo-content {
+        padding: 15px;
+      }
+
+      .promo-content h3 {
+        font-size: 1.1rem;
+        margin-bottom: 8px;
+        font-weight: 600;
+      }
+
+      .promo-content p {
+        font-size: 0.9rem;
+        color: #666;
+      }
+
+      /* RESPONSIVE */
+      @media (max-width: 600px) {
+        .navbar-links {
+          gap: 15px;
+        }
+        .navbar-links a {
+          font-size: 14px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Tombol Kembali -->
+    <a href="index.html#promo" class="backbtn">⟵ Kembali</a>
+
+    <!-- === PROMO SECTION === -->
+    <header>
+      <h1>Promo Kami</h1>
+      <p>*promo hanya bisa didapatkan saat anda makan di tempat.    </p>
+    </header>
+
+    <section class="promo-section">
+      <div class="promo-container">
+        <a href="promo1.html" class="promo-link">
+          <div class="promo-card">
+            <img src="img/Promo/promo1.png" alt="Promo Satay Dumpling Keju" />
+            <div class="promo-content">
+              <h3>Promo Satay Dumpling Keju</h3>
+              <p>Dapatkan dumpling keju dengan harga hanya Rp8.000</p>
+            </div>
+          </div>
+        </a>
+
+        <a href="promo2.html" class="promo-link">
+          <div class="promo-card">
+            <img src="img/Promo/promo2.png" alt="Promo Gila Serba Murah" />
+            <div class="promo-content">
+              <h3>Promo Gila Serba Murah</h3>
+              <p>
+                Nasi Gila Sosis dan Nasi Gila Siomay hanya Rp12.000, Nasi Gila
+                Original hanya Rp9.000
+              </p>
+            </div>
+          </div>
+        </a>
+
+        <a href="promo3.html" class="promo-link">
+          <div class="promo-card">
+            <img src="img/Promo/promo3.png" alt="Promo Cireng Kuah Keju Creamy" />
+            <div class="promo-content">
+              <h3>Promo Cireng Kuah Keju Creamy</h3>
+              <h3>Hanya Rp15.000</h3>
+            </div>
+          </div>
+        </a>
+
+        <a href="promo4.html" class="promo-link">
+          <div class="promo-card">
+            <img src="img/Promo/promo4.png" alt="Promo Spesial Duo Maut Taki" />
+            <div class="promo-content">
+              <h3>Promo Spesial Duo Maut Taki</h3>
+              <p>
+                Suki Kuah Bakso Reguler & Nasi Gila Original, bonus Es Teh Jumbo
+                hanya Rp20.000
+              </p>
+            </div>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- === SCRIPT (opsional animasi kecil) === -->
+    <script>
+      // Animasi kecil saat scroll
+      window.addEventListener("scroll", () => {
+        const nav = document.querySelector(".navbar");
+        if (window.scrollY > 10) {
+          nav.style.transform = "scale(0.98)";
+        } else {
+          nav.style.transform = "scale(1)";
+        }
+      });
+    </script>
+
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script>
+      feather.replace();
+    </script>
+  </body>
+</html>

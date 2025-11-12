@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Promo Satay Dumpling Keju - TaKi</title>
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <style>
+      /* === GLOBAL STYLE === */
+
+      html {
+        overflow-y: scroll;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+      }
+
+      body {
+        background-color: #f6f6f6;
+        color: #222;
+        padding-top: 90px;
+        padding-bottom: 100px;
+      }
+
+      /* === NAVBAR ===
+      .navbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background-color: #ededed;
+        position: fixed;
+        top: 1.4rem;
+        left: 7rem;
+        right: 7rem;
+        z-index: 9999;
+        padding: 0.3rem 2rem;
+        border-radius: 1rem;
+        transition: all 0.3s ease-in-out;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+      }
+
+      .navbar img {
+        width: 55px;
+      }
+
+      .navbar .navsection {
+        display: flex;
+        align-items: center;
+        gap: 3rem;
+      }
+
+      .navbar .navmenu {
+        display: flex;
+        align-items: center;
+        gap: 3rem;
+      }
+
+      .navbar .navmenu a {
+        text-decoration: none;
+        color: #222;
+        font-size: 1.1rem;
+        transition: all 0.2s ease-in-out;
+      }
+
+      .navbar .navmenu a:hover {
+        color: #e3252f;
+      }
+
+      .navbar .navicon {
+        display: flex;
+        align-items: center;
+        gap: 3rem;
+      }
+
+      .navbar .navicon a {
+        text-decoration: none;
+        color: inherit;
+        transition: all 0.2s ease-in-out;
+      }
+
+      .navbar .navicon a:hover {
+        color: #e3252f;
+      } */
+
+      /* === SECTION PROMO DETAIL === */
+      .promo-detail {
+        width: 90%;
+        max-width: 1000px;
+        margin: auto;
+        margin-top: 30px;
+      }
+
+       /* ===== Tombol Ke Beranda ===== */
+      .backbtn {
+        position: fixed;
+        top: 1.5rem;
+        left: 2rem;
+        background-color: #bf0f0f;
+        color: #fff;
+        text-decoration: none;
+        padding: 0.6rem 1.4rem;
+        border-radius: 30px;
+        font-weight: 600;
+        font-size: 0.9rem;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        transition: all 0.25s ease;
+        z-index: 1000;
+      }
+
+      .backbtn:hover {
+        background-color: #c30000;
+        transform: translateY(-2px);
+      }
+
+      .promo-detail-container {
+        display: flex;
+        align-items: flex-start;
+        gap: 30px;
+        flex-wrap: wrap;
+      }
+
+      .promo-detail img {
+        width: 500px;
+        border-radius: 16px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        object-fit: contain;
+      }
+
+      .promo-info {
+        flex: 1;
+        min-width: 280px;
+      }
+
+      .promo-info h4 {
+        color: #999;
+        font-size: 0.9rem;
+        font-weight: 600;
+        margin-bottom: 6px;
+      }
+
+      .promo-info h2 {
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin-bottom: 10px;
+      }
+
+      .promo-info p {
+        font-size: 1rem;
+        color: #555;
+        line-height: 1.6;
+        margin-bottom: 20px;
+      }
+
+      .promo-list {
+        margin-left: 20px;
+        margin-bottom: 15px;
+        color: #555;
+        font-size: 1rem;
+        line-height: 1.5;
+        list-style-type: disc;
+      }
+
+      .promo-list li::marker {
+        color: #e3252f;
+        font-size: 1.2em;
+      }
+
+      .btn-pesan {
+        display: block;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        width: 100%;
+        background-color: #e3252f;
+        color: white;
+        padding: 12px 25px;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        cursor: pointer;
+      }
+
+      .btn-pesan:hover {
+        background-color: #c81e28;
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+      }
+
+      /* RESPONSIVE */
+      @media (max-width: 768px) {
+        .promo-detail-container {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .promo-detail img {
+          width: 100%;
+          max-width: 450px;
+        }
+
+        .promo-info {
+          text-align: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+
+    <!-- === PROMO DETAIL SECTION === -->
+    <section class="promo-detail">
+      <!-- Tombol Kembali -->
+    <a href="promo.html" class="backbtn">⟵ Kembali</a>
+
+      <div class="promo-detail-container">
+        <img src="img/Promo/promo4.png" alt="Promo Satay Dumpling Keju" />
+
+        <div class="promo-info">
+          <h4>PROMO MENU</h4>
+          <h2>Promo Cireng Kuah Keju</h2>
+          <p>
+            Seporsi cireng keju dengan kuah keju yang creamy dan hangat, siap
+            untuk membuatmu lebih semangat
+          </p>
+          <a href="https://maps.app.goo.gl/LTvoLGByuV2yoX4r5" class="btn-pesan">Pesan Sekarang</a>
+        </div>
+      </div>
+    </section>
+
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script>
+      feather.replace();
+    </script>
+  </body>
+</html>

@@ -153,7 +153,8 @@
       }
 
       input[type="text"],
-      input[type="email"] {
+      input[type="email"],
+      input[type="password"] {
         padding: 12px;
         border: 1px solid #ddd;
         border-radius: 8px;
@@ -322,6 +323,11 @@
                 <input type="text" id="phoneField" readonly />
               </div>
             </div>
+
+            <div class="form-group">
+              <label>Password <span>*</span></label>
+              <input type="password" id="passwordField" readonly />
+            </div>
           </form>
         </div>
       </div>
@@ -364,6 +370,7 @@
         document.getElementById("nameField").value = userData.name;
         document.getElementById("emailField").value = userData.address;
         document.getElementById("phoneField").value = userData.phone;
+        document.getElementById("passwordField").value = userData.password;
       }
 
       // Popup Logout
