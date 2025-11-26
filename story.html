@@ -383,10 +383,10 @@
 
       /* Footer */
       .footer {
-        margin-top: 8vh;
-        padding: 60px 7% 30px;
-        background-color: var(--bgstory);
-        color: #000;
+        margin-top: 20vh;
+        padding: 8rem 7% 30px;
+        background-color: var(--blacknav);
+        color: #fff;
         font-family: "Poppins", sans-serif;
       }
 
@@ -418,7 +418,7 @@
 
       .footerleft p {
         margin: 15px 0;
-        color: #333;
+        color: #d4d4d4;
         line-height: 1.5;
       }
 
@@ -429,7 +429,7 @@
       }
 
       .socialicons a {
-        color: #000;
+        color: #ededed;
         font-size: 1.3rem;
         transition: color 0.3s ease;
       }
@@ -449,7 +449,7 @@
         font-weight: 700;
         margin-bottom: 15px;
         text-transform: uppercase;
-        color: #111;
+        color: #d4d4d4;
       }
 
       .footercolumn ul {
@@ -464,7 +464,7 @@
 
       .footercolumn ul li a {
         text-decoration: none;
-        color: #444;
+        color: #ededed;
         transition: color 0.3s;
       }
 
@@ -475,7 +475,7 @@
       .footerbottom {
         text-align: center;
         font-size: 0.9rem;
-        color: #666;
+        color: #ededed;
         margin-top: 40px;
         padding-top: 20px;
       }
@@ -623,12 +623,12 @@
       </div>
       <div class="navsection">
         <div class="navmenu">
-          <a href="index.html">Home</a>
-          <a href="menu.html">Menu</a>
+          <a href="index.php">Home</a>
+          <a href="menu.php">Menu</a>
           <a href="#">Brand Story</a>
         </div>
         <div class="navicon">
-          <a href="shoppingcart.html"><i data-feather="shopping-cart"></i></a>
+          <a href="cart.php"><i data-feather="shopping-cart"></i></a>
           <a href=""><i data-feather="user"></i></a>
         </div>
       </div>
@@ -724,7 +724,7 @@
 
       <div class="slogan">
         <h2>Gak Wareg Gak Mandeg</h2>
-        <a href="index.html" class="btnpesan">Pesan Sekarang</a>
+        <a href="index.php" class="btnpesan">Pesan Sekarang</a>
       </div>
     </section>
 
@@ -743,8 +743,8 @@
           </p>
           <div class="socialicons">
             <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
-            <a href="#"><i class="fa-brands fa-facebook"></i></a>
             <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#"><i class="fa-brands fa-tiktok"></i></a>
           </div>
         </div>
 
@@ -752,21 +752,23 @@
         <div class="footercolumn">
           <h3>Navigasi</h3>
           <ul>
-            <li><a href="#">Beranda</a></li>
-            <li><a href="#">Menu</a></li>
-            <li><a href="#">Tentang Kami</a></li>
+            <li><a href="index.php">Beranda</a></li>
+            <li><a href="menu.php">Menu</a></li>
+            <li><a href="story.php">Tentang Kami</a></li>
           </ul>
         </div>
 
         <!-- Kolom 3 -->
         <div class="footercolumn">
           <h3>Lokasi Outlet</h3>
-          <img
-            src="lokasi.jpg"
-            alt="Peta Lokasi Kedai TaKi ID"
-            style="width: 100%; border-radius: 8px; margin-bottom: 10px"
-          />
-          <p style="color: #333; font-size: 0.9rem; line-height: 1.5">
+          <a href="https://maps.app.goo.gl/LTvoLGByuV2yoX4r5"
+            ><img
+              src="img/footermap.png"
+              alt="Peta Lokasi Kedai TaKi ID"
+              style="width: 200px; border-radius: 8px; margin-bottom: 10px"
+              class="footermaps"
+          /></a>
+          <p style="color: #ededed; font-size: 0.9rem; line-height: 1.5">
             Kejawan Gebang III No.22,<br />
             RT.002/RW.04, Gebang Putih, Kec. Sukolilo,<br />
             Surabaya, Jawa Timur 60117
@@ -780,9 +782,9 @@
 
     <!-- Bottom Navigation -->
     <div class="bottomnav">
-      <a href="index.html"><i data-feather="home"></i>Home</a>
-      <a href="menu.html"><i data-feather="book-open"></i>Menu</a>
-      <a href="cart.html"><i data-feather="shopping-cart"></i>Pesanan</a>
+      <a href="index.php"><i data-feather="home"></i>Home</a>
+      <a href="menu.php"><i data-feather="book-open"></i>Menu</a>
+      <a href="cart.php"><i data-feather="shopping-cart"></i>Pesanan</a>
       <a href="#"><i data-feather="user"></i>Profil</a>
     </div>
 

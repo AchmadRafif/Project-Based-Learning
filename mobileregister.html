@@ -297,10 +297,20 @@
           />
         </div>
 
+        <div class="form-group">
+          <label for="password"
+            >Password <span style="color: red">*</span></label
+          >
+          <input
+            type="text"
+            id="password"
+            placeholder="Masukkan password anda"
+            required
+          />
+        </div>
+
         <button type="submit" class="submit-btn">Selesai</button>
       </form>
-
-      <a href="index.html" class="back-link">Kembali ke Beranda</a>
     </div>
 
     <!-- Toast Popup -->
@@ -330,7 +340,7 @@
           window.location.href = "mobileprofile.html";
         } else {
           // Jika belum login, arahkan ke halaman register
-          window.location.href = "register.html";
+          window.location.href = "mobileregister.html";
         }
       });
     </script>
@@ -353,13 +363,14 @@
         const name = document.getElementById("name").value.trim();
         const address = document.getElementById("address").value.trim();
         const phone = document.getElementById("phone").value.trim();
+        const password = document.getElementById("password").value.trim();
 
-        if (!name || !address || !phone) {
+        if (!name || !address || !phone || !password) {
           showToast("Harap isi semua data dengan benar!", "error");
           return;
         }
 
-        const user = { name, address, phone };
+        const user = { name, address, phone, password };
         localStorage.setItem("userData", JSON.stringify(user));
         localStorage.setItem("isLoggedIn", "true");
 
