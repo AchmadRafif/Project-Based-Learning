@@ -2,166 +2,240 @@
 session_start();
 include "config.php";
 
+// Set JSON response header
 header('Content-Type: application/json');
 
-// Cek login
+// Check if user is logged in
 if (!isset($_SESSION['user_id'])) {
-    echo json_encode(['success' => false, 'message' => 'Unauthorized']);
+    echo json_encode([
+        'success' => false,
+        'message' => 'Anda harus login terlebih dahulu',
+        'redirect' => 'mobileregister.html'
+    ]);
     exit;
 }
 
 $user_id = $_SESSION['user_id'];
-$action = $_POST['action'] ?? '';
+$action = isset($_POST['action']) ? $_POST['action'] : '';
 
-try {
-    switch ($action) {
-        case 'add':
-            // Tambah item ke cart
-            $menu_id = intval($_POST['menu_id']);
-            $quantity = intval($_POST['quantity'] ?? 1);
-            $level = isset($_POST['level']) ? intval($_POST['level']) : null;
-
-            // Validasi menu exists
-            $checkMenu = mysqli_prepare($conn, "SELECT stock FROM menu WHERE id = ?");
-            mysqli_stmt_bind_param($checkMenu, "i", $menu_id);
-            mysqli_stmt_execute($checkMenu);
-            $menuResult = mysqli_stmt_get_result($checkMenu);
-            $menu = mysqli_fetch_assoc($menuResult);
-
-            if (!$menu) {
-                echo json_encode(['success' => false, 'message' => 'Menu tidak ditemukan']);
-                exit;
-            }
-
-            if ($menu['stock'] < $quantity) {
-                echo json_encode(['success' => false, 'message' => 'Stok tidak mencukupi']);
-                exit;
-            }
-
-            // Cek apakah item sudah ada di cart
-            $checkCart = mysqli_prepare($conn, "
-                SELECT id, quantity FROM cart 
-                WHERE user_id = ? AND menu_id = ? AND (level = ? OR (level IS NULL AND ? IS NULL))
-            ");
-            mysqli_stmt_bind_param($checkCart, "iiii", $user_id, $menu_id, $level, $level);
-            mysqli_stmt_execute($checkCart);
-            $cartResult = mysqli_stmt_get_result($checkCart);
-            $existingCart = mysqli_fetch_assoc($cartResult);
-
-            if ($existingCart) {
-                // Update quantity
-                $newQty = $existingCart['quantity'] + $quantity;
-                
-                if ($newQty > $menu['stock']) {
-                    echo json_encode(['success' => false, 'message' => 'Jumlah melebihi stok tersedia']);
-                    exit;
-                }
-
-                if ($newQty > 10) {
-                    echo json_encode(['success' => false, 'message' => 'Maksimal 10 item per menu']);
-                    exit;
-                }
-
-                $updateCart = mysqli_prepare($conn, "UPDATE cart SET quantity = ? WHERE id = ?");
-                mysqli_stmt_bind_param($updateCart, "ii", $newQty, $existingCart['id']);
-                mysqli_stmt_execute($updateCart);
-            } else {
-                // Insert new
-                if ($level !== null) {
-                    $insertCart = mysqli_prepare($conn, "
-                        INSERT INTO cart (user_id, menu_id, quantity, level) 
-                        VALUES (?, ?, ?, ?)
-                    ");
-                    mysqli_stmt_bind_param($insertCart, "iiii", $user_id, $menu_id, $quantity, $level);
-                } else {
-                    $insertCart = mysqli_prepare($conn, "
-                        INSERT INTO cart (user_id, menu_id, quantity) 
-                        VALUES (?, ?, ?)
-                    ");
-                    mysqli_stmt_bind_param($insertCart, "iii", $user_id, $menu_id, $quantity);
-                }
-                mysqli_stmt_execute($insertCart);
-            }
-
-            echo json_encode(['success' => true, 'message' => 'Berhasil ditambahkan ke keranjang']);
-            break;
-
-        case 'update':
-            // Update quantity
-            $cart_id = intval($_POST['cart_id']);
-            $quantity = intval($_POST['quantity']);
-
-            if ($quantity < 1 || $quantity > 10) {
-                echo json_encode(['success' => false, 'message' => 'Jumlah tidak valid']);
-                exit;
-            }
-
-            // Get menu price for subtotal
-            $getPrice = mysqli_prepare($conn, "
-                SELECT m.harga 
-                FROM cart c 
-                JOIN menu m ON c.menu_id = m.id 
-                WHERE c.id = ? AND c.user_id = ?
-            ");
-            mysqli_stmt_bind_param($getPrice, "ii", $cart_id, $user_id);
-            mysqli_stmt_execute($getPrice);
-            $priceResult = mysqli_stmt_get_result($getPrice);
-            $priceData = mysqli_fetch_assoc($priceResult);
-
-            if (!$priceData) {
-                echo json_encode(['success' => false, 'message' => 'Item tidak ditemukan']);
-                exit;
-            }
-
-            $updateCart = mysqli_prepare($conn, "
-                UPDATE cart SET quantity = ? WHERE id = ? AND user_id = ?
-            ");
-            mysqli_stmt_bind_param($updateCart, "iii", $quantity, $cart_id, $user_id);
-            mysqli_stmt_execute($updateCart);
-
-            $subtotal = $priceData['harga'] * $quantity;
-
-            echo json_encode([
-                'success' => true,
-                'subtotal' => $subtotal
-            ]);
-            break;
-
-        case 'remove':
-            // Hapus item dari cart
-            $cart_id = intval($_POST['cart_id']);
-
-            $deleteCart = mysqli_prepare($conn, "DELETE FROM cart WHERE id = ? AND user_id = ?");
-            mysqli_stmt_bind_param($deleteCart, "ii", $cart_id, $user_id);
-            mysqli_stmt_execute($deleteCart);
-
-            // Hitung sisa cart
-            $countCart = mysqli_prepare($conn, "SELECT COUNT(*) as count FROM cart WHERE user_id = ?");
-            mysqli_stmt_bind_param($countCart, "i", $user_id);
-            mysqli_stmt_execute($countCart);
-            $countResult = mysqli_stmt_get_result($countCart);
-            $countData = mysqli_fetch_assoc($countResult);
-
-            echo json_encode([
-                'success' => true,
-                'cart_count' => $countData['count']
-            ]);
-            break;
-
-        case 'clear':
-            // Kosongkan cart
-            $clearCart = mysqli_prepare($conn, "DELETE FROM cart WHERE user_id = ?");
-            mysqli_stmt_bind_param($clearCart, "i", $user_id);
-            mysqli_stmt_execute($clearCart);
-
-            echo json_encode(['success' => true]);
-            break;
-
-        default:
-            echo json_encode(['success' => false, 'message' => 'Invalid action']);
+// ============================================
+// ADD TO CART
+// ============================================
+if ($action === 'add') {
+    $menu_id = mysqli_real_escape_string($conn, $_POST['menu_id']);
+    $quantity = isset($_POST['quantity']) ? (int)$_POST['quantity'] : 1;
+    $level = isset($_POST['level']) ? (int)$_POST['level'] : null; // Level untuk Seblak
+    
+    // Validasi menu exists dan stock cukup
+    $checkMenu = mysqli_query($conn, "SELECT * FROM menu WHERE id = '$menu_id'");
+    
+    if (mysqli_num_rows($checkMenu) === 0) {
+        echo json_encode([
+            'success' => false,
+            'message' => 'Menu tidak ditemukan'
+        ]);
+        exit;
     }
-} catch (Exception $e) {
-    error_log("Error in cart_handler.php: " . $e->getMessage());
-    echo json_encode(['success' => false, 'message' => 'Server error']);
+    
+    $menu = mysqli_fetch_assoc($checkMenu);
+    
+    // Maksimal quantity adalah 10 atau stock (mana yang lebih kecil)
+    $maxQuantity = min(10, $menu['stock']);
+    
+    if ($quantity > $maxQuantity) {
+        echo json_encode([
+            'success' => false,
+            'message' => 'Maksimal ' . $maxQuantity . ' item per menu'
+        ]);
+        exit;
+    }
+    
+    if ($menu['stock'] < $quantity) {
+        echo json_encode([
+            'success' => false,
+            'message' => 'Stok tidak mencukupi. Stok tersedia: ' . $menu['stock']
+        ]);
+        exit;
+    }
+    
+    // Cek apakah menu dengan level yang sama sudah ada di cart
+    $levelCondition = $level !== null ? "AND level = $level" : "AND level IS NULL";
+    $checkCart = mysqli_query($conn, "
+        SELECT * FROM cart 
+        WHERE user_id = '$user_id' AND menu_id = '$menu_id' $levelCondition
+    ");
+    
+    if (mysqli_num_rows($checkCart) > 0) {
+        // Update quantity jika sudah ada
+        $cart = mysqli_fetch_assoc($checkCart);
+        $newQuantity = $cart['quantity'] + $quantity;
+        
+        // Validasi total quantity tidak melebihi 10 atau stock
+        if ($newQuantity > $maxQuantity) {
+            echo json_encode([
+                'success' => false,
+                'message' => 'Maksimal ' . $maxQuantity . ' item per menu'
+            ]);
+            exit;
+        }
+        
+        if ($newQuantity > $menu['stock']) {
+            echo json_encode([
+                'success' => false,
+                'message' => 'Jumlah pesanan melebihi stok yang tersedia'
+            ]);
+            exit;
+        }
+        
+        mysqli_query($conn, "
+            UPDATE cart 
+            SET quantity = '$newQuantity',
+                updated_at = NOW()
+            WHERE id = '{$cart['id']}'
+        ");
+        
+        $message = 'Jumlah menu berhasil diperbarui';
+    } else {
+        // Insert baru
+        $levelValue = $level !== null ? "'$level'" : "NULL";
+        mysqli_query($conn, "
+            INSERT INTO cart (user_id, menu_id, quantity, level)
+            VALUES ('$user_id', '$menu_id', '$quantity', $levelValue)
+        ");
+        
+        $message = 'Menu berhasil ditambahkan ke keranjang';
+    }
+    
+    // Get total cart items
+    $countQuery = mysqli_query($conn, "
+        SELECT COUNT(*) as total FROM cart WHERE user_id = '$user_id'
+    ");
+    $totalItems = mysqli_fetch_assoc($countQuery)['total'];
+    
+    echo json_encode([
+        'success' => true,
+        'message' => $message,
+        'cart_count' => $totalItems
+    ]);
+    exit;
 }
+
+// ============================================
+// UPDATE QUANTITY
+// ============================================
+if ($action === 'update') {
+    $cart_id = mysqli_real_escape_string($conn, $_POST['cart_id']);
+    $quantity = (int)$_POST['quantity'];
+    
+    if ($quantity < 1) {
+        echo json_encode([
+            'success' => false,
+            'message' => 'Jumlah minimal adalah 1'
+        ]);
+        exit;
+    }
+    
+    // Cek stock dan hitung max quantity (10 atau stock, mana yang lebih kecil)
+    $checkStock = mysqli_query($conn, "
+        SELECT m.stock, m.harga, c.menu_id
+        FROM cart c
+        JOIN menu m ON c.menu_id = m.id
+        WHERE c.id = '$cart_id' AND c.user_id = '$user_id'
+    ");
+    
+    if (mysqli_num_rows($checkStock) === 0) {
+        echo json_encode([
+            'success' => false,
+            'message' => 'Item tidak ditemukan'
+        ]);
+        exit;
+    }
+    
+    $data = mysqli_fetch_assoc($checkStock);
+    $maxQuantity = min(10, $data['stock']);
+    
+    if ($quantity > $maxQuantity) {
+        echo json_encode([
+            'success' => false,
+            'message' => 'Maksimal ' . $maxQuantity . ' item per menu'
+        ]);
+        exit;
+    }
+    
+    mysqli_query($conn, "
+        UPDATE cart 
+        SET quantity = '$quantity',
+            updated_at = NOW()
+        WHERE id = '$cart_id' AND user_id = '$user_id'
+    ");
+    
+    $subtotal = $data['harga'] * $quantity;
+    
+    echo json_encode([
+        'success' => true,
+        'message' => 'Jumlah berhasil diperbarui',
+        'subtotal' => $subtotal
+    ]);
+    exit;
+}
+
+// ============================================
+// REMOVE FROM CART
+// ============================================
+if ($action === 'remove') {
+    $cart_id = mysqli_real_escape_string($conn, $_POST['cart_id']);
+    
+    mysqli_query($conn, "
+        DELETE FROM cart 
+        WHERE id = '$cart_id' AND user_id = '$user_id'
+    ");
+    
+    // Get total cart items
+    $countQuery = mysqli_query($conn, "
+        SELECT COUNT(*) as total FROM cart WHERE user_id = '$user_id'
+    ");
+    $totalItems = mysqli_fetch_assoc($countQuery)['total'];
+    
+    echo json_encode([
+        'success' => true,
+        'message' => 'Item berhasil dihapus dari keranjang',
+        'cart_count' => $totalItems
+    ]);
+    exit;
+}
+
+// ============================================
+// CLEAR CART
+// ============================================
+if ($action === 'clear') {
+    mysqli_query($conn, "DELETE FROM cart WHERE user_id = '$user_id'");
+    
+    echo json_encode([
+        'success' => true,
+        'message' => 'Keranjang berhasil dikosongkan'
+    ]);
+    exit;
+}
+
+// ============================================
+// GET CART COUNT
+// ============================================
+if ($action === 'count') {
+    $countQuery = mysqli_query($conn, "
+        SELECT COUNT(*) as total FROM cart WHERE user_id = '$user_id'
+    ");
+    $totalItems = mysqli_fetch_assoc($countQuery)['total'];
+    
+    echo json_encode([
+        'success' => true,
+        'count' => $totalItems
+    ]);
+    exit;
+}
+
+// Default response jika action tidak valid
+echo json_encode([
+    'success' => false,
+    'message' => 'Action tidak valid'
+]);
 ?>

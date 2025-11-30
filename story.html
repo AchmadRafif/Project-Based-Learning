@@ -110,7 +110,7 @@
       }
 
       .navbar .navicon a:hover {
-        color: #e3252f;
+        color: var(--yellow);
       }
 
       /* Home Section */
@@ -203,6 +203,13 @@
         flex-wrap: wrap;
         align-items: center;
         gap: 40px;
+        transition: all 0.3s ease;
+        cursor: pointer;
+      }
+
+      .aboutcontainer:hover {
+        transform: scale(1.01);
+        background-color: #9d1919;
       }
 
       .aboutimg img {
@@ -383,10 +390,10 @@
 
       /* Footer */
       .footer {
-        margin-top: 20vh;
-        padding: 8rem 7% 30px;
+        margin-top: 8vh;
+        padding: 60px 7% 30px;
         background-color: var(--blacknav);
-        color: #fff;
+        color: #ffffff;
         font-family: "Poppins", sans-serif;
       }
 
@@ -418,7 +425,7 @@
 
       .footerleft p {
         margin: 15px 0;
-        color: #d4d4d4;
+        color: #ffffff;
         line-height: 1.5;
       }
 
@@ -429,13 +436,13 @@
       }
 
       .socialicons a {
-        color: #ededed;
+        color: #ffffff;
         font-size: 1.3rem;
         transition: color 0.3s ease;
       }
 
       .socialicons a:hover {
-        color: var(--redcolor);
+        color: var(--yellow);
       }
 
       /* Kolom kanan */
@@ -449,7 +456,7 @@
         font-weight: 700;
         margin-bottom: 15px;
         text-transform: uppercase;
-        color: #d4d4d4;
+        color: #ffffff;
       }
 
       .footercolumn ul {
@@ -464,18 +471,18 @@
 
       .footercolumn ul li a {
         text-decoration: none;
-        color: #ededed;
+        color: #ffffff;
         transition: color 0.3s;
       }
 
       .footercolumn ul li a:hover {
-        color: var(--redcolor);
+        color: var(--yellow);
       }
 
       .footerbottom {
         text-align: center;
         font-size: 0.9rem;
-        color: #ededed;
+        color: #b5b5b5;
         margin-top: 40px;
         padding-top: 20px;
       }
@@ -492,14 +499,463 @@
 
         /* Navbar berubah jadi top kecil */
         .navbar {
-          position: fixed;
-          top: 0;
-          left: 0;
-          right: 0;
-          border-radius: 0;
-          padding: 0.8rem 1rem;
+          display: flex;
+          align-items: center;
           justify-content: center;
-          box-shadow: none;
+          position: fixed;
+          top: 0.5rem;
+          left: auto;
+          right: 1.5rem;
+
+          width: 80px;
+          height: 70px; /* Samakan dengan bottomnav */
+          background-color: #fff; /* Background putih */
+          border-radius: 25px; /* Bentuk kapsul */
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08); /* Shadow halus seperti navbar bawah */
+
+          padding: 0 1rem;
+          z-index: 9999;
+
+          padding-top: env(safe-area-inset-top);
+
+          transition: all 0.3s ease;
+        }
+
+        .navbar:hover {
+          transform: scale(1.01) !important;
+          box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Sembunyikan menu dan ikon desktop */
+        .navbar .navmenu,
+        .navbar .navicon {
+          display: none;
+        }
+
+        /* Logo di tengah */
+        .navbar img {
+          width: 45px;
+          height: 45px;
+        }
+
+        /* Section Home */
+        .home {
+          background-image: url(img/Mobile-StoryBanner.png);
+          background-size: cover;
+          background-position: right bottom;
+          background-position-y: 80%;
+          text-align: center;
+          padding-top: 6rem;
+        }
+
+        .home .content h1 {
+          font-size: 1.2rem;
+          max-width: 10rem;
+        }
+
+        .home .content p {
+          font-size: 1rem;
+          max-width: 18rem;
+        }
+
+        .home .textbox h2 {
+          font-size: 2rem;
+          font-weight: 700;
+          color: #000;
+          margin-bottom: 1rem;
+          max-width: 15rem;
+        }
+
+        .home .textbox h2 span {
+          color: var(--redcolor);
+          padding: 0 0.3rem;
+          border-radius: 4px;
+        }
+
+        .home .btn {
+          background-color: var(--redcolor);
+          color: #fff;
+          padding: 0.7rem 1.5rem;
+          border-radius: 8px;
+          font-weight: 600;
+          font-size: 0.9rem;
+          text-decoration: none;
+          transition: 0.3s;
+        }
+
+        .home .btn:hover {
+          background-color: #9d1919;
+        }
+
+        /* Footer */
+        .footercontainer {
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+        }
+
+        /* Bottomnav Mobile */
+        .bottomnav {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          position: fixed;
+          bottom: 0.5rem;
+          left: 2.5rem;
+          right: 2.5rem;
+          height: 70px;
+          background-color: #fff;
+          border-top: 1px solid #ddd;
+          box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.08);
+          border-radius: 25px;
+          z-index: 9999;
+          padding-bottom: env(
+            safe-area-inset-bottom
+          ); /* iPhone notch safe area */
+        }
+
+        .bottomnav a {
+          flex: 1;
+          text-align: center;
+          color: #777;
+          font-size: 0.8rem;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          text-decoration: none;
+          line-height: 1.2;
+          transition: all 0.3s ease;
+        }
+
+        .bottomnav a i {
+          font-size: 1.4rem;
+          margin-bottom: 4px;
+          display: block;
+        }
+
+        .bottomnav a.active {
+          color: var(--redcolor);
+          font-weight: 600;
+        }
+
+        .bottomnav a:hover {
+          color: var(--redcolor);
+          transform: scale(1.05);
+        }
+
+        .bottomnav a span {
+          margin-top: 2px;
+          font-size: 0.75rem;
+        }
+
+        /* Pastikan ikon font-awesome atau remixicon tidak terpotong */
+        .bottomnav i,
+        .bottomnav svg {
+          vertical-align: middle;
+        }
+      }
+
+      /* Tablet 768 - 1024px */
+      @media (min-width: 769px) and (max-width: 1024px) {
+        .navbar {
+          left: 2rem;
+          right: 2rem;
+          padding: 0.5rem 1.5rem;
+        }
+
+        .navbar .navmenu {
+          gap: 2rem;
+        }
+
+        .footercontainer {
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+      }
+
+      /* Popup Login */
+      .popuplogin {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.55);
+        backdrop-filter: blur(3px);
+        z-index: 1000;
+        animation: fadeInBg 0.3s ease;
+      }
+
+      .popuplogin .logcontent {
+        background: #fff;
+        width: 380px;
+        max-width: 90%;
+        margin: 8% auto;
+        padding: 35px 30px 45px;
+        border-radius: 14px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        position: relative;
+        text-align: left;
+        animation: slideIn 0.35s ease;
+      }
+
+      .popuplogin .close {
+        position: absolute;
+        right: 18px;
+        top: 12px;
+        font-size: 24px;
+        color: #888;
+        cursor: pointer;
+        transition: color 0.25s ease;
+      }
+
+      .popuplogin .close:hover {
+        color: #d32f2f;
+      }
+
+      .popuplogin .logcontent h2 {
+        font-size: 22px;
+        font-weight: 600;
+        color: #111;
+        text-align: center;
+        margin-bottom: 6px;
+      }
+
+      .popuplogin .logcontent p {
+        font-size: 14px;
+        color: #666;
+        text-align: center;
+        margin-bottom: 25px;
+      }
+
+      /* Form Login */
+      .popuplogin form {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .popuplogin label {
+        font-weight: 500;
+        font-size: 14px;
+        color: #222;
+      }
+
+      .popuplogin .req {
+        color: #d32f2f;
+      }
+
+      .popuplogin input {
+        width: 100%;
+        padding: 11px 12px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        font-size: 14px;
+        transition: border-color 0.25s;
+      }
+
+      .popuplogin input:focus {
+        border-color: #d32f2f;
+        outline: none;
+      }
+
+      /* Password wrapper */
+      .popuplogin .passwrapper {
+        position: relative;
+      }
+
+      .popuplogin .passwrapper .toggle {
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        cursor: pointer;
+        opacity: 0.6;
+        transition: opacity 0.25s;
+      }
+
+      .popuplogin .passwrapper .toggle:hover {
+        opacity: 1;
+      }
+
+      .popuplogin .forgot {
+        text-align: right;
+        font-size: 13px;
+        color: #d32f2f;
+        text-decoration: none;
+        margin-top: 2px;
+        margin-bottom: 10px;
+      }
+
+      .popuplogin .forgot:hover {
+        text-decoration: underline;
+      }
+
+      /* Buttons */
+      .popuplogin .submitbtn {
+        width: 100%;
+        background: #d32f2f;
+        color: white;
+        border: none;
+        padding: 12px;
+        border-radius: 8px;
+        font-size: 15px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: ease-in-out 0.3s;
+      }
+
+      .popuplogin .submitbtn:hover {
+        background: #b71c1c;
+      }
+
+      /* Divider */
+      .popuplogin .divider {
+        text-align: center;
+        margin: 22px 0 18px;
+        position: relative;
+      }
+
+      .popuplogin .divider span {
+        background: #fff;
+        padding: 0 10px;
+        color: #777;
+        font-size: 13px;
+      }
+
+      .popuplogin .divider::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 0;
+        height: 1px;
+        width: 100%;
+        background: #ddd;
+        transform: translateY(-50%);
+        z-index: -1;
+      }
+
+      /* Google Button */
+      .popuplogin .googlelogin {
+        width: 100%;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 10px 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        background: white;
+        cursor: pointer;
+        transition: all 0.25s;
+      }
+
+      .popuplogin .googlelogin:hover {
+        background: #fafafa;
+      }
+
+      .popuplogin .googlelogin img {
+        width: 20px;
+      }
+
+      .popuplogin .register {
+        text-align: center;
+        font-size: 14px;
+        margin-top: 18px;
+      }
+
+      .popuplogin .register a {
+        color: #2e7d32;
+        font-weight: 500;
+        text-decoration: none;
+      }
+
+      .popuplogin .register a:hover {
+        text-decoration: underline;
+      }
+
+      @keyframes slideIn {
+        from {
+          opacity: 0;
+          transform: translateY(-10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes fadeInBg {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      /* Toast Popup (Sama Seperti Register) */
+      .toast {
+        position: fixed;
+        top: 30px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: #fff;
+        color: #333;
+        border-radius: 12px;
+        padding: 1rem 1.5rem;
+        box-shadow: 0 6px 24px rgba(0, 0, 0, 0.1);
+        font-size: 0.95rem;
+        font-weight: 500;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.4s ease;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        z-index: 9999;
+      }
+
+      .toast.show {
+        opacity: 1;
+        visibility: visible;
+        top: 60px;
+      }
+
+      .toast.success {
+        border-left: 5px solid #2ecc71;
+      }
+
+      .toast.error {
+        border-left: 5px solid #e74c3c;
+      }
+
+      /* Mobile 768px */
+      @media (max-width: 768px) {
+        body {
+          background: var(--bgstory);
+        }
+
+        /* Navbar berubah jadi top kecil */
+        .navbar {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          position: fixed;
+          top: 0.5rem;
+          left: auto;
+          right: 1.5rem;
+          width: 80px;
+          height: 70px; /* Samakan dengan bottomnav */
+          background-color: #fff; /* Background putih */
+          border-radius: 25px; /* Bentuk kapsul */
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08); /* Shadow halus seperti navbar bawah */
+
+          padding: 0 1rem;
+          z-index: 9999;
+
+          padding-top: env(safe-area-inset-top);
+
+          transition: all 0.3s ease;
         }
 
         .navbar .navmenu {
@@ -541,16 +997,17 @@
         /* Bottomnav Mobile */
         .bottomnav {
           display: flex;
-          justify-content: space-around;
+          justify-content: space-between;
           align-items: center;
           position: fixed;
-          bottom: 0;
-          left: 0;
-          right: 0;
+          bottom: 0.5rem;
+          left: 1rem;
+          right: 1rem;
           height: 70px;
           background-color: #fff;
           border-top: 1px solid #ddd;
           box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.08);
+          border-radius: 25px;
           z-index: 9999;
           padding-bottom: env(
             safe-area-inset-bottom
@@ -568,6 +1025,7 @@
           justify-content: center;
           text-decoration: none;
           line-height: 1.2;
+          transition: all 0.3s ease;
         }
 
         .bottomnav a i {
@@ -579,6 +1037,11 @@
         .bottomnav a.active {
           color: var(--redcolor);
           font-weight: 600;
+        }
+
+        .bottomnav a:hover {
+          color: var(--redcolor);
+          transform: scale(1.05);
         }
 
         .bottomnav a span {
@@ -628,8 +1091,8 @@
           <a href="#">Brand Story</a>
         </div>
         <div class="navicon">
-          <a href="cart.php"><i data-feather="shopping-cart"></i></a>
-          <a href=""><i data-feather="user"></i></a>
+          <a href="" class="carticon"><i data-feather="shopping-cart"></i></a>
+          <a href="" class="usericon"><i data-feather="user"></i></a>
         </div>
       </div>
     </nav>
@@ -782,15 +1245,196 @@
 
     <!-- Bottom Navigation -->
     <div class="bottomnav">
-      <a href="index.php"><i data-feather="home"></i>Home</a>
-      <a href="menu.php"><i data-feather="book-open"></i>Menu</a>
-      <a href="cart.php"><i data-feather="shopping-cart"></i>Pesanan</a>
-      <a href="#"><i data-feather="user"></i>Profil</a>
+      <a href="index.php"><i class="fa-solid fa-house"></i>Home</a>
+      <a href="menu.php"><i class="fa-solid fa-book-open"></i>Menu</a>
+      <a href="cart.php"><i class="fa-solid fa-shopping-cart"></i>Pesanan</a>
+      <a href="#" id="profileLink"><i class="fa-solid fa-user"></i>Profil</a>
     </div>
+
+    <!-- Popup Login -->
+    <div class="popuplogin" id="popuplogin">
+      <div class="logcontent">
+        <span class="close" onclick="closePopup()">&times;</span>
+        <h2>Masuk ke Taki ID</h2>
+        <p>Login untuk menikmati fitur lengkap Taki!</p>
+
+        <form id="loginform">
+          <label>Email<span class="req">*</span></label>
+          <input
+            type="email"
+            id="email"
+            placeholder="Masukkan email anda"
+            required
+          />
+
+          <label>Password<span class="req">*</span></label>
+          <div class="passwrapper">
+            <input
+              type="password"
+              id="password"
+              placeholder="Masukkan password anda"
+              required
+            />
+            <span class="toggle" onclick="togglePassword()">
+              <i data-feather="eye"></i>
+            </span>
+          </div>
+
+          <a href="forgotpassword.php" class="forgot">Lupa password?</a>
+          <button type="submit" class="submitbtn">Masuk</button>
+        </form>
+
+        <div class="divider"><span>atau</span></div>
+
+        <button class="googlelogin">
+          <img
+            src="https://www.svgrepo.com/show/355037/google.svg"
+            alt="Google"
+          />
+          Masuk dengan Google
+        </button>
+
+        <p class="register">
+          Belum punya akun? <a href="register.php">Buat akun sekarang</a>
+        </p>
+      </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast"></div>
 
     <!-- Feather Icons -->
     <script>
       feather.replace();
+    </script>
+
+    <script>
+      // Cek status login dari localStorage
+      const profileLink = document.getElementById("profileLink");
+      // const isLoggedIn = localStorage.getItem("isLoggedIn");
+
+      profileLink.addEventListener("click", (e) => {
+        e.preventDefault();
+
+        if (isLoggedIn) {
+          // Jika sudah login, arahkan ke halaman profil
+          window.location.href = "mobileprofile.php";
+        } else {
+          // Jika belum login, arahkan ke halaman register
+          window.location.href = "mobilelogin.php";
+        }
+      });
+    </script>
+
+    <script>
+      // === POPUP CONTROL ===
+      const popup = document.getElementById("popuplogin");
+      const usericons = document.querySelectorAll(".usericon");
+      const carticons = document.querySelectorAll(".carticon");
+      const toast = document.getElementById("toast");
+
+      // === CEK STATUS LOGIN DARI SERVER ===
+      let isLoggedIn = false;
+
+      async function checkLoginStatus() {
+        try {
+          const res = await fetch("checksession.php");
+          const data = await res.json();
+          isLoggedIn = data.loggedIn;
+        } catch (err) {
+          console.error("Gagal cek status login:", err);
+        }
+      }
+
+      // Jalankan saat halaman dimuat
+      checkLoginStatus();
+
+      // === EVENT KLIK ICON USER ===
+      usericons.forEach((icon) => {
+        icon.addEventListener("click", (e) => {
+          e.preventDefault();
+          if (isLoggedIn) {
+            window.location.href = "profile.php";
+          } else {
+            popup.style.display = "block";
+          }
+        });
+      });
+
+      // === EVENT KLIK ICON USER ===
+      carticons.forEach((icon) => {
+        icon.addEventListener("click", (e) => {
+          e.preventDefault();
+          if (isLoggedIn) {
+            window.location.href = "cart.php";
+          } else {
+            popup.style.display = "block";
+          }
+        });
+      });
+
+      function closePopup() {
+        popup.style.display = "none";
+      }
+
+      function togglePassword() {
+        const pass = document.getElementById("password");
+        pass.type = pass.type === "password" ? "text" : "password";
+      }
+
+      // === TOAST NOTIF (SAMA PERSIS KAYA REGISTER) ===
+      function showToast(message, type = "success") {
+        toast.textContent = message;
+        toast.className = `toast show ${type}`;
+        setTimeout(() => {
+          toast.classList.remove("show");
+        }, 2500);
+      }
+
+      // === LOGIN KE BACKEND PHP ===
+      document
+        .getElementById("loginform")
+        .addEventListener("submit", async (e) => {
+          e.preventDefault();
+
+          const email = document.getElementById("email").value.trim();
+          const password = document.getElementById("password").value.trim();
+
+          if (!email || !password) {
+            showToast("Harap isi semua data!", "error");
+            return;
+          }
+
+          try {
+            const res = await fetch("login.php", {
+              method: "POST",
+              body: new URLSearchParams({
+                email,
+                password,
+              }),
+              headers: {
+                "Content-Type": "application/x-www-form-urlencoded",
+              },
+            });
+
+            const data = await res.json();
+
+            if (data.status === "success") {
+              showToast(
+                "Login berhasil! Selamat datang, " + data.name + ".",
+                "success"
+              );
+              setTimeout(() => {
+                closePopup();
+                window.location.href = "profile.php";
+              }, 2200);
+            } else {
+              showToast(data.message || "Email atau password salah!", "error");
+            }
+          } catch (err) {
+            showToast("Gagal menghubungi server!", "error");
+          }
+        });
     </script>
   </body>
 </html>

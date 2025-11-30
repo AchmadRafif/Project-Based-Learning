@@ -78,7 +78,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["delete_account"])) {
         }
 
         body {
-            background-color: #ffffff;
+            background-color: #f9f9f9;
         }
 
         .container {

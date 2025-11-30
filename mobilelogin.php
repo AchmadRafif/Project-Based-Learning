@@ -431,22 +431,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login'])) {
 
     <!-- Bottom Navigation -->
     <div class="bottomnav">
-        <a href="index.php">
-            <i class="fa-solid fa-house"></i>
-            <span>Home</span>
-        </a>
-        <a href="menu.php">
-            <i class="fa-solid fa-book-open"></i>
-            <span>Menu</span>
-        </a>
-        <a href="mobilecartlog.php">
-            <i class="fa-solid fa-shopping-cart"></i>
-            <span>Pesanan</span>
-        </a>
-        <a href="mobileprofile.php" class="active">
-            <i class="fa-solid fa-user"></i>
-            <span>Profil</span>
-        </a>
+      <a href="index.php"><i class="fa-solid fa-house"></i>Home</a>
+      <a href="menu.php"><i class="fa-solid fa-book-open"></i>Menu</a>
+      <a href="cart.php"><i class="fa-solid fa-shopping-cart"></i>Pesanan</a>
+      <a href="#" id="profileLink" class="active"><i class="fa-solid fa-user"></i>Profil</a>
     </div>
 
     <script>

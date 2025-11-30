@@ -542,58 +542,69 @@ $isLoggedIn = isset($_SESSION['user_id']);
     <section class="testimoni">
         <h2 class="testimoni-title">Apa Kata Mereka?</h2>
         <div class="testimoni-container">
-            <a href="https://share.google/7za3KSmYxFveXMuQx">
-                <div class="testimoni-card">
-                    <img
-                        src="img/Tester/DindaRobiatulChusanah.png"
-                        alt=""
-                        class="testi-img" />
-                    <h3>Dinda Robiatul Chasanah</h3>
-                    <p>
-                        “Rekomended buat pecinta seblak kayak akuuu..😍. Bumbunya gapernah
-                        berubah selaluu enakk banget. Harganya juga ramah banget buat
-                        dompet akuu. Dia juga banyak varian pilihanya. Mulai harga 2 rebu
-                        bisa njajan disini”
-                    </p>
+            <div class="testimoni-card-1">
+                <div class="testimoni-card" data-aos="fade-right">
+                    <img src="img/lita.jpeg" alt="" class="testi-img" />
+                    <h3>Arqueeny Pertiwi</h3>
+                    <p>“Seblak nya sangat mantap. Udah kelima kali beli di sini”</p>
                     <div class="stars">
                         <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
                     </div>
                 </div>
-            </a>
+            </div>
 
-            <a href="https://share.google/0pQMHYoKywip8batz">
-                <div class="testimoni-card">
-                    <img src="img/Tester/AstiRahayu.png" alt="" class="testi-img" />
-                    <h3>Asti Rahayu</h3>
-                    <p>
-                        “High recommended ya, bumbu seblaknya pas banget, ngga kurang ngga
-                        lebih, isiannya jg bervariasi. Ini salah satu seblak yg ngangeni
-                        siiih 🥰”
-                    </p>
+            <div class="testimoni-card-2">
+                <div class="testimoni-card" data-aos="zoom-in-up">
+                    <img src="img/nando.jpeg" alt="" class="testi-img" />
+                    <h3>Nando Hartanto</h3>
+                    <p>“Nasi Gila nya beneran gila, rasa nya gila banget men!”</p>
                     <div class="stars">
                         <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
                     </div>
                 </div>
-            </a>
+            </div>
 
-            <a href="https://share.google/M44hVyBUncaMIextJ">
-                <div class="testimoni-card">
-                    <img src="img/Tester/Nusaibah.png" alt="" class="testi-img" />
-                    <h3>Nusaibah</h3>
+            <div class="testimoni-card-3">
+                <div class="testimoni-card" data-aos="fade-left">
+                    <img src="img/nana.jpeg" alt="" class="testi-img" />
+                    <h3>Nana Nusaibah</h3>
                     <p>
-                        “Suki nya comfort food banget, biasanya beli lewat aplikasi
-                        online, kali ini nyoba dateng langsung, menunya macem² mulai dari
-                        suki sampe berbagai macem seblak ada. Tempatnya nyaman, bersih.
-                        Harganya juga murah murah banget. Pembayaran bisa pake QRIS.”
+                        “Ga cuman seblaknya yang enak, sate loklok sama minumannya juga
+                        gokil”
                     </p>
                     <div class="stars">
                         <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
                     </div>
                 </div>
-            </a>
+            </div>
         </div>
     </section>
     <!-- Testimoni Section End -->
+
+    <!-- Ulasan -->
+    <section class="ulasan">
+        <div
+            class="ulasan-container"
+            data-aos="zoom-in"
+            data-aos-duration="750"
+            data-aos-ease="ease">
+            <h2 class="ulasan-title">Beri Ulasan Anda</h2>
+
+            <p class="ulasan-text">
+                Bantu kami meningkatkan pelayanan dengan memberikan ulasan Anda di
+                Google.
+            </p>
+
+            <a
+                href="https://maps.app.goo.gl/Dp6jvfkLaPzzRttu6"
+                class="ulasan-btn"
+                target="_blank"
+                rel="noopener">
+                Beri Ulasan di Google
+            </a>
+        </div>
+    </section>
+    <!-- Ulasan End -->
 
     <!-- Footer Start -->
     <footer class="footer">
@@ -617,8 +628,8 @@ $isLoggedIn = isset($_SESSION['user_id']);
             <div class="footercolumn">
                 <h3>Navigasi</h3>
                 <ul>
-                    <li><a href="index.php">Beranda</a></li>
-                    <li><a href="menu.php">Menu</a></li>
+                    <li><a href="#home">Beranda</a></li>
+                    <li><a href="menu.html">Menu</a></li>
                     <li><a href="story.html">Tentang Kami</a></li>
                 </ul>
             </div>
@@ -626,11 +637,35 @@ $isLoggedIn = isset($_SESSION['user_id']);
             <!-- Kolom 3 -->
             <div class="footercolumn">
                 <h3>Lokasi Outlet</h3>
-                <a href="https://maps.app.goo.gl/LTvoLGByuV2yoX4r5"><img
-                        src="img/footermap.png"
-                        alt="Peta Lokasi Kedai TaKi ID"
-                        style="width: 200px; border-radius: 8px; margin-bottom: 10px"
-                        class="footermaps" /></a>
+
+                <!-- Map responsive -->
+                <div
+                    class="footermap-container"
+                    style="
+              position: relative;
+              width: 100%;
+              padding-bottom: 56.25%;
+              height: 0;
+              overflow: hidden;
+              border-radius: 8px;
+              margin-bottom: 10px;
+            ">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3256.777651913909!2d112.79764207400173!3d-7.285904092721404!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd7fb57d44c77f5%3A0x2585e1deb7a1c3b1!2sSeblak%20Prasmanan%20Taki%20Id!5e1!3m2!1sen!2sid!4v1762998867292!5m2!1sen!2sid"
+                        allowfullscreen=""
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"
+                        style="
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                border: 0;
+              ">
+                    </iframe>
+                </div>
+
                 <p style="color: #ededed; font-size: 0.9rem; line-height: 1.5">
                     Kejawan Gebang III No.22,<br />
                     RT.002/RW.04, Gebang Putih, Kec. Sukolilo,<br />

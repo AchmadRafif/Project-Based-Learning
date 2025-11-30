@@ -404,42 +404,66 @@ $isEmpty = count($cartItems) === 0;
                 flex-direction: column-reverse;
             }
 
-            .bottomnav {
-                display: flex;
-                justify-content: space-around;
-                align-items: center;
-                position: fixed;
-                bottom: 0;
-                left: 0;
-                right: 0;
-                height: 70px;
-                background-color: #fff;
-                border-top: 1px solid #ddd;
-                box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.08);
-                z-index: 9999;
-            }
+            /* Bottomnav Mobile */
+        .bottomnav {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          position: fixed;
+          bottom: 0.5rem;
+          left: 1rem;
+          right: 1rem;
+          height: 70px;
+          background-color: #fff;
+          border-top: 1px solid #ddd;
+          box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.08);
+          border-radius: 25px;
+          z-index: 9999;
+          padding-bottom: env(
+            safe-area-inset-bottom
+          ); /* iPhone notch safe area */
+        }
 
-            .bottomnav a {
-                flex: 1;
-                text-align: center;
-                color: #777;
-                font-size: 0.75rem;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                text-decoration: none;
-                gap: 4px;
-            }
+        .bottomnav a {
+          flex: 1;
+          text-align: center;
+          color: #777;
+          font-size: 0.8rem;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          text-decoration: none;
+          line-height: 1.2;
+          transition: all 0.3s ease;
+        }
 
-            .bottomnav a i {
-                font-size: 1.4rem;
-            }
+        .bottomnav a i {
+          font-size: 1.4rem;
+          margin-bottom: 4px;
+          display: block;
+        }
 
-            .bottomnav a.active {
-                color: var(--redcolor);
-                font-weight: 600;
-            }
+        .bottomnav a.active {
+          color: var(--redcolor);
+          font-weight: 600;
+        }
+
+        .bottomnav a:hover {
+          color: var(--redcolor);
+          transform: scale(1.05);
+        }
+
+        .bottomnav a span {
+          margin-top: 2px;
+          font-size: 0.75rem;
+        }
+
+        /* Pastikan ikon font-awesome atau remixicon tidak terpotong */
+        .bottomnav i,
+        .bottomnav svg {
+          vertical-align: middle;
+        }
         }
 
         /* ============================= */

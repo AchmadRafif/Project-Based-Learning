@@ -19,7 +19,7 @@ body {
   font-family: "Poppins", sans-serif;
   background-color: #ffffff;
   background-attachment: fixed;
-  background-image: url(img/.png);
+  /* background-image: url(img/Mobile-HomeBanner.png); */
   /* min-height: 5000px; */
 }
 
@@ -464,7 +464,7 @@ body {
 }
 
 .promo-banner {
-  background: linear-gradient(135deg, #bf0f0f 0%, #f49a24 100%);
+  background: #fff;
   padding: 2rem 1rem;
 }
 
@@ -777,13 +777,67 @@ body {
   .testimoni-container {
     flex-direction: column;
     align-items: center;
-    justify-content: center;
   }
 
   .testimoni-card {
-    width: 70%;
-    margin: 0 auto;
+    width: 90%;
   }
+}
+
+/* Section Ulasan */
+.ulasan {
+  padding: 4rem 7%;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ulasan-container {
+  background: linear-gradient(135deg, #bf0f0f 0%, #d32f2f 100%);
+  padding: 3rem 2rem;
+  border-radius: 20px;
+  max-width: 600px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  margin: 0 auto;
+}
+
+.ulasan-title {
+  color: #fff;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1.3rem;
+}
+
+/* Teks ajakan */
+.ulasan-text {
+  color: #fff;
+  text-align: center;
+  font-size: 1rem;
+  margin-bottom: 1.8rem;
+  line-height: 1.5;
+}
+
+/* Tombol Google Review */
+.ulasan-btn {
+  display: inline-block;
+  background: #fff;
+  color: #bf0f0f;
+  font-weight: 700;
+  padding: 1rem 2.5rem;
+  border-radius: 40px;
+  text-decoration: none;
+  font-size: 1.1rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.ulasan-btn:hover {
+  background: var(--yellow);
+  color: #fff;
+  transform: translateY(-2px);
 }
 
 /* Footer */
@@ -840,7 +894,7 @@ body {
 }
 
 .socialicons a:hover {
-  color: var(--redcolor);
+  color: var(--yellow);
 }
 
 /* Kolom kanan */
@@ -874,7 +928,7 @@ body {
 }
 
 .footercolumn ul li a:hover {
-  color: var(--redcolor);
+  color: var(--yellow);
 }
 
 .footerbottom {
@@ -889,7 +943,7 @@ body {
   display: none;
 }
 
-/* Mobile 768px */
+/* Mobile All 768px */
 @media (max-width: 768px) {
   body {
     background: #fff;
@@ -897,43 +951,115 @@ body {
 
   /* Navbar berubah jadi top kecil */
   .navbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    border-radius: 0;
-    padding: 0.8rem 1rem;
+    display: flex;
+    align-items: center;
     justify-content: center;
-    box-shadow: none;
+    position: fixed;  
+    top: 0.5rem;
+    left: auto;
+    right: 1.5rem;
+    width: 80px;
+    height: 70px; /* Samakan dengan bottomnav */
+    background-color: #fff; /* Background putih */
+    border-radius: 25px; /* Bentuk kapsul */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08); /* Shadow halus seperti navbar bawah */
+
+    padding: 0 1rem;
+    z-index: 9999;
+
+    padding-top: env(safe-area-inset-top);
+
+    transition: all 0.3s ease;
   }
 
-  .navbar .navmenu {
-    display: none; /* Sembunyikan menu atas di HP */
+  .navbar:hover {
+    transform: scale(1.01) !important;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
   }
 
+  /* Sembunyikan menu dan ikon desktop */
+  .navbar .navmenu,
   .navbar .navicon {
-    display: none; /* Sembunyikan menu atas di HP */
+    display: none;
   }
 
+  /* Logo di tengah */
   .navbar img {
     width: 45px;
+    height: 45px;
   }
 
   /* Section Home */
   .home {
+    margin-top: 0rem;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    background-image: url(img/Mobile-HomeBanner.png);
+    background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    text-align: center;
-    padding-top: 6rem;
+    position: relative;
+    justify-content: center;
+  }
+
+  .home .content {
+    max-width: 200rem;
   }
 
   .home .content h1 {
-    font-size: 1.2rem;
-    max-width: 10rem;
+    font-size: 1.8rem;
+    max-width: 15rem;
+  }
+
+  .home .content h2 {
+    font-size: 1.5rem;
   }
 
   .home .content p {
     font-size: 0.9rem;
+  }
+
+  /* Sign Up */
+  .promotionsign {
+    width: 90%;
+    margin: 4rem auto;
+  }
+
+  .promotionup {
+    background-color: #ededed;
+    border-radius: 25px;
+    padding: 1.2rem 3%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+    gap: 1rem;
+  }
+
+  .promotionup img {
+    width: 50px;
+    border-radius: 10px;
+  }
+
+  .promotionup p {
+    font-size: 0.9rem;
+    color: #222;
+  }
+
+  .promotionup a {
+    background-color: #d72b2b;
+    color: #fff;
+    padding: 0.8rem 1.6rem;
+    border-radius: 25px;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: 0.3s;
+  }
+
+  .promotionup a:hover {
+    background-color: #b62222;
   }
 
   /* Promo */
@@ -951,48 +1077,302 @@ body {
     gap: 1.5rem;
   }
 
+  .promotext h1 {
+    font-size: 1.2rem;
+  }
+
   .promoimg img {
     width: 100%;
     height: auto;
   }
 
   /* Menu Favorit */
+  .menu-favorit {
+    padding: 2rem 5%;
+    text-align: left;
+    background-color: #fff;
+  }
+
+  .menu-header h2 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    color: #1a1a1a;
+    padding-left: 0.5rem;
+  }
+
   .menu-container {
-    flex-direction: column;
-    gap: 1.5rem;
-    align-items: center;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-wrap: wrap; /* Tidak wrap, biar horizontal scroll */
+    gap: 0.5rem;
+    overflow: hidden;
+    padding: 0.5rem;
+    padding-bottom: 1.5rem;
+    scroll-snap-type: x mandatory; /* Smooth snap scrolling */
+    -webkit-overflow-scrolling: touch; /* Smooth scroll di iOS */
+  }
+
+  /* Hide scrollbar tapi tetap bisa scroll */
+  .menu-container::-webkit-scrollbar {
+    height: 4px;
+  }
+
+  .menu-container::-webkit-scrollbar-thumb {
+    background: #ddd;
+    border-radius: 10px;
+  }
+
+  .menu-container::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .menu-card:nth-child(4) {
+    display: none;
+  }
+
+  .menu-card:nth-child(3) {
+    display: none;
   }
 
   .menu-card {
-    width: 90%;
+    display: flex;
+    flex-shrink: 0;
+    flex: 1;
+    width: 155px;
+    max-height: 160px;
+    background: #fff;
+    border-radius: 1rem;
+    border: 1px solid #e0e0e0;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.4rem;
+    padding: 0.7rem;
   }
 
-  /* Footer */
-  .footercontainer {
+  /* Gambar */
+  .menu-card img {
+    width: 100%;
+    height: 180px;
+    aspect-ratio: 1/1;
+    object-fit: contain; /* gambar TIDAK terpotong */
+    background: #fafafa;
+  }
+
+  /* Nama menu */
+  .menu-card h3 {
+    margin: 0.4rem 0 0.2rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #333;
+  }
+
+  /* Harga */
+  .menu-card p {
+    margin: 0 0 0.6rem;
+    font-size: 0.85rem;
+    color: #444;
+    font-weight: 500;
+    text-align: center;
+  }
+
+  .menu-card button {
+    background: var(--redcolor);
+    border: none;
+    padding: 0.4rem 1.2rem;
+    color: #fff;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+    margin-bottom: 0.2rem;
+  }
+
+  .menu-card button:hover {
+    background: #7e0101;
+  }
+
+  .lihat-lainnya {
+    margin-top: 1.5rem;
+    text-align: center;
+  }
+
+  .lihat-lainnya a {
+    display: inline-block;
+    background-color: #ffb300;
+    color: white;
+    padding: 0.6rem 1.5rem;
+    border-radius: 25px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: 0.3s ease;
+  }
+
+  .lihat-lainnya a:hover {
+    background-color: #e09a00;
+    transform: scale(1.05);
+  }
+
+  /* Menu Gerak */
+  .menugerak .text {
+    flex: 0 0 auto;
+    font-size: 50px;
+    font-weight: bold;
+    color: #e9e9e9;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    padding-right: 80px;
+  }
+
+  /* Testimoni*/
+  .testimoni {
+    padding: 6rem 7%;
+    background: #fff;
+    font-family: "Poppins", sans-serif;
+  }
+
+  .testimoni-title {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #222;
+    margin-bottom: 3rem;
+    text-align: center;
+  }
+
+  .testimoni-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: stretch;
+    gap: 3.5rem;
+  }
+
+  .testimoni-card {
+    display: flex;
+    background: #bf0f0f;
+    color: #fff;
+    border-radius: 1.2rem;
+    padding: 1.5rem 1.5rem;
+    width: 250px;
+    height: 300px; /* Fixed height untuk semua card */
+    box-shadow: 0 10px 25px rgba(191, 15, 15, 0.25);
     flex-direction: column;
     align-items: center;
     text-align: center;
+    will-change: transform;
   }
 
-  .footer img {
-    /* justify-content: center; */
-    /* align-items: center; */
+  .testimoni-card:hover {
+    transform: scale(1.01) !important;
+    box-shadow: 0 14px 28px rgba(191, 15, 15, 0.35);
+  }
+
+  .testimoni-card-1,
+  .testimoni-card-2,
+  .testimoni-card-3 {
+    transform: rotate(0deg); /* posisi default */
+    transition: transform 0.3s ease; /* animasi masuk & keluar */
+    will-change: transform; /* bikin lebih halus */
+  }
+
+  /* Card 1 = kiri */
+  .testimoni-container > div:nth-child(1) {
+    justify-self: start;
+  }
+
+  /* Card 2 = kanan */
+  .testimoni-container > div:nth-child(2) {
+    justify-self: end;
+  }
+
+  /* Card 3 = kiri */
+  .testimoni-container > div:nth-child(3) {
+    justify-self: start;
+  }
+
+  .testimoni-card-1:hover {
+    transform: scale(1.01) rotate(-1deg);
+  }
+
+  .testimoni-card-2:hover {
+    transform: rotate(1deg);
+  }
+
+  .testimoni-card-3:hover {
+    transform: scale(1.01) rotate(-1deg);
+  }
+
+  .testi-img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #fff;
+    margin-bottom: 0.8rem; /* Kurangi jarak ke nama */
+  }
+
+  .testimoni-card h3 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 0; /* Hilangkan margin bawah nama */
+  }
+
+  .testimoni-card p {
+    font-size: 0.85rem;
+    line-height: 1.5;
+    color: #f9f9f9;
+    flex-grow: 1; /* Membuat area teks fleksibel mengisi ruang tengah */
+    display: flex;
+    align-items: center; /* Vertikal center untuk teks di tengah card */
+    justify-content: center;
+    padding: 1rem 0; /* Beri sedikit padding atas bawah */
+  }
+
+  .stars {
+    color: #ffcc00;
+    font-size: 0.9rem;
+    padding-bottom: 0.5rem; /* Beri sedikit padding agar tidak mepet ke bawah */
+  }
+
+  /* Responsif Ulasan */
+  .ulasan-container {
+    padding: 2.5rem 1.7rem;
+    width: 25rem;
+  }
+
+  .ulasan-title {
+    font-size: 1.5rem;
+  }
+
+  .ulasan-text {
+    font-size: 0.9rem;
+  }
+
+  .ulasan-btn {
+    width: 100%;
     text-align: center;
+    padding: 0.9rem 0;
+    font-size: 0.9rem;
   }
 
   /* Bottomnav Mobile */
   .bottomnav {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
     position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
+    bottom: 0.5rem;
+    left: 1rem;
+    right: 1rem;
     height: 70px;
     background-color: #fff;
     border-top: 1px solid #ddd;
     box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.08);
+    border-radius: 25px;
     z-index: 9999;
     padding-bottom: env(safe-area-inset-bottom); /* iPhone notch safe area */
   }
@@ -1008,6 +1388,7 @@ body {
     justify-content: center;
     text-decoration: none;
     line-height: 1.2;
+    transition: all 0.3s ease;
   }
 
   .bottomnav a i {
@@ -1021,6 +1402,11 @@ body {
     font-weight: 600;
   }
 
+  .bottomnav a:hover {
+    color: var(--redcolor);
+    transform: scale(1.05);
+  }
+
   .bottomnav a span {
     margin-top: 2px;
     font-size: 0.75rem;
@@ -1030,6 +1416,10 @@ body {
   .bottomnav i,
   .bottomnav svg {
     vertical-align: middle;
+  }
+
+  .footerbottom {
+    padding-bottom: 10vh;
   }
 }
 
@@ -1056,10 +1446,4 @@ body {
   .menu-card {
     width: 45%;
   }
-
-  .footercontainer {
-    flex-wrap: wrap;
-    justify-content: center;
-  }
 }
-

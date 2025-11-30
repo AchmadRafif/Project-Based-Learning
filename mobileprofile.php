@@ -36,7 +36,7 @@ $error = "";
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_profile'])) {
     $nama = mysqli_real_escape_string($conn, trim($_POST['name']));
-    
+
     // Validasi nama tidak kosong
     if (empty($nama)) {
         $error = "Nama tidak boleh kosong!";
@@ -44,7 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_profile'])) {
         // Update hanya nama
         $updateStmt = mysqli_prepare($conn, "UPDATE users SET name = ? WHERE id = ?");
         mysqli_stmt_bind_param($updateStmt, "si", $nama, $user_id);
-        
+
         if (mysqli_stmt_execute($updateStmt)) {
             $success = "Profil berhasil diperbarui!";
             // Refresh data
@@ -60,6 +60,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_profile'])) {
 ?>
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -68,7 +69,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_profile'])) {
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
-    
+
     <style>
         :root {
             --redcolor: #bf0f0f;
@@ -102,7 +103,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_profile'])) {
             border-radius: 50%;
             background: white;
             padding: 10px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
         }
 
         .profile-logo img {
@@ -130,7 +131,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_profile'])) {
             gap: 2rem;
             margin-top: 1.5rem;
             padding-top: 1rem;
-            border-top: 1px solid rgba(255,255,255,0.2);
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
         }
 
         .stat-item {
@@ -154,7 +155,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_profile'])) {
             margin: 1rem;
             padding: 1.5rem;
             border-radius: 16px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
         }
 
         .section-title {
@@ -261,7 +262,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_profile'])) {
 
         .edit-icon:hover {
             transform: scale(1.1);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
         }
 
         .btn {
@@ -428,26 +429,64 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_profile'])) {
             z-index: 9999;
         }
 
+        /* Bottomnav Mobile */
+        .bottomnav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            bottom: 0.5rem;
+            left: 1rem;
+            right: 1rem;
+            height: 70px;
+            background-color: #fff;
+            border-top: 1px solid #ddd;
+            box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.08);
+            border-radius: 25px;
+            z-index: 9999;
+            padding-bottom: env(safe-area-inset-bottom);
+            /* iPhone notch safe area */
+        }
+
         .bottomnav a {
             flex: 1;
             text-align: center;
             color: #777;
-            font-size: 0.75rem;
+            font-size: 0.8rem;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             text-decoration: none;
-            gap: 4px;
+            line-height: 1.2;
+            transition: all 0.3s ease;
         }
 
         .bottomnav a i {
             font-size: 1.4rem;
+            margin-bottom: 4px;
+            display: block;
         }
 
         .bottomnav a.active {
             color: var(--redcolor);
             font-weight: 600;
+        }
+
+        .bottomnav a:hover {
+            color: var(--redcolor);
+            transform: scale(1.05);
+        }
+
+        .bottomnav a span {
+            margin-top: 2px;
+            font-size: 0.75rem;
+        }
+
+        /* Pastikan ikon font-awesome atau remixicon tidak terpotong */
+        .bottomnav i,
+        .bottomnav svg {
+            vertical-align: middle;
         }
 
         #editForm {
@@ -473,7 +512,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_profile'])) {
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(0,0,0,0.6);
+            background: rgba(0, 0, 0, 0.6);
             backdrop-filter: blur(5px);
             display: none;
             align-items: center;
@@ -494,7 +533,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_profile'])) {
             overflow-y: auto;
             width: 100%;
             max-width: 600px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
             animation: slideUp 0.3s ease;
         }
 
@@ -503,6 +542,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_profile'])) {
                 opacity: 0;
                 transform: translateY(30px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -569,7 +609,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_profile'])) {
         </div>
         <div class="profile-name"><?= htmlspecialchars($user['name']) ?></div>
         <div class="profile-email"><?= htmlspecialchars($user['email']) ?></div>
-        
+
         <div class="profile-stats">
             <div class="stat-item">
                 <div class="stat-number"><?= $orderCount ?></div>
@@ -589,15 +629,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_profile'])) {
         </button>
 
         <?php if ($success): ?>
-        <div class="alert alert-success">
-            <i class="fa-solid fa-check-circle"></i> <?= htmlspecialchars($success) ?>
-        </div>
+            <div class="alert alert-success">
+                <i class="fa-solid fa-check-circle"></i> <?= htmlspecialchars($success) ?>
+            </div>
         <?php endif; ?>
 
         <?php if ($error): ?>
-        <div class="alert alert-error">
-            <i class="fa-solid fa-exclamation-circle"></i> <?= htmlspecialchars($error) ?>
-        </div>
+            <div class="alert alert-error">
+                <i class="fa-solid fa-exclamation-circle"></i> <?= htmlspecialchars($error) ?>
+            </div>
         <?php endif; ?>
 
         <!-- View Mode -->
@@ -670,33 +710,33 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_profile'])) {
             if (mysqli_num_rows($ordersQuery) > 0):
                 while ($order = mysqli_fetch_assoc($ordersQuery)):
             ?>
-                <div class="order-item" onclick="showOrderDetail(<?= (int)$order['id'] ?>)">
-                    <div class="order-header">
-                        <span class="order-number"><?= htmlspecialchars($order['invoice_number']) ?></span>
-                        <span class="order-status status-<?= $order['status'] ?>">
-                            <?php
-                            $statusText = [
-                                'pending' => 'Pending',
-                                'processing' => 'Processing',
-                                'completed' => 'Selesai',
-                                'cancelled' => 'Dibatalkan'
-                            ];
-                            echo $statusText[$order['status']] ?? 'Unknown';
-                            ?>
-                        </span>
+                    <div class="order-item" onclick="showOrderDetail(<?= (int)$order['id'] ?>)">
+                        <div class="order-header">
+                            <span class="order-number"><?= htmlspecialchars($order['invoice_number']) ?></span>
+                            <span class="order-status status-<?= $order['status'] ?>">
+                                <?php
+                                $statusText = [
+                                    'pending' => 'Pending',
+                                    'processing' => 'Processing',
+                                    'completed' => 'Selesai',
+                                    'cancelled' => 'Dibatalkan'
+                                ];
+                                echo $statusText[$order['status']] ?? 'Unknown';
+                                ?>
+                            </span>
+                        </div>
+                        <div class="order-details">
+                            <div><i class="fa-regular fa-calendar"></i> <?= date('d M Y, H:i', strtotime($order['created_at'])) ?></div>
+                            <div><i class="fa-solid fa-money-bill-wave"></i> <?= htmlspecialchars($order['payment_method']) ?></div>
+                        </div>
+                        <div class="order-total">
+                            Rp <?= number_format($order['total_price'], 0, ',', '.') ?>
+                        </div>
                     </div>
-                    <div class="order-details">
-                        <div><i class="fa-regular fa-calendar"></i> <?= date('d M Y, H:i', strtotime($order['created_at'])) ?></div>
-                        <div><i class="fa-solid fa-money-bill-wave"></i> <?= htmlspecialchars($order['payment_method']) ?></div>
-                    </div>
-                    <div class="order-total">
-                        Rp <?= number_format($order['total_price'], 0, ',', '.') ?>
-                    </div>
-                </div>
-            <?php
+                <?php
                 endwhile;
             else:
-            ?>
+                ?>
                 <div class="empty-state">
                     <i class="fa-solid fa-receipt"></i>
                     <p>Belum ada riwayat pesanan</p>
@@ -714,22 +754,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_profile'])) {
 
     <!-- Bottom Navigation -->
     <div class="bottomnav">
-        <a href="index.php">
-            <i class="fa-solid fa-house"></i>
-            <span>Home</span>
-        </a>
-        <a href="menu.php">
-            <i class="fa-solid fa-book-open"></i>
-            <span>Menu</span>
-        </a>
-        <a href="cart.php">
-            <i class="fa-solid fa-shopping-cart"></i>
-            <span>Pesanan</span>
-        </a>
-        <a href="mobileprofile.php" class="active">
-            <i class="fa-solid fa-user"></i>
-            <span>Profil</span>
-        </a>
+        <a href="index.php"><i class="fa-solid fa-house"></i>Home</a>
+        <a href="menu.php"><i class="fa-solid fa-book-open"></i>Menu</a>
+        <a href="cart.php"><i class="fa-solid fa-shopping-cart"></i>Pesanan</a>
+        <a href="#" id="profileLink" class="active"><i class="fa-solid fa-user"></i>Profil</a>
     </div>
 
     <!-- Logout Confirmation Modal -->
@@ -757,7 +785,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_profile'])) {
             const viewMode = document.getElementById('viewMode');
             const editForm = document.getElementById('editForm');
             const editIcon = document.getElementById('editIcon');
-            
+
             if (editForm.classList.contains('active')) {
                 editForm.classList.remove('active');
                 viewMode.classList.remove('hidden');
@@ -773,7 +801,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_profile'])) {
         function toggleOrderSection() {
             const orderContent = document.getElementById('orderContent');
             const collapseIcon = document.getElementById('collapseIcon');
-            
+
             orderContent.classList.toggle('collapsed');
             collapseIcon.classList.toggle('collapsed');
         }
@@ -805,11 +833,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_profile'])) {
         function showOrderDetail(orderId) {
             const popup = document.getElementById('orderDetailPopup');
             const content = document.getElementById('orderDetailContent');
-            
+
             // Show loading
             content.innerHTML = '<p style="text-align: center; padding: 20px;"><i class="fa-solid fa-spinner fa-spin"></i> Loading...</p>';
             popup.classList.add('active');
-            
+
             // Fetch order detail via AJAX
             fetch('get_order_detail.php?order_id=' + orderId)
                 .then(response => {
