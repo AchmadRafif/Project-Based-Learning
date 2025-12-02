@@ -954,7 +954,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    position: fixed;  
+    position: fixed;
     top: 0.5rem;
     left: auto;
     right: 1.5rem;

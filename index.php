@@ -482,9 +482,36 @@ $isLoggedIn = isset($_SESSION['user_id']);
     <script src="menufav.js"></script>
     <!-- ATAU embed langsung scriptnya -->
 
-    <!-- MenuGerak Start -->
+    <?php
+    // Ambil ID kategori dari database
+    $kategoriMap = [];
+    $kategoriQuery = mysqli_query($conn, "SELECT id, nama_kategori FROM kategori");
+    while ($row = mysqli_fetch_assoc($kategoriQuery)) {
+        $kategoriMap[strtolower($row['nama_kategori'])] = $row['id'];
+    }
+
+    // Helper function untuk get ID
+    function getKategoriId($kategoriMap, $keyword)
+    {
+        foreach ($kategoriMap as $nama => $id) {
+            if (stripos($nama, $keyword) !== false) {
+                return $id;
+            }
+        }
+        return 1; // Default fallback
+    }
+
+    $seblakId = getKategoriId($kategoriMap, 'Seblak');
+    $nasiId = getKategoriId($kategoriMap, 'Nasi');
+    $sateId = getKategoriId($kategoriMap, 'Sate');
+    $snackId = getKategoriId($kategoriMap, 'Snack');
+    $minumanId = getKategoriId($kategoriMap, 'Minuman');
+    ?>
+
+    <!-- MenuGerak Start (Hybrid) -->
     <section class="menugerak">
-        <a href="menu.php#seblak">
+        <!-- Seblak -->
+        <a href="menu.php#kategori-<?= $seblakId ?>">
             <div class="movedtext left">
                 <div class="track">
                     <span class="text">SEBLAK TAKI & PRASMANAN • SEBLAK TAKI & PRASMANAN • SEBLAK TAKI &
@@ -495,7 +522,8 @@ $isLoggedIn = isset($_SESSION['user_id']);
             </div>
         </a>
 
-        <a href="menu.php#menunasi">
+        <!-- Nasi -->
+        <a href="menu.php#kategori-<?= $nasiId ?>">
             <div class="movedtext right">
                 <div class="track">
                     <span class="text">MENU NASI GILA • MENU NASI GILA • MENU NASI GILA • MENU NASI GILA
@@ -505,7 +533,8 @@ $isLoggedIn = isset($_SESSION['user_id']);
             </div>
         </a>
 
-        <a href="menu.php#sateloklok">
+        <!-- Sate -->
+        <a href="menu.php#kategori-<?= $sateId ?>">
             <div class="movedtext left">
                 <div class="track">
                     <span class="text">SATE LOK-LOK BAKAR/GORENG • SATE LOK-LOK BAKAR/GORENG • SATE
@@ -516,7 +545,8 @@ $isLoggedIn = isset($_SESSION['user_id']);
             </div>
         </a>
 
-        <a href="menu.php#snack">
+        <!-- Snack -->
+        <a href="menu.php#kategori-<?= $snackId ?>">
             <div class="movedtext right">
                 <div class="track">
                     <span class="text">CEMILAN SNACK TAKI • CEMILAN SNACK TAKI • CEMILAN SNACK TAKI •
@@ -526,7 +556,8 @@ $isLoggedIn = isset($_SESSION['user_id']);
             </div>
         </a>
 
-        <a href="menu.php#minuman">
+        <!-- Minuman -->
+        <a href="menu.php#kategori-<?= $minumanId ?>">
             <div class="movedtext left">
                 <div class="track">
                     <span class="text">ANEKA MINUMAN SEGAR • ANEKA MINUMAN SEGAR • ANEKA MINUMAN SEGAR •
@@ -542,41 +573,48 @@ $isLoggedIn = isset($_SESSION['user_id']);
     <section class="testimoni">
         <h2 class="testimoni-title">Apa Kata Mereka?</h2>
         <div class="testimoni-container">
-            <div class="testimoni-card-1">
-                <div class="testimoni-card" data-aos="fade-right">
-                    <img src="img/lita.jpeg" alt="" class="testi-img" />
-                    <h3>Arqueeny Pertiwi</h3>
-                    <p>“Seblak nya sangat mantap. Udah kelima kali beli di sini”</p>
-                    <div class="stars">
-                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            <a href="https://maps.app.goo.gl/dhYfejMnspg8k1S27">
+                <div class="testimoni-card-1">
+                    <div class="testimoni-card" data-aos="fade-right">
+                        <img src="img/Tester/DindaRobiatulChusanah.png" alt="" class="testi-img" />
+                        <h3>Dinda Robiatul Chasanah</h3>
+                        <p>“Rekomended buat pecinta seblak kayak akuuu..😍. Bumbunya gapernah berubah selaluu enakk banget. Harganya juga ramah banget buat dompet akuu. Dia juga banyak varian pilihanya. Mulai harga 2 rebu bisa njajan disini”</p>
+                        <div class="stars">
+                            <!-- <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i> -->
+                        </div>
                     </div>
                 </div>
-            </div>
+            </a>
 
-            <div class="testimoni-card-2">
-                <div class="testimoni-card" data-aos="zoom-in-up">
-                    <img src="img/nando.jpeg" alt="" class="testi-img" />
-                    <h3>Nando Hartanto</h3>
-                    <p>“Nasi Gila nya beneran gila, rasa nya gila banget men!”</p>
-                    <div class="stars">
-                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            <a href="https://maps.app.goo.gl/WPRDQyKmJ8Q9Rnnm7">
+                <div class="testimoni-card-2">
+                    <div class="testimoni-card" data-aos="zoom-in-up">
+                        <img src="img/Tester/Nusaibah.png" alt="" class="testi-img" />
+                        <h3>Nusaibah</h3>
+                        <p>“Suki nya comfort food banget, biasanya beli lewat aplikasi online, kali ini nyoba dateng langsung, menunya macem² mulai dari suki sampe berbagai macem seblak ada.
+                            Tempatnya nyaman, bersih. Harganya juga murah murah banget. Pembayaran bisa pake QRIS.”</p>
+                        <div class="stars">
+                            <!-- <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i> -->
+                        </div>
                     </div>
                 </div>
-            </div>
+            </a>
 
-            <div class="testimoni-card-3">
-                <div class="testimoni-card" data-aos="fade-left">
-                    <img src="img/nana.jpeg" alt="" class="testi-img" />
-                    <h3>Nana Nusaibah</h3>
-                    <p>
-                        “Ga cuman seblaknya yang enak, sate loklok sama minumannya juga
-                        gokil”
-                    </p>
-                    <div class="stars">
-                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            <a href="https://maps.app.goo.gl/w6JpUmHfp4BJWSxS8">
+                <div class="testimoni-card-3">
+                    <div class="testimoni-card" data-aos="fade-left">
+                        <img src="img/Tester/AstiRahayu.png" alt="" class="testi-img" />
+                        <h3>Asti Rahayu</h3>
+                        <p>
+                            “High recommended ya, bumbu seblaknya pas banget, ngga kurang ngga lebih, isiannya jg bervariasi.
+                            Ini salah satu seblak yg ngangeni siiih 🥰”
+                        </p>
+                        <div class="stars">
+                            <!-- <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i> -->
+                        </div>
                     </div>
                 </div>
-            </div>
+            </a>
         </div>
     </section>
     <!-- Testimoni Section End -->

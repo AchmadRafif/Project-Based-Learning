@@ -52,572 +52,15 @@ $isEmpty = count($cartItems) === 0;
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
-
-    <style>
-        :root {
-            --redcolor: #bf0f0f;
-            --blacknav: #383838;
-            --greencolor: #89c946;
-            --yellow: #f49a24;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: "Poppins", sans-serif;
-            background-color: #f9f9f9;
-        }
-
-        .backbtn {
-            position: fixed;
-            top: 1.5rem;
-            left: 2rem;
-            background-color: var(--redcolor);
-            color: #fff;
-            text-decoration: none;
-            padding: 0.6rem 1.4rem;
-            border-radius: 30px;
-            font-weight: 600;
-            font-size: 0.9rem;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-            transition: all 0.25s ease;
-            z-index: 1000;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .backbtn:hover {
-            background-color: #c30000;
-            transform: translateY(-2px);
-        }
-
-        .cart-section {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem 3rem;
-            min-height: 100vh;
-        }
-
-        .cart-title {
-            font-size: 2rem;
-            margin: 5rem 0 2rem 0;
-            font-weight: 700;
-            text-align: center;
-        }
-
-        .cart-empty {
-            text-align: center;
-            margin: 5rem auto;
-            padding: 3rem;
-            background: white;
-            border-radius: 16px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-        }
-
-        .cart-empty i {
-            font-size: 5rem;
-            color: #ddd;
-            margin-bottom: 1.5rem;
-        }
-
-        .cart-empty h2 {
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-
-        .cart-empty p {
-            color: #666;
-            margin-bottom: 2rem;
-        }
-
-        .btn-lihat-menu {
-            display: inline-block;
-            background: var(--yellow);
-            padding: 0.8rem 2rem;
-            border-radius: 12px;
-            color: #fff;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.3s;
-        }
-
-        .btn-lihat-menu:hover {
-            background: #d48a20;
-            transform: translateY(-2px);
-        }
-
-        .cart-header {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1.5fr 1fr 0.5fr;
-            gap: 1rem;
-            padding: 1rem 1.5rem;
-            background: white;
-            border-radius: 12px 12px 0 0;
-            font-weight: 600;
-            color: #222;
-            margin-bottom: 0.5rem;
-        }
-
-        .cart-items {
-            background: white;
-            border-radius: 0 0 12px 12px;
-            overflow: hidden;
-        }
-
-        .cart-item {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1.5fr 1fr 0.5fr;
-            gap: 1rem;
-            padding: 1.5rem;
-            border-bottom: 1px solid #eee;
-            align-items: center;
-            transition: background 0.3s;
-        }
-
-        .cart-item:hover {
-            background: #f9f9f9;
-        }
-
-        .cart-item:last-child {
-            border-bottom: none;
-        }
-
-        .item-info {
-            display: flex;
-            gap: 1rem;
-            align-items: center;
-        }
-
-        .item-image {
-            width: 80px;
-            height: 80px;
-            border-radius: 12px;
-            object-fit: cover;
-        }
-
-        .no-image {
-            width: 80px;
-            height: 80px;
-            border-radius: 12px;
-            background: #f0f0f0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #ccc;
-            font-size: 2rem;
-        }
-
-        .item-details h3 {
-            font-size: 1rem;
-            font-weight: 600;
-            margin-bottom: 0.3rem;
-        }
-
-        .item-details p {
-            font-size: 0.85rem;
-            color: #666;
-        }
-
-        .item-price {
-            font-weight: 600;
-            color: var(--redcolor);
-        }
-
-        .quantity-controls {
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-        }
-
-        .qty-btn {
-            width: 32px;
-            height: 32px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            background: white;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.2s;
-            font-weight: 600;
-        }
-
-        .qty-btn:hover {
-            background: var(--redcolor);
-            color: white;
-            border-color: var(--redcolor);
-        }
-
-        .qty-input {
-            width: 60px;
-            text-align: center;
-            padding: 0.4rem;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            font-weight: 600;
-        }
-
-        .item-subtotal {
-            font-weight: 700;
-            color: #222;
-            font-size: 1.1rem;
-        }
-
-        .remove-btn {
-            background: none;
-            border: none;
-            color: #999;
-            cursor: pointer;
-            font-size: 1.2rem;
-            transition: color 0.2s;
-        }
-
-        .remove-btn:hover {
-            color: var(--redcolor);
-        }
-
-        .cart-summary {
-            background: white;
-            border-radius: 12px;
-            padding: 2rem;
-            margin-top: 2rem;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-        }
-
-        .summary-row {
-            display: flex;
-            justify-content: space-between;
-            padding: 0.8rem 0;
-            border-bottom: 1px solid #eee;
-        }
-
-        .summary-row.total {
-            border-bottom: none;
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: var(--redcolor);
-            margin-top: 1rem;
-        }
-
-        .cart-actions {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 2rem;
-            gap: 1rem;
-        }
-
-        .btn {
-            flex: 1;
-            padding: 1rem 2rem;
-            border-radius: 12px;
-            font-weight: 600;
-            text-align: center;
-            text-decoration: none;
-            cursor: pointer;
-            border: none;
-            transition: all 0.3s;
-        }
-
-        .btn-cancel {
-            background: white;
-            color: var(--redcolor);
-            border: 2px solid var(--redcolor);
-        }
-
-        .btn-cancel:hover {
-            background: var(--redcolor);
-            color: white;
-        }
-
-        .btn-checkout {
-            background: var(--yellow);
-            color: white;
-        }
-
-        .btn-checkout:hover {
-            background: #d48a20;
-            transform: translateY(-2px);
-        }
-
-        .bottomnav {
-            display: none;
-        }
-
-        @media (max-width: 768px) {
-            .backbtn {
-                display: none;
-            }
-
-            .cart-section {
-                padding: 1rem;
-                margin-bottom: 5rem;
-            }
-
-            .cart-title {
-                font-size: 1.5rem;
-                margin: 3rem 0 1.5rem;
-            }
-
-            .cart-header {
-                display: none;
-            }
-
-            .cart-items {
-                border-radius: 12px;
-            }
-
-            .cart-item {
-                grid-template-columns: 1fr;
-                gap: 1rem;
-                padding: 1rem;
-            }
-
-            .item-info {
-                flex-direction: row;
-                gap: 0.8rem;
-            }
-
-            .item-image,
-            .no-image {
-                width: 60px;
-                height: 60px;
-            }
-
-            .item-details h3 {
-                font-size: 0.9rem;
-            }
-
-            .quantity-controls {
-                justify-content: space-between;
-            }
-
-            .cart-actions {
-                flex-direction: column-reverse;
-            }
-
-            /* Bottomnav Mobile */
-        .bottomnav {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          position: fixed;
-          bottom: 0.5rem;
-          left: 1rem;
-          right: 1rem;
-          height: 70px;
-          background-color: #fff;
-          border-top: 1px solid #ddd;
-          box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.08);
-          border-radius: 25px;
-          z-index: 9999;
-          padding-bottom: env(
-            safe-area-inset-bottom
-          ); /* iPhone notch safe area */
-        }
-
-        .bottomnav a {
-          flex: 1;
-          text-align: center;
-          color: #777;
-          font-size: 0.8rem;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-          text-decoration: none;
-          line-height: 1.2;
-          transition: all 0.3s ease;
-        }
-
-        .bottomnav a i {
-          font-size: 1.4rem;
-          margin-bottom: 4px;
-          display: block;
-        }
-
-        .bottomnav a.active {
-          color: var(--redcolor);
-          font-weight: 600;
-        }
-
-        .bottomnav a:hover {
-          color: var(--redcolor);
-          transform: scale(1.05);
-        }
-
-        .bottomnav a span {
-          margin-top: 2px;
-          font-size: 0.75rem;
-        }
-
-        /* Pastikan ikon font-awesome atau remixicon tidak terpotong */
-        .bottomnav i,
-        .bottomnav svg {
-          vertical-align: middle;
-        }
-        }
-
-        /* ============================= */
-        /* Popup Konfirmasi */
-        /* ============================= */
-        .confirm-popup-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.6);
-            backdrop-filter: blur(5px);
-            display: none;
-            align-items: center;
-            justify-content: center;
-            z-index: 10000;
-            animation: fadeIn 0.3s ease;
-        }
-
-        .confirm-popup-overlay.active {
-            display: flex;
-        }
-
-        .confirm-popup {
-            background: white;
-            border-radius: 20px;
-            padding: 2rem;
-            max-width: 400px;
-            width: 90%;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-            text-align: center;
-            animation: slideUp 0.3s ease;
-        }
-
-        .confirm-popup-icon {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, #ffebee 0%, #ffcdd2 100%);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 1.5rem;
-        }
-
-        .confirm-popup-icon i {
-            font-size: 2.5rem;
-            color: var(--redcolor);
-        }
-
-        .confirm-popup-title {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #222;
-            margin-bottom: 0.8rem;
-        }
-
-        .confirm-popup-text {
-            color: #666;
-            font-size: 0.95rem;
-            line-height: 1.5;
-            margin-bottom: 2rem;
-        }
-
-        .confirm-popup-buttons {
-            display: flex;
-            gap: 1rem;
-        }
-
-        .confirm-popup-buttons button {
-            flex: 1;
-            padding: 0.9rem;
-            border-radius: 12px;
-            font-weight: 600;
-            cursor: pointer;
-            border: none;
-            transition: all 0.3s;
-            font-size: 1rem;
-        }
-
-        .confirm-btn-cancel {
-            background: white;
-            color: #666;
-            border: 2px solid #e0e0e0;
-        }
-
-        .confirm-btn-cancel:hover {
-            border-color: var(--redcolor);
-            color: var(--redcolor);
-        }
-
-        .confirm-btn-yes {
-            background: var(--redcolor);
-            color: white;
-        }
-
-        .confirm-btn-yes:hover {
-            background: #a00d0d;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(191, 15, 15, 0.3);
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-
-            to {
-                opacity: 1;
-            }
-        }
-
-        @keyframes slideUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Mobile responsiveness */
-        @media (max-width: 768px) {
-            .confirm-popup {
-                max-width: 90%;
-                padding: 1.5rem;
-            }
-
-            .confirm-popup-icon {
-                width: 70px;
-                height: 70px;
-            }
-
-            .confirm-popup-icon i {
-                font-size: 2rem;
-            }
-
-            .confirm-popup-title {
-                font-size: 1.3rem;
-            }
-
-            .confirm-popup-buttons {
-                flex-direction: column-reverse;
-            }
-
-            .confirm-popup-buttons button {
-                width: 100%;
-            }
-        }
-    </style>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet" />
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
+
+    <link rel="stylesheet" href="cart.css">
+    <link rel="stylesheet" href="stylefooter.css">
 </head>
 
 <body>
@@ -750,6 +193,78 @@ $isEmpty = count($cartItems) === 0;
         <?php endif; ?>
     </div>
     </div>
+
+    <!-- Footer Start -->
+    <footer class="footer">
+        <div class="footercontainer">
+            <!-- Kolom 1 -->
+            <div class="footerleft">
+                <a href="#" class="logo"><img src="img/LogoTaki.png" alt="Kedai TaKi ID" /></a>
+                <p>
+                    <strong>Jam Operasional :</strong><br />
+                    Setiap hari<br />
+                    14:00 - 22:00
+                </p>
+                <div class="socialicons">
+                    <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+                </div>
+            </div>
+
+            <!-- Kolom 2 -->
+            <div class="footercolumn">
+                <h3>Navigasi</h3>
+                <ul>
+                    <li><a href="#home">Beranda</a></li>
+                    <li><a href="menu.html">Menu</a></li>
+                    <li><a href="story.html">Tentang Kami</a></li>
+                </ul>
+            </div>
+
+            <!-- Kolom 3 -->
+            <div class="footercolumn">
+                <h3>Lokasi Outlet</h3>
+
+                <!-- Map responsive -->
+                <div
+                    class="footermap-container"
+                    style="
+              position: relative;
+              width: 100%;
+              padding-bottom: 56.25%;
+              height: 0;
+              overflow: hidden;
+              border-radius: 8px;
+              margin-bottom: 10px;
+            ">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3256.777651913909!2d112.79764207400173!3d-7.285904092721404!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd7fb57d44c77f5%3A0x2585e1deb7a1c3b1!2sSeblak%20Prasmanan%20Taki%20Id!5e1!3m2!1sen!2sid!4v1762998867292!5m2!1sen!2sid"
+                        allowfullscreen=""
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"
+                        style="
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                border: 0;
+              ">
+                    </iframe>
+                </div>
+
+                <p style="color: #ededed; font-size: 0.9rem; line-height: 1.5">
+                    Kejawan Gebang III No.22,<br />
+                    RT.002/RW.04, Gebang Putih, Kec. Sukolilo,<br />
+                    Surabaya, Jawa Timur 60117
+                </p>
+            </div>
+        </div>
+
+        <div class="footerbottom">© Copyright 2025, All Right Reserved</div>
+    </footer>
+    <!-- Footer End -->
 
     <script>
         // Increase Quantity

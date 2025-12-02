@@ -64,6 +64,16 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["delete_account"])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Profile - Taki ID</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet" />
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet" />
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
+    <link rel="stylesheet" href="stylefooter.css">
     <style>
         :root {
             --redcolor: #bf0f0f;
@@ -707,6 +717,78 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["delete_account"])) {
         </div>
     </div>
 
+    <!-- Footer Start -->
+    <footer class="footer">
+        <div class="footercontainer">
+            <!-- Kolom 1 -->
+            <div class="footerleft">
+                <a href="#" class="logo"><img src="img/LogoTaki.png" alt="Kedai TaKi ID" /></a>
+                <p>
+                    <strong>Jam Operasional :</strong><br />
+                    Setiap hari<br />
+                    14:00 - 22:00
+                </p>
+                <div class="socialicons">
+                    <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+                </div>
+            </div>
+
+            <!-- Kolom 2 -->
+            <div class="footercolumn">
+                <h3>Navigasi</h3>
+                <ul>
+                    <li><a href="#home">Beranda</a></li>
+                    <li><a href="menu.html">Menu</a></li>
+                    <li><a href="story.html">Tentang Kami</a></li>
+                </ul>
+            </div>
+
+            <!-- Kolom 3 -->
+            <div class="footercolumn">
+                <h3>Lokasi Outlet</h3>
+
+                <!-- Map responsive -->
+                <div
+                    class="footermap-container"
+                    style="
+              position: relative;
+              width: 100%;
+              padding-bottom: 56.25%;
+              height: 0;
+              overflow: hidden;
+              border-radius: 8px;
+              margin-bottom: 10px;
+            ">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3256.777651913909!2d112.79764207400173!3d-7.285904092721404!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd7fb57d44c77f5%3A0x2585e1deb7a1c3b1!2sSeblak%20Prasmanan%20Taki%20Id!5e1!3m2!1sen!2sid!4v1762998867292!5m2!1sen!2sid"
+                        allowfullscreen=""
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"
+                        style="
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                border: 0;
+              ">
+                    </iframe>
+                </div>
+
+                <p style="color: #ededed; font-size: 0.9rem; line-height: 1.5">
+                    Kejawan Gebang III No.22,<br />
+                    RT.002/RW.04, Gebang Putih, Kec. Sukolilo,<br />
+                    Surabaya, Jawa Timur 60117
+                </p>
+            </div>
+        </div>
+
+        <div class="footerbottom">© Copyright 2025, All Right Reserved</div>
+    </footer>
+    <!-- Footer End -->
+
     <!-- Popup Logout -->
     <div id="logoutPopup" class="popupoverlay">
         <div class="popupbox">
@@ -747,7 +829,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["delete_account"])) {
         sidebarItems.forEach(item => {
             item.addEventListener('click', () => {
                 const section = item.getAttribute('data-section');
-                
+
                 // Remove active class from all items
                 sidebarItems.forEach(i => i.classList.remove('active'));
                 item.classList.add('active');
@@ -804,11 +886,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["delete_account"])) {
         function showOrderDetail(orderId) {
             const popup = document.getElementById('orderDetailPopup');
             const content = document.getElementById('orderDetailContent');
-            
+
             // Show loading
             content.innerHTML = '<p style="text-align: center; padding: 20px;">Loading...</p>';
             popup.classList.add('active');
-            
+
             // Fetch order detail via AJAX
             fetch('get_order_detail.php?id=' + orderId)
                 .then(response => response.text())

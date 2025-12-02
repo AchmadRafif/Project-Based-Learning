@@ -343,7 +343,7 @@ $qrisData = "00020101021126660014ID.CO.QRIS.WWW0116ID1234567890123450214" . $ord
                     <div class="item-name">
                         <?= htmlspecialchars($item['nama_menu']) ?>
                         <?php if (isset($item['level']) && $item['level'] > 0): ?>
-                            <span style="color: #ff4444;">Lvl. <?= $item['level'] ?></span>
+                            <span>Lvl. <?= $item['level'] ?></span>
                         <?php endif; ?>
                     </div>
                     <div class="item-qty">

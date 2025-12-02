@@ -6,6 +6,18 @@
     <title>Promo Satay Dumpling Keju - TaKi</title>
     <!-- AOS Animation Library -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="stylefooter.css">
     <style>
       /* === GLOBAL STYLE === */
 
@@ -95,7 +107,7 @@
         margin-top: 30px;
       }
 
-       /* ===== Tombol Ke Beranda ===== */
+      /* ===== Tombol Ke Beranda ===== */
       .backbtn {
         position: fixed;
         top: 1.5rem;
@@ -217,7 +229,9 @@
     <!-- === PROMO DETAIL SECTION === -->
     <section class="promo-detail">
       <!-- Tombol Kembali -->
-    <a href="index.html#promo" class="backbtn">⟵ Kembali</a>
+      <a href="index.php#promo" class="backbtn">
+        <i class="fa-solid fa-arrow-left"></i> Kembali
+      </a>
 
       <div class="promo-detail-container">
         <img src="img/Promo/promo1.png" alt="Promo Satay Dumpling Keju" />
@@ -229,10 +243,88 @@
             Ngemil dumpling keju yang nikmat, gurih, dan lumer hanya dengan
             <strong>Rp8.000</strong>.
           </p>
-          <a href="https://maps.app.goo.gl/LTvoLGByuV2yoX4r5" class="btn-pesan">Pesan Sekarang</a>
+          <a href="https://maps.app.goo.gl/LTvoLGByuV2yoX4r5" class="btn-pesan"
+            >Pesan Sekarang</a
+          >
         </div>
       </div>
     </section>
+
+    <!-- Footer Start -->
+    <footer class="footer">
+      <div class="footercontainer">
+        <!-- Kolom 1 -->
+        <div class="footerleft">
+          <a href="#" class="logo"
+            ><img src="img/LogoTaki.png" alt="Kedai TaKi ID"
+          /></a>
+          <p>
+            <strong>Jam Operasional :</strong><br />
+            Setiap hari<br />
+            14:00 - 22:00
+          </p>
+          <div class="socialicons">
+            <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
+            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+          </div>
+        </div>
+
+        <!-- Kolom 2 -->
+        <div class="footercolumn">
+          <h3>Navigasi</h3>
+          <ul>
+            <li><a href="#home">Beranda</a></li>
+            <li><a href="menu.html">Menu</a></li>
+            <li><a href="story.html">Tentang Kami</a></li>
+          </ul>
+        </div>
+
+        <!-- Kolom 3 -->
+        <div class="footercolumn">
+          <h3>Lokasi Outlet</h3>
+
+          <!-- Map responsive -->
+          <div
+            class="footermap-container"
+            style="
+              position: relative;
+              width: 100%;
+              padding-bottom: 56.25%;
+              height: 0;
+              overflow: hidden;
+              border-radius: 8px;
+              margin-bottom: 10px;
+            "
+          >
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3256.777651913909!2d112.79764207400173!3d-7.285904092721404!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd7fb57d44c77f5%3A0x2585e1deb7a1c3b1!2sSeblak%20Prasmanan%20Taki%20Id!5e1!3m2!1sen!2sid!4v1762998867292!5m2!1sen!2sid"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              style="
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                border: 0;
+              "
+            >
+            </iframe>
+          </div>
+
+          <p style="color: #ededed; font-size: 0.9rem; line-height: 1.5">
+            Kejawan Gebang III No.22,<br />
+            RT.002/RW.04, Gebang Putih, Kec. Sukolilo,<br />
+            Surabaya, Jawa Timur 60117
+          </p>
+        </div>
+      </div>
+
+      <div class="footerbottom">© Copyright 2025, All Right Reserved</div>
+    </footer>
+    <!-- Footer End -->
 
     <script src="https://unpkg.com/feather-icons"></script>
     <script>

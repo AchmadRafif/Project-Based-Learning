@@ -52,6 +52,7 @@ $qrisData = "00020101021126660014ID.CO.QRIS.WWW0116ID1234567890123450214" . $inv
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
+    <link rel="stylesheet" href="stylefooter.css">
 
     <style>
         :root {
@@ -407,7 +408,7 @@ $qrisData = "00020101021126660014ID.CO.QRIS.WWW0116ID1234567890123450214" . $inv
                         <span>
                             <?= htmlspecialchars($item['nama_menu']) ?>
                             <?php if (isset($item['level']) && $item['level'] > 0): ?>
-                                <span style="color: #ff4444;">🌶️ Lvl. <?= $item['level'] ?></span>
+                                <span>Lvl. <?= $item['level'] ?></span>
                             <?php endif; ?>
                             x<?= $item['quantity'] ?>
                         </span>
@@ -458,9 +459,9 @@ $qrisData = "00020101021126660014ID.CO.QRIS.WWW0116ID1234567890123450214" . $inv
             <a href="index.php" class="btn btn-primary">
                 <i class="fa-solid fa-house"></i> Kembali ke Home
             </a>
-            <a href="orders_history.php" class="btn btn-secondary">
+            <!-- <a href="orders_history.php" class="btn btn-secondary">
                 <i class="fa-solid fa-clock-rotate-left"></i> Lihat Pesanan
-            </a>
+            </a> -->
         </div>
     </div>
 

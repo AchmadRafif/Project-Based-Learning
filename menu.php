@@ -1,7 +1,4 @@
-<?php include "config.php";
-
-
-?>
+<?php include "config.php"; ?>
 <!DOCTYPE html>
 <html lang="id">
 
@@ -14,8 +11,13 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet" />
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
+    <link rel="stylesheet" href="stylefooter.css">
 
     <style>
         :root {
@@ -373,7 +375,7 @@
         }
 
         .level-option.selected::after {
-            content: '✓';
+            content: "✓";
             position: absolute;
             top: 0.5rem;
             right: 0.5rem;
@@ -436,7 +438,6 @@
             font-size: 0.95rem;
             /* Dikurangi dari 1rem */
         }
-
 
         .level-btn-cancel {
             background: white;
@@ -547,65 +548,64 @@
             }
 
             /* Bottomnav Mobile */
-        .bottomnav {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          position: fixed;
-          bottom: 0.5rem;
-          left: 1rem;
-          right: 1rem;
-          height: 70px;
-          background-color: #fff;
-          border-top: 1px solid #ddd;
-          box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.08);
-          border-radius: 25px;
-          z-index: 9999;
-          padding-bottom: env(
-            safe-area-inset-bottom
-          ); /* iPhone notch safe area */
-        }
+            .bottomnav {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                position: fixed;
+                bottom: 0.5rem;
+                left: 1rem;
+                right: 1rem;
+                height: 70px;
+                background-color: #fff;
+                border-top: 1px solid #ddd;
+                box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.08);
+                border-radius: 25px;
+                z-index: 9999;
+                padding-bottom: env(safe-area-inset-bottom);
+                /* iPhone notch safe area */
+            }
 
-        .bottomnav a {
-          flex: 1;
-          text-align: center;
-          color: #777;
-          font-size: 0.8rem;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-          text-decoration: none;
-          line-height: 1.2;
-          transition: all 0.3s ease;
-        }
+            .bottomnav a {
+                flex: 1;
+                text-align: center;
+                color: #777;
+                font-size: 0.8rem;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                text-decoration: none;
+                line-height: 1.2;
+                transition: all 0.3s ease;
+            }
 
-        .bottomnav a i {
-          font-size: 1.4rem;
-          margin-bottom: 4px;
-          display: block;
-        }
+            .bottomnav a i {
+                font-size: 1.4rem;
+                margin-bottom: 4px;
+                display: block;
+            }
 
-        .bottomnav a.active {
-          color: var(--redcolor);
-          font-weight: 600;
-        }
+            .bottomnav a.active {
+                color: var(--redcolor);
+                font-weight: 600;
+            }
 
-        .bottomnav a:hover {
-          color: var(--redcolor);
-          transform: scale(1.05);
-        }
+            .bottomnav a:hover {
+                color: var(--redcolor);
+                transform: scale(1.05);
+            }
 
-        .bottomnav a span {
-          margin-top: 2px;
-          font-size: 0.75rem;
-        }
+            .bottomnav a span {
+                margin-top: 2px;
+                font-size: 0.75rem;
+            }
 
-        /* Pastikan ikon font-awesome atau remixicon tidak terpotong */
-        .bottomnav i,
-        .bottomnav svg {
-          vertical-align: middle;
-        }
+            /* Pastikan ikon font-awesome atau remixicon tidak terpotong */
+            .bottomnav i,
+            .bottomnav svg {
+                vertical-align: middle;
+            }
         }
 
         /* ============================= */
@@ -621,104 +621,101 @@
             }
         }
 
-        /* Footer */
-      .footer {
-        margin-top: 20vh;
-        padding: 8rem 7% 30px;
-        background-color: var(--blacknav);
-        color: #fff;
-        font-family: "Poppins", sans-serif;
-      }
+        /* Styling untuk cart button di desktop */
+        .search-cart-wrapper {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
 
-      .footercontainer {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        align-items: flex-start;
-        gap: 40px;
-        max-width: 1300px;
-        margin: 0 auto;
-      }
+        .searchbar {
+            flex: 1;
+            margin: 0 !important;
+        }
 
-      /* Kiri */
-      .footerleft {
-        flex: 1 1 250px;
-        max-width: 400px;
-      }
+        .cart-shortcut-btn {
+            position: relative;
+            background-color: var(--yellow);
+            color: white;
+            border: none;
+            padding: 0.875rem 1.5rem;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
 
-      .footerleft .logo {
-        background: linear-gradient(90deg, var(--redcolor), var(--yellow));
-        background-clip: text;
-        -webkit-text-fill-color: transparent;
-      }
+        .cart-shortcut-btn:hover {
+            transform: translateY(-2px);
+            background-color: #df8d21ff;
+        }
 
-      .footerleft .logo img {
-        width: 60px;
-      }
+        .cart-shortcut-btn:active {
+            transform: translateY(0);
+        }
 
-      .footerleft p {
-        margin: 15px 0;
-        color: #d4d4d4;
-        line-height: 1.5;
-      }
+        .cart-shortcut-badge {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: #ffd700;
+            color: #333;
+            border-radius: 50%;
+            min-width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 0 6px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            animation: pulse 2s infinite;
+        }
 
-      .socialicons {
-        display: flex;
-        gap: 18px;
-        margin-top: 10px;
-      }
+        @keyframes pulse {
 
-      .socialicons a {
-        color: #ededed;
-        font-size: 1.3rem;
-        transition: color 0.3s ease;
-      }
+            0%,
+            100% {
+                transform: scale(1);
+            }
 
-      .socialicons a:hover {
-        color: var(--redcolor);
-      }
+            50% {
+                transform: scale(1.1);
+            }
+        }
 
-      /* Kolom kanan */
-      .footercolumn {
-        flex: 1 1 200px;
-        min-width: 160px;
-      }
+        /* Hide cart button on mobile (sudah ada bottom nav) */
+        @media (max-width: 768px) {
+            .cart-shortcut-btn {
+                display: none;
+            }
 
-      .footercolumn h3 {
-        font-size: 1rem;
-        font-weight: 700;
-        margin-bottom: 15px;
-        text-transform: uppercase;
-        color: #d4d4d4;
-      }
+            .search-cart-wrapper {
+                flex-direction: column;
+                gap: 0;
+            }
 
-      .footercolumn ul {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-      }
+            .searchbar {
+                width: 100%;
+            }
+        }
 
-      .footercolumn ul li {
-        margin-bottom: 10px;
-      }
-
-      .footercolumn ul li a {
-        text-decoration: none;
-        color: #ededed;
-        transition: color 0.3s;
-      }
-
-      .footercolumn ul li a:hover {
-        color: var(--redcolor);
-      }
-
-      .footerbottom {
-        text-align: center;
-        font-size: 0.9rem;
-        color: #ededed;
-        margin-top: 40px;
-        padding-top: 20px;
-      }
+        /* Responsive adjustments */
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .cart-shortcut-btn {
+                padding: 0.75rem 1.25rem;
+                font-size: 0.9rem;
+            }
+        }
     </style>
 </head>
 
@@ -731,11 +728,20 @@
         <h1>Menu Kami</h1>
     </header>
 
-    <!-- Search -->
-    <div class="searchbar">
-        <input type="text" id="searchInput" placeholder="Telusuri menu yang anda cari..." />
-        <button onclick="searchMenu()">
-            <i class="fa-solid fa-search"></i>
+    <!-- Search & Cart Button Wrapper -->
+    <div class="search-cart-wrapper">
+        <!-- Search -->
+        <div class="searchbar">
+            <input type="text" id="searchInput" placeholder="Telusuri menu yang anda cari..." />
+            <button onclick="searchMenu()">
+                <i class="fa-solid fa-search"></i>
+            </button>
+        </div>
+
+        <!-- Cart Shortcut Button (Desktop Only) -->
+        <button class="cart-shortcut-btn" onclick="goToCart()">
+            <i class="fa-solid fa-shopping-cart"></i>
+            <span class="cart-shortcut-badge" id="cartShortcutBadge" style="display: none;">0</span>
         </button>
     </div>
 
@@ -834,19 +840,19 @@
     <div class="bottomnav">
         <a href="index.php">
             <i class="fa-solid fa-house"></i>
-            <span>Home</span>
+            Home
         </a>
         <a href="menu.php" class="active">
             <i class="fa-solid fa-book-open"></i>
-            <span>Menu</span>
+            Menu
         </a>
         <a href="cart.php">
             <i class="fa-solid fa-shopping-cart"></i>
-            <span>Pesanan</span>
+            Pesanan
         </a>
         <a href="<?php echo isset($_SESSION['user_id']) ? 'mobileprofile.php' : 'mobilelogin.php'; ?>">
             <i class="fa-solid fa-user"></i>
-            <span>Profil</span>
+            Profil
         </a>
     </div>
 
@@ -934,8 +940,8 @@
             <div class="footercolumn">
                 <h3>Navigasi</h3>
                 <ul>
-                    <li><a href="index.php">Beranda</a></li>
-                    <li><a href="menu.php">Menu</a></li>
+                    <li><a href="#home">Beranda</a></li>
+                    <li><a href="menu.html">Menu</a></li>
                     <li><a href="story.html">Tentang Kami</a></li>
                 </ul>
             </div>
@@ -943,11 +949,35 @@
             <!-- Kolom 3 -->
             <div class="footercolumn">
                 <h3>Lokasi Outlet</h3>
-                <a href="https://maps.app.goo.gl/LTvoLGByuV2yoX4r5"><img
-                        src="img/footermap.png"
-                        alt="Peta Lokasi Kedai TaKi ID"
-                        style="width: 200px; border-radius: 8px; margin-bottom: 10px"
-                        class="footermaps" /></a>
+
+                <!-- Map responsive -->
+                <div
+                    class="footermap-container"
+                    style="
+              position: relative;
+              width: 100%;
+              padding-bottom: 56.25%;
+              height: 0;
+              overflow: hidden;
+              border-radius: 8px;
+              margin-bottom: 10px;
+            ">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3256.777651913909!2d112.79764207400173!3d-7.285904092721404!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd7fb57d44c77f5%3A0x2585e1deb7a1c3b1!2sSeblak%20Prasmanan%20Taki%20Id!5e1!3m2!1sen!2sid!4v1762998867292!5m2!1sen!2sid"
+                        allowfullscreen=""
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"
+                        style="
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                border: 0;
+              ">
+                    </iframe>
+                </div>
+
                 <p style="color: #ededed; font-size: 0.9rem; line-height: 1.5">
                     Kejawan Gebang III No.22,<br />
                     RT.002/RW.04, Gebang Putih, Kec. Sukolilo,<br />
@@ -968,6 +998,11 @@
             price: 0,
             selectedLevel: null
         };
+
+        // ===== Go to Cart Function =====
+        function goToCart() {
+            window.location.href = 'cart.php';
+        }
 
         // ===== Handle Add to Cart =====
         function handleAddToCart(id, name, price, category) {
@@ -1221,13 +1256,14 @@
             }
         }
 
-        // ===== Update Cart Badge =====
+        // ===== Update Cart Badge (Updated to include shortcut badge) =====
         function updateCartBadge(count) {
+            // Update badge di bottom nav (mobile)
             let badge = document.querySelector('.cart-badge');
 
             if (!badge && count > 0) {
                 // Create badge if not exists
-                const cartLink = document.querySelector('a[href="cart.html"], a[href="cart.php"]');
+                const cartLink = document.querySelector('a[href="cart.php"]');
                 if (cartLink) {
                     badge = document.createElement('span');
                     badge.className = 'cart-badge';
@@ -1254,6 +1290,13 @@
             if (badge) {
                 badge.textContent = count;
                 badge.style.display = count > 0 ? 'flex' : 'none';
+            }
+
+            // Update badge di shortcut button (desktop)
+            const shortcutBadge = document.getElementById('cartShortcutBadge');
+            if (shortcutBadge) {
+                shortcutBadge.textContent = count;
+                shortcutBadge.style.display = count > 0 ? 'flex' : 'none';
             }
         }
 
@@ -1318,16 +1361,17 @@
         // ===== Profile Link Handler =====
         const profileLink = document.getElementById("profileLink");
         const isLoggedIn = localStorage.getItem("isLoggedIn");
-        // let isLoggedIn = false;
 
-        profileLink.addEventListener("click", (e) => {
-            e.preventDefault();
-            if (isLoggedIn === "true") {
-                window.location.href = "mobileprofile.php";
-            } else {
-                window.location.href = "mobileregister.php";
-            }
-        });
+        if (profileLink) {
+            profileLink.addEventListener("click", (e) => {
+                e.preventDefault();
+                if (isLoggedIn === "true") {
+                    window.location.href = "mobileprofile.php";
+                } else {
+                    window.location.href = "mobileregister.php";
+                }
+            });
+        }
 
         async function checkLoginStatus() {
             try {

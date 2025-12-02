@@ -459,7 +459,7 @@ while ($row = mysqli_fetch_assoc($ordersQuery)) {
     </style>
 </head>
 <body>
-    <a href="index.php" class="backbtn">
+    <a href="cart.php" class="backbtn">
         <i class="fa-solid fa-arrow-left"></i> Kembali
     </a>
 
