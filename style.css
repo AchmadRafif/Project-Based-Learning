@@ -422,9 +422,9 @@ body {
   border-radius: 1.2rem;
 }
 
-/* Filler Section */
+/* Filler Section - FIXED WIDTH */
 .promotionsign {
-  width: 90%;
+  width: 85%;
   margin: 4rem auto;
 }
 
@@ -437,6 +437,7 @@ body {
   align-items: center;
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
   gap: 1rem;
+  width: 100%; /* Tambahkan ini */
 }
 
 .promotionup img {
@@ -447,6 +448,7 @@ body {
 .promotionup p {
   font-size: 1.1rem;
   color: #222;
+  flex: 1; /* Biar text ambil space tengah */
 }
 
 .promotionup a {
@@ -457,21 +459,24 @@ body {
   text-decoration: none;
   font-weight: bold;
   transition: 0.3s;
+  white-space: nowrap; /* Prevent button text wrap */
 }
 
 .promotionup a:hover {
   background-color: #b62222;
 }
 
-.promo-banner {
-  background: #fff;
-  padding: 2rem 1rem;
+.promo-banner .promotionup {
+  /* HAPUS max-width: 800px; */
+  width: 100%; /* Sama seperti sign up banner */
+  text-align: left; /* Align left seperti sign up banner */
 }
 
-.promo-banner .promotionup {
-  max-width: 800px;
-  margin: 0 auto;
-  text-align: center;
+/* Icon styling untuk member banner */
+.promo-banner .promotionup i {
+  font-size: 3rem;
+  color: #393939;
+  flex-shrink: 0; /* Prevent icon shrink */
 }
 
 .btn-promo {

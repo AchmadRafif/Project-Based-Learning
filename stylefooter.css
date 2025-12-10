@@ -1,4 +1,11 @@
 /* Footer */
+:root {
+  --redcolor: #bf0f0f;
+  --blacknav: #272727;
+  --greencolor: #89c946;
+  --yellow: #f49a24;
+}
+
 .footer {
   margin-top: 20vh;
   padding: 8rem 7% 30px;

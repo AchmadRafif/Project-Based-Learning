@@ -39,6 +39,10 @@ $isLoggedIn = isset($_SESSION['user_id']);
     <link
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
+    <!-- AOS CSS -->
+    <!-- <link
+        href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css"
+        rel="stylesheet" /> -->
     <link rel="stylesheet" href="style.css">
 
     <style>
@@ -774,7 +778,7 @@ $isLoggedIn = isset($_SESSION['user_id']);
 
             <div class="divider"><span>atau</span></div>
 
-            <button class="googlelogin">
+            <button class="googlelogin" onclick="alert('Fitur Google Login akan segera hadir!')">
                 <img
                     src="https://www.svgrepo.com/show/355037/google.svg"
                     alt="Google" />
@@ -899,6 +903,19 @@ $isLoggedIn = isset($_SESSION['user_id']);
                     showToast("Gagal menghubungi server!", "error");
                 }
             });
+    </script>
+
+    <!-- === SCRIPT animasi kecil === -->
+    <script>
+        // Animasi kecil saat scroll
+        window.addEventListener("scroll", () => {
+            const nav = document.querySelector(".navbar");
+            if (window.scrollY > 10) {
+                nav.style.transform = "scale(0.98)";
+            } else {
+                nav.style.transform = "scale(1)";
+            }
+        });
     </script>
 
     <!-- Feather Icons -->

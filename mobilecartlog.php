@@ -17,17 +17,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login'])) {
 
     // Query ke database
     $query = mysqli_query($conn, "SELECT * FROM users WHERE email = '$email' LIMIT 1");
-    
+
     if ($query && mysqli_num_rows($query) > 0) {
         $user = mysqli_fetch_assoc($query);
-        
+
         // Verifikasi password (support plain text & hash)
         if (password_verify($password, $user['password']) || $password === $user['password']) {
             // Login berhasil
             $_SESSION['user_id'] = $user['id'];
             $_SESSION['user_email'] = $user['email'];
             $_SESSION['user_name'] = $user['name'];
-            
+
             // Redirect ke profil atau halaman sebelumnya
             $redirect = isset($_GET['redirect']) ? $_GET['redirect'] : 'cart.php';
             header("Location: $redirect");
@@ -42,6 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login'])) {
 ?>
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -50,7 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login'])) {
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
-    
+
     <style>
         :root {
             --redcolor: #bf0f0f;
@@ -89,6 +90,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login'])) {
                 opacity: 0;
                 transform: translateY(30px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -215,9 +217,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login'])) {
         }
 
         @keyframes shake {
-            0%, 100% { transform: translateX(0); }
-            25% { transform: translateX(-5px); }
-            75% { transform: translateX(5px); }
+
+            0%,
+            100% {
+                transform: translateX(0);
+            }
+
+            25% {
+                transform: translateX(-5px);
+            }
+
+            75% {
+                transform: translateX(5px);
+            }
         }
 
         .btn-login {
@@ -316,36 +328,43 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login'])) {
             }
         }
 
+        /* Bottomnav Mobile */
         .bottomnav {
             display: flex;
-            justify-content: space-around;
+            justify-content: space-between;
             align-items: center;
             position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
+            bottom: 0.5rem;
+            left: 1rem;
+            right: 1rem;
             height: 70px;
             background-color: #fff;
             border-top: 1px solid #ddd;
             box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.08);
+            border-radius: 25px;
             z-index: 9999;
+            padding-bottom: env(safe-area-inset-bottom);
+            /* iPhone notch safe area */
         }
 
         .bottomnav a {
             flex: 1;
             text-align: center;
             color: #777;
-            font-size: 0.75rem;
+            font-size: 0.8rem;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             text-decoration: none;
-            gap: 4px;
+            line-height: 1.2;
+            transition: all 0.3s ease;
         }
 
         .bottomnav a i {
             font-size: 1.4rem;
+            margin-bottom: 4px;
+            display: block;
         }
 
         .bottomnav a.active {
@@ -353,6 +372,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login'])) {
             font-weight: 600;
         }
 
+        .bottomnav a:hover {
+            color: var(--redcolor);
+            transform: scale(1.05);
+        }
+
+        .bottomnav a span {
+            margin-top: 2px;
+            font-size: 0.75rem;
+        }
+
+        /* Pastikan ikon font-awesome atau remixicon tidak terpotong */
+        .bottomnav i,
+        .bottomnav svg {
+            vertical-align: middle;
+        }
+
+        .footerbottom {
+            padding-bottom: 10vh;
+        }
     </style>
 </head>
 
@@ -368,35 +406,33 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login'])) {
         </div>
 
         <?php if ($error): ?>
-        <div class="error-message">
-            <i class="fa-solid fa-circle-exclamation"></i>
-            <span><?= htmlspecialchars($error) ?></span>
-        </div>
+            <div class="error-message">
+                <i class="fa-solid fa-circle-exclamation"></i>
+                <span><?= htmlspecialchars($error) ?></span>
+            </div>
         <?php endif; ?>
 
         <form method="POST" action="">
             <div class="form-group">
                 <label>Email<span>*</span></label>
-                <input 
-                    type="email" 
-                    name="email" 
-                    placeholder="Masukkan email anda" 
-                    required 
+                <input
+                    type="email"
+                    name="email"
+                    placeholder="Masukkan email anda"
+                    required
                     autofocus
-                    value="<?= isset($_POST['email']) ? htmlspecialchars($_POST['email']) : '' ?>"
-                />
+                    value="<?= isset($_POST['email']) ? htmlspecialchars($_POST['email']) : '' ?>" />
             </div>
 
             <div class="form-group">
                 <label>Password<span>*</span></label>
                 <div class="input-wrapper">
-                    <input 
-                        type="password" 
-                        name="password" 
+                    <input
+                        type="password"
+                        name="password"
                         id="password"
-                        placeholder="Masukkan password anda" 
-                        required 
-                    />
+                        placeholder="Masukkan password anda"
+                        required />
                     <i class="fa-solid fa-eye toggle-password" id="togglePassword"></i>
                 </div>
             </div>
@@ -416,10 +452,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login'])) {
 
         <button class="btn-google" onclick="alert('Fitur Google Login akan segera hadir!')">
             <svg width="20" height="20" viewBox="0 0 48 48">
-                <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/>
-                <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/>
-                <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/>
-                <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/>
+                <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z" />
+                <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z" />
+                <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z" />
+                <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z" />
             </svg>
             Masuk dengan Google
         </button>
@@ -433,19 +469,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login'])) {
     <div class="bottomnav">
         <a href="index.php">
             <i class="fa-solid fa-house"></i>
-            <span>Home</span>
+            Home
         </a>
         <a href="menu.php">
             <i class="fa-solid fa-book-open"></i>
-            <span>Menu</span>
+            Menu
         </a>
         <a href="cart.php" class="active">
             <i class="fa-solid fa-shopping-cart"></i>
-            <span>Pesanan</span>
+            Pesanan
         </a>
-        <a href="mobilelogin.php" >
+        <a href="mobilelogin.php">
             <i class="fa-solid fa-user"></i>
-            <span>Profil</span>
+            Profil
         </a>
     </div>
 
@@ -457,7 +493,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login'])) {
         togglePassword.addEventListener('click', function() {
             const type = passwordInput.type === 'password' ? 'text' : 'password';
             passwordInput.type = type;
-            
+
             this.classList.toggle('fa-eye');
             this.classList.toggle('fa-eye-slash');
         });
@@ -473,4 +509,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login'])) {
         }, 4000);
     </script>
 </body>
+
 </html>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 26, 2025 at 11:02 AM
+-- Generation Time: Dec 10, 2025 at 01:27 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -102,13 +102,13 @@ CREATE TABLE `menu` (
 --
 
 INSERT INTO `menu` (`id`, `nama_menu`, `kategori_id`, `harga`, `stock`, `foto_menu`, `created_at`) VALUES
-(8, 'Seblak Rafael', 1, 10000, 48, '1763514795_seblak-rafael.png', '2025-11-19 01:13:15'),
+(8, 'Seblak Rafael', 1, 10000, 47, '1763514795_seblak-rafael.png', '2025-11-19 01:13:15'),
 (9, 'Mie Kuah Seblak', 1, 10000, 45, '1763514820_mie-kuahseblak.png', '2025-11-19 01:13:40'),
 (10, 'Seblak Aci', 1, 15000, 48, '1763514859_SeblakAci.png', '2025-11-19 01:14:19'),
-(11, 'Seblak Ceker', 1, 15000, 46, '1763514895_seblak-ceker.png', '2025-11-19 01:14:55'),
-(12, 'Seblak Komplit', 1, 20000, 42, '1763514917_seblak-komplit.png', '2025-11-19 01:15:17'),
-(13, 'Seblak Original', 1, 10000, 47, '1763514938_seblak-original.png', '2025-11-19 01:15:38'),
-(14, 'Nasi Sayap Saos Merah', 2, 15000, 49, '1763515117_Nasi_Sayap-S.Merah.png', '2025-11-19 01:18:37'),
+(11, 'Seblak Ceker', 1, 15000, 43, '1763514895_seblak-ceker.png', '2025-11-19 01:14:55'),
+(12, 'Seblak Komplit', 1, 20000, 39, '1763514917_seblak-komplit.png', '2025-11-19 01:15:17'),
+(13, 'Seblak Original', 1, 10000, 45, '1763514938_seblak-original.png', '2025-11-19 01:15:38'),
+(14, 'Nasi Sayap Saos Merah', 2, 15000, 48, '1763515117_Nasi_Sayap-S.Merah.png', '2025-11-19 01:18:37'),
 (15, 'Nasi Gila Oklo', 2, 15000, 49, '1763515239_Nasi-GilaOklo.png', '2025-11-19 01:20:39'),
 (16, 'Nasi Gila Odeng', 2, 15000, 47, '1763515272_Nasi-GilaScallop.png', '2025-11-19 01:20:53'),
 (17, 'Nasi Gila Scallop', 2, 15000, 48, '1763515295_Nasi-GilaScallop.png', '2025-11-19 01:21:35'),
@@ -133,7 +133,7 @@ INSERT INTO `menu` (`id`, `nama_menu`, `kategori_id`, `harga`, `stock`, `foto_me
 (37, 'Es Teh Jumbo', 6, 5000, 50, '1763516880_es-tehjumbo.jpeg', '2025-11-19 01:48:00'),
 (38, 'Es Teh', 6, 3000, 50, '1763516906_es-teh-reguler_taki.png', '2025-11-19 01:48:26'),
 (39, 'Iced Milk Tea', 6, 13000, 49, '1763516928_MilkTea-taki.jpg', '2025-11-19 01:48:48'),
-(40, 'Coffee Latte', 6, 13000, 50, '1763516999_coffee-latte.jpeg', '2025-11-19 01:49:59'),
+(40, 'Coffee Latte', 6, 13000, 49, '1763516999_coffee-latte.jpeg', '2025-11-19 01:49:59'),
 (41, 'Choco Hazelnut', 6, 12000, 50, '1763517021_choco-latte_taki.png', '2025-11-19 01:50:21'),
 (42, 'Hazelnut Latte', 6, 12000, 50, '1763517044_Hazelnut-Latte.jpeg', '2025-11-19 01:50:44');
 
@@ -171,7 +171,13 @@ INSERT INTO `orders` (`id`, `user_id`, `invoice_number`, `total_price`, `nama_pe
 (12, 7, 'INV/20251122/0001', 30000, 'rapip', '08123456789', 'Jl. Semesa', 'seas', 'QRIS', 'completed', '2025-11-22 10:04:07'),
 (13, 7, 'INV/20251122/0002', 25000, 'dupan', '08123456789', 'aura', 'aura', 'QRIS', 'completed', '2025-11-22 10:15:19'),
 (14, 7, 'INV/20251122/0003', 30000, 'rapip', '08123456789', 'na', 'ya', 'QRIS', 'completed', '2025-11-22 10:19:29'),
-(15, 7, 'INV/20251122/0004', 45000, 'rapip', '08123456789', 'na', 'ya', 'QRIS', 'pending', '2025-11-22 14:05:52');
+(15, 7, 'INV/20251122/0004', 45000, 'rapip', '08123456789', 'na', 'ya', 'QRIS', 'pending', '2025-11-22 14:05:52'),
+(16, 11, 'INV/20251126/0001', 25000, 'Charentyo', '08123456789', 'rentyo', 'ya', 'QRIS', 'pending', '2025-11-26 12:10:13'),
+(17, 7, 'INV/20251130/0001', 30000, 'rapip', '08123456789', 'sawas', 'saswa', 'QRIS', 'pending', '2025-11-30 04:26:25'),
+(18, 7, 'INV/20251201/0001', 15000, 'rapip', '08123456789', 'awsa', 'swas', 'QRIS', 'pending', '2025-12-01 15:22:31'),
+(19, 7, 'INV/20251201/0002', 20000, 'dupan', '08123456789', 'sawsss', 'sassss', 'COD', 'pending', '2025-12-01 15:24:06'),
+(20, 12, 'INV/20251203/0001', 28000, 'jokiwi', '08123456789', 'Rt 2 Rw 1 istana negara solo', 'Pake spesial dari pak wowo', 'COD', 'processing', '2025-12-03 04:09:04'),
+(21, 14, 'INV/20251204/0001', 45000, 'nasiful', '08123456789', 'vvfdvfvv', 'vcvfvfvfvfv', 'COD', 'pending', '2025-12-04 01:13:28');
 
 -- --------------------------------------------------------
 
@@ -216,7 +222,18 @@ INSERT INTO `order_items` (`id`, `order_id`, `menu_id`, `nama_menu`, `harga`, `q
 (30, 13, 11, 'Seblak Ceker', 15000, 1, 2, 15000),
 (31, 14, 16, 'Nasi Gila Odeng', 15000, 2, 0, 30000),
 (32, 15, 16, 'Nasi Gila Odeng', 15000, 1, 0, 15000),
-(33, 15, 17, 'Nasi Gila Scallop', 15000, 2, 0, 30000);
+(33, 15, 17, 'Nasi Gila Scallop', 15000, 2, 0, 30000),
+(34, 16, 13, 'Seblak Original', 10000, 1, 4, 10000),
+(35, 16, 11, 'Seblak Ceker', 15000, 1, 4, 15000),
+(36, 17, 12, 'Seblak Komplit', 20000, 1, 5, 20000),
+(37, 17, 13, 'Seblak Original', 10000, 1, 4, 10000),
+(38, 18, 11, 'Seblak Ceker', 15000, 1, 5, 15000),
+(39, 19, 12, 'Seblak Komplit', 20000, 1, 4, 20000),
+(40, 20, 14, 'Nasi Sayap Saos Merah', 15000, 1, 0, 15000),
+(41, 20, 40, 'Coffee Latte', 13000, 1, 0, 13000),
+(42, 21, 12, 'Seblak Komplit', 20000, 1, 4, 20000),
+(43, 21, 11, 'Seblak Ceker', 15000, 1, 4, 15000),
+(44, 21, 8, 'Seblak Rafael', 10000, 1, 4, 10000);
 
 -- --------------------------------------------------------
 
@@ -238,9 +255,13 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `phone`, `password`, `created_at`) VALUES
-(7, 'snickerdoodle', 'niggatron@gmail.com', '08123456789', '$2y$10$tYmGDJ4j8MRhAqrNOXIt8evl0KFuiNaESFp/MScKNl2ECZ11kMyUm', '2025-11-13 12:56:55'),
+(7, 'snickerdoodle', 'niggatron@gmail.com', '08123456789', '$2y$10$D0RkyL0q9fDkK1zwbvF64u6g0Sn4yViePqXwHplRNvqZW4pMtrAj.', '2025-11-13 12:56:55'),
 (8, 'snickerdoodle', 'niggatron1@gmail.com', '08123456789', '$2y$10$W6JFrKOOK6WhyZlJJbYKcuM3YcNxcs9xfH2qHJgt1ubms2efVYilq', '2025-11-13 13:04:23'),
-(10, 'fahri', 'nigger12534@gmail.com', '08123456789', '$2y$10$smXLIR92EAz8JQt9Sjj8qe6f5zsytlM/BU2wXRkJZf.4mxT/pHmnC', '2025-11-20 01:25:19');
+(10, 'fahri', 'nigger12534@gmail.com', '08123456789', '$2y$10$smXLIR92EAz8JQt9Sjj8qe6f5zsytlM/BU2wXRkJZf.4mxT/pHmnC', '2025-11-20 01:25:19'),
+(11, 'BearAqua', 'bearaqua99@gmail.com', '08123456789', '$2y$10$0t8vTR/1AiWoNjagQWP8LuntZyHigUR3U1qIc0tG3Q22MyY4jz.IK', '2025-11-26 12:06:47'),
+(12, 'Jokiwi', 'Jokiwibowo@gmail.com', '089123456789', '$2y$10$SpeHsjbzNih6/ovUS9HVTecayF9Nr1iFIjRH2mDOW/i/6WcRrwPRa', '2025-12-03 04:06:47'),
+(13, 'nasiful', 'nasifulhaq@gmail.com', '00986544', '$2y$10$rpfIvWBQ7hEAfGdbUBHXWOO5JiAayfM7g44p.YQ8250O9gi9ADMlK', '2025-12-04 01:09:22'),
+(14, 'nana', 'nasiful@gmail.com', '6527626', '$2y$10$JXQ9oOt8l8.Qq7xQN2TQU.DnSaOHMHNpquVAVeFqL/lkVG7GnQZe.', '2025-12-04 01:10:11');
 
 -- --------------------------------------------------------
 
@@ -367,7 +388,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=85;
 
 --
 -- AUTO_INCREMENT for table `kategori`
@@ -379,25 +400,25 @@ ALTER TABLE `kategori`
 -- AUTO_INCREMENT for table `menu`
 --
 ALTER TABLE `menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `order_items`
 --
 ALTER TABLE `order_items`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- Constraints for dumped tables
